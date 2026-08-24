@@ -1,27 +1,95 @@
-# Robot TAS
+# Robot Action Segmentation
 
-No-GT multi-view temporal action segmentation for robot manipulation videos.
+No-GT multi-view robot action segmentation with VLM-reviewed semantic decisions
+and trajectory-assisted candidate recall.
 
-This repo is organized around the final pipeline described in
-`prompts/final_prompt.txt`: synchronized head/hand evidence is used for visual
-semantic state segmentation, while CV and trajectory signals are candidate
-recall only. Final semantic claims must come from an audited
-`codex_vlm_decision_v2` decision JSON.
+<p align="center">
+  <img src="docs/assets/demo_task388_preview.gif" alt="Demo annotated robot action segmentation output with caption and action timeline" width="760">
+</p>
 
-## Layout
+<p align="center">
+  <a href="examples/agibot_demo/expected_outputs/task_388/episodes/685716/final/annotated_actions.mp4">Full demo video</a>
+  ·
+  <a href="examples/agibot_demo/expected_outputs/task_388/episodes/685716/final/timeline.html">Timeline HTML</a>
+  ·
+  <a href="examples/agibot_demo/expected_outputs/task_388/episodes/685716/final/final_segments.json">Final segments JSON</a>
+</p>
 
-- `robot_tas/`: core sampling, segmentation, visualization, trajectory, and VLM-pack utilities.
-- `robot_tas/cli/`: installed CLI implementations.
-- `scripts/`: source-tree wrappers for the main single-episode steps.
-- `tools/`: batch no-GT runner plus final audit/review utilities.
-- `prompts/`: maintained base prompts and `codex_vlm_decision_v2.txt`.
-- `examples/agibot_demo/`: three small AgiBotWorld demo cases with inputs and expected VLM-reviewed outputs.
-- `tests/`: deterministic unit tests.
+This repository contains a no-ground-truth temporal action segmentation pipeline
+for robot manipulation videos. It uses synchronized `head_color`,
+`hand_left_color`, and `hand_right_color` observations to decide semantic action
+states. CV and trajectory signals are used to recall candidate moments, but final
+action labels and captions must come from an audited `codex_vlm_decision_v2`
+visual review.
+
+## Highlights
+
+- No GT or `task_info` is used before prediction is locked.
+- Final segments describe observable robot-object interaction states, not broad task summaries.
+- Every boundary is snapped to a supplied sampled frame.
+- Gripper close/open events are treated as timing candidates, not automatic grasp/release labels.
+- Final videos show a one-line caption plus a bottom action timeline.
+- Bundled AgiBotWorld demo cases include input videos, proprio CSV, VLM decisions, final JSON, timeline HTML, and annotated MP4 outputs.
+
+## Pipeline
+
+```text
+Raw multi-view observation
+        |
+        v
+Base head timeline + sampled frames
+        |
+        v
+Synchronized tri-view evidence pack
+        |
+        +---- CV visual candidates
+        +---- trajectory/proprio candidates
+        |
+        v
+Codex/VLM semantic review
+        |
+        v
+Final semantic action segments
+        |
+        +---- final_segments.json
+        +---- timeline.html
+        +---- annotated_actions.mp4
+```
+
+The maintained system contract is documented in
+[`prompts/final_prompt.txt`](prompts/final_prompt.txt). The VLM decision prompt
+is [`prompts/codex_vlm_decision_v2.txt`](prompts/codex_vlm_decision_v2.txt).
+
+## Demo Outputs
+
+The repo includes three compact demo cases under
+[`examples/agibot_demo`](examples/agibot_demo):
+
+| Task | Episode | Segments | Output video | Timeline | Final JSON |
+| --- | ---: | ---: | --- | --- | --- |
+| 327 | 685046 | 10 | [MP4](examples/agibot_demo/expected_outputs/task_327/episodes/685046/final/annotated_actions.mp4) | [HTML](examples/agibot_demo/expected_outputs/task_327/episodes/685046/final/timeline.html) | [JSON](examples/agibot_demo/expected_outputs/task_327/episodes/685046/final/final_segments.json) |
+| 388 | 685716 | 9 | [MP4](examples/agibot_demo/expected_outputs/task_388/episodes/685716/final/annotated_actions.mp4) | [HTML](examples/agibot_demo/expected_outputs/task_388/episodes/685716/final/timeline.html) | [JSON](examples/agibot_demo/expected_outputs/task_388/episodes/685716/final/final_segments.json) |
+| 446 | 687380 | 5 | [MP4](examples/agibot_demo/expected_outputs/task_446/episodes/687380/final/annotated_actions.mp4) | [HTML](examples/agibot_demo/expected_outputs/task_446/episodes/687380/final/timeline.html) | [JSON](examples/agibot_demo/expected_outputs/task_446/episodes/687380/final/final_segments.json) |
+
+Each case keeps only the fixed tri-view input videos:
+
+```text
+observations/<task>/<episode>/videos/
+  head_color.mp4
+  hand_left_color.mp4
+  hand_right_color.mp4
+```
+
+and the extracted proprio files:
+
+```text
+proprio_stats_extracted/<task>/<episode>/timeseries.csv
+proprio_stats_extracted/<task>/<episode>/manifest.json
+```
 
 ## Setup
 
 ```bash
-cd "/mnt/f/ai/video grounding/api"
 python3.11 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements-dev.txt
@@ -29,33 +97,17 @@ pip install -e .
 pytest -q
 ```
 
-For runtime-only use, `pip install -r requirements.txt` is enough.
+For runtime-only use:
 
-## Demo Cases
-
-The bundled cases use this layout:
-
-```text
-examples/agibot_demo/
-  observations/<task>/<episode>/videos/
-    head_color.mp4
-    hand_left_color.mp4
-    hand_right_color.mp4
-  proprio_stats_extracted/<task>/<episode>/timeseries.csv
-  expected_outputs/task_<task>/episodes/<episode>/
-    decision/codex_vlm_decision.json
-    final/final_segments.json
-    final/timeline.html
-    final/annotated_actions.mp4
+```bash
+pip install -r requirements.txt
+pip install -e .
 ```
 
-Open `examples/agibot_demo/cases.json` for the selected task/episode IDs and
-segment counts.
+## Run The Bundled Demo
 
-## Final No-GT Batch Runner
-
-This command processes the demo observations and reuses the bundled final
-VLM-reviewed outputs as the locked decisions/results:
+This command processes the bundled demo observations and reuses the included
+VLM-reviewed decisions as the locked final results:
 
 ```bash
 python tools/run_no_gt_vision_traj_subset.py \
@@ -71,12 +123,18 @@ python tools/run_no_gt_vision_traj_subset.py \
   --trajectory-candidate-count 12
 ```
 
-For a fresh run without `--reuse-output-root`, place each reviewed
-`decision/codex_vlm_decision.json` under the target episode output directory
-before the apply step. Do not use `--allow-bootstrap-decisions` for final
-semantic results.
+Expected outputs:
 
-## Single Episode Steps
+```text
+outputs/demo_vlm_reviewed/
+  annotated_videos/
+  task_327/episodes/685046/final/
+  task_388/episodes/685716/final/
+  task_446/episodes/687380/final/
+  no_gt_run_summary.json
+```
+
+## Single Episode Pipeline
 
 ```bash
 python scripts/run_tas.py \
@@ -104,5 +162,31 @@ python scripts/apply_codex_vlm_decision.py \
   --output-dir outputs/demo_single/task_327/episodes/685046/final
 ```
 
-The final output is `final/final_segments.json`, `final/timeline.html`, and
-`final/annotated_actions.mp4`.
+For a fresh run without `--reuse-output-root`, place each reviewed
+`decision/codex_vlm_decision.json` under the target episode output directory
+before the apply step. Do not use `--allow-bootstrap-decisions` for final
+semantic results.
+
+## Repository Layout
+
+```text
+robot_tas/        core sampling, schemas, segmentation, visualization, trajectory, and VLM-pack code
+robot_tas/cli/    CLI implementations used by scripts and console entry points
+scripts/          source-tree wrappers for the main pipeline steps
+tools/            batch runner and final review/audit utilities
+prompts/          maintained final runbook and VLM decision prompt
+examples/         bundled AgiBotWorld demo cases and expected outputs
+tests/            deterministic unit tests
+```
+
+## Final Output Contract
+
+The final `final_segments.json` must satisfy these invariants:
+
+- `prompt_versions.codex_vlm_decision == "codex_vlm_decision_v2"`
+- every segment has concrete `description`, `action_label`, selected views, and left/right hand state
+- every boundary uses a sampled `sample_index`, `frame_id`, and timestamp
+- CV and trajectory evidence are recorded as support, not standalone semantic authority
+- placeholder captions such as `visible item`, `target object`, or `active gripper` are not allowed
+
+See [`docs/PIPELINE.md`](docs/PIPELINE.md) for the full runbook.
