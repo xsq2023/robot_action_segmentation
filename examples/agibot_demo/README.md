@@ -9,6 +9,15 @@ This directory contains three compact cases:
 Inputs are under `observations/` and `proprio_stats_extracted/`. Expected
 VLM-reviewed outputs are under `expected_outputs/`.
 
+Install dependencies from the repo root before running the demo:
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pip install -e .
+```
+
 Run the demo reuse path from the repo root:
 
 ```bash

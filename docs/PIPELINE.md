@@ -102,6 +102,18 @@ review sheets referenced by the audit.
 
 ## Verification
 
+Set up the environment first:
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements-dev.txt
+pip install -e .
+```
+
+For runtime-only usage without tests, install `requirements.txt` instead of
+`requirements-dev.txt`.
+
 ```bash
 pytest -q
 
