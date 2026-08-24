@@ -24,9 +24,12 @@ recall only. Final semantic claims must come from an audited
 cd "/mnt/f/ai/video grounding/api"
 python3.11 -m venv .venv
 source .venv/bin/activate
-pip install -e ".[dev]"
+pip install -r requirements-dev.txt
+pip install -e .
 pytest -q
 ```
+
+For runtime-only use, `pip install -r requirements.txt` is enough.
 
 ## Demo Cases
 
