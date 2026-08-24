@@ -1,0 +1,117 @@
+{
+  "name": "agibot_demo",
+  "source_dataset": "AgiBotWorld-Alpha local subset",
+  "pipeline": "No-GT multi-view visual semantic state segmentation with trajectory-assisted candidate recall",
+  "decision_version": "codex_vlm_decision_v2",
+  "views": [
+    "head_color",
+    "hand_left_color",
+    "hand_right_color"
+  ],
+  "cases": [
+    {
+      "task_id": "327",
+      "episode_id": "685046",
+      "description": "produce pickup and bag placement",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "observation_dir": "observations/327/685046",
+      "proprio_dir": "proprio_stats_extracted/327/685046",
+      "expected_output_dir": "expected_outputs/task_327/episodes/685046",
+      "segment_count": 10,
+      "boundary_count": 9,
+      "review_artifacts": [
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_007_frames_0022_0082.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_012_frames_0060_0120.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_017_frames_0098_0158.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_032_frames_0210_0270.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_034_frames_0225_0285.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_043_frames_0292_0352.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_044_frames_0300_0360.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_049_frames_0338_0398.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_059_frames_0412_0472.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_060_frames_0420_0480.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_068_frames_0480_0540.jpg",
+        "segment_review_sheets/task_327_episode_685046_segments.jpg"
+      ]
+    },
+    {
+      "task_id": "388",
+      "episode_id": "685716",
+      "description": "packaged grocery manipulation",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "observation_dir": "observations/388/685716",
+      "proprio_dir": "proprio_stats_extracted/388/685716",
+      "expected_output_dir": "expected_outputs/task_388/episodes/685716",
+      "segment_count": 9,
+      "boundary_count": 8,
+      "review_artifacts": [
+        "debug_zoom_reviews/task388_ep685716_000_442_early_multiview.jpg",
+        "debug_zoom_reviews/task388_ep685716_1208_1898_late_multiview.jpg",
+        "debug_zoom_reviews/task388_ep685716_key_zoom.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_005_frames_0008_0068.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_007_frames_0022_0082.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_041_frames_0278_0338.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_043_frames_0292_0352.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_099_frames_0712_0772.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_100_frames_0720_0780.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_105_frames_0758_0818.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_110_frames_0795_0855.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_116_frames_0840_0900.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_131_frames_0952_1012.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_136_frames_0990_1050.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_148_frames_1080_1140.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_163_frames_1192_1252.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_172_frames_1260_1320.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_183_frames_1342_1402.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_184_frames_1350_1410.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_189_frames_1388_1448.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_235_frames_1732_1792.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_236_frames_1740_1800.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_243_frames_1792_1852.jpg",
+        "segment_review_sheets/task_388_episode_685716_segments.jpg"
+      ]
+    },
+    {
+      "task_id": "446",
+      "episode_id": "687380",
+      "description": "table movement assistance",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "observation_dir": "observations/446/687380",
+      "proprio_dir": "proprio_stats_extracted/446/687380",
+      "expected_output_dir": "expected_outputs/task_446/episodes/687380",
+      "segment_count": 5,
+      "boundary_count": 4,
+      "review_artifacts": [
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_008_frames_0030_0090.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_009_frames_0038_0098.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_013_frames_0068_0128.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_018_frames_0105_0165.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_060_frames_0420_0480.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_079_frames_0562_0622.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_088_frames_0630_0690.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_111_frames_0802_0862.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_120_frames_0870_0930.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_124_frames_0900_0960.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_125_frames_0908_0968.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_132_frames_0960_1020.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_139_frames_1012_1072.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_144_frames_1050_1110.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_159_frames_1162_1222.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_221_frames_1628_1688.jpg",
+        "segment_review_sheets/task_446_episode_687380_segments.jpg"
+      ]
+    }
+  ]
+}

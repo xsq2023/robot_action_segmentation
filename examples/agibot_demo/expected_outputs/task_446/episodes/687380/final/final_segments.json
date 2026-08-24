@@ -1,0 +1,364 @@
+{
+  "video": {
+    "path": "/mnt/f/ai/video grounding/dataset/AgiBotWorld-Alpha/observations/446/687380/videos/head_color.mp4",
+    "fps": 30.0,
+    "total_frames": 1759,
+    "duration_seconds": 58.63333333333333,
+    "width": 640,
+    "height": 480,
+    "sample_fps": 4.0,
+    "timestamp_source": "original_frame_id/native_fps",
+    "sampling_note": "Used OpenCV metadata for frame count."
+  },
+  "segments": [
+    {
+      "segment_id": 0,
+      "start_sample_index": 0,
+      "end_sample_index": 23,
+      "start_frame_id": 0,
+      "end_frame_id": 172,
+      "start_time": 0.0,
+      "end_time": 5.733333333333333,
+      "action_label": "reach_for",
+      "description": "Both grippers move toward opposite sides of the white table edge.",
+      "primary_object": "white table edge",
+      "secondary_objects": [],
+      "actor_motion": "approach",
+      "contact_state": "no_contact",
+      "object_motion": "stationary",
+      "goal": "Both grippers move toward opposite sides of the white table edge",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "approaching",
+      "right_hand_state": "approaching",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": []
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 0 0-172."
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak at sample 9/frame 68: active end/joint motion has a local high score at trajectory frame 71"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 1,
+      "start_sample_index": 23,
+      "end_sample_index": 33,
+      "start_frame_id": 172,
+      "end_frame_id": 248,
+      "start_time": 5.733333333333333,
+      "end_time": 8.266666666666667,
+      "action_label": "grasp",
+      "description": "Left and right grippers close on the white table edge and establish contact.",
+      "primary_object": "white table edge",
+      "secondary_objects": [],
+      "actor_motion": "grasp",
+      "contact_state": "grasped",
+      "object_motion": "stationary_to_moving",
+      "goal": "Left and right grippers close on the white table edge and establish contact",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "grasping",
+      "right_hand_state": "grasping",
+      "held_objects_by_hand": {
+        "left": [
+          "white table edge"
+        ],
+        "right": [
+          "white table edge"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 1 172-248."
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close at sample 27/frame 202: gripper_command_close from 0.000 to 1.000 over trajectory frames 204..206"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 2,
+      "start_sample_index": 33,
+      "end_sample_index": 97,
+      "start_frame_id": 248,
+      "end_frame_id": 728,
+      "start_time": 8.266666666666667,
+      "end_time": 24.266666666666666,
+      "action_label": "move",
+      "description": "Both grippers keep contact with the white table edge while moving the table across the marked floor area.",
+      "primary_object": "white table",
+      "secondary_objects": [],
+      "actor_motion": "transport",
+      "contact_state": "grasped",
+      "object_motion": "moving_with_both_grippers",
+      "goal": "Both grippers keep contact with the white table edge while moving the table across the marked floor area",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "carrying",
+      "right_hand_state": "carrying",
+      "held_objects_by_hand": {
+        "left": [
+          "white table"
+        ],
+        "right": [
+          "white table"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 2 248-728."
+      ],
+      "trajectory_evidence": [],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 3,
+      "start_sample_index": 97,
+      "end_sample_index": 109,
+      "start_frame_id": 728,
+      "end_frame_id": 818,
+      "start_time": 24.266666666666666,
+      "end_time": 27.266666666666666,
+      "action_label": "release",
+      "description": "Left and right grippers open and release the white table edge.",
+      "primary_object": "white table edge",
+      "secondary_objects": [],
+      "actor_motion": "release",
+      "contact_state": "released",
+      "object_motion": "placed",
+      "goal": "Left and right grippers open and release the white table edge",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "releasing",
+      "right_hand_state": "releasing",
+      "held_objects_by_hand": {
+        "left": [
+          "white table edge"
+        ],
+        "right": [
+          "white table edge"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 3 728-818."
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_open at sample 103/frame 772: gripper_command_open from 1.000 to 0.000 over trajectory frames 769..771"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 4,
+      "start_sample_index": 109,
+      "end_sample_index": 234,
+      "start_frame_id": 818,
+      "end_frame_id": 1755,
+      "start_time": 27.266666666666666,
+      "end_time": 58.5,
+      "action_label": "retract",
+      "description": "Both grippers retract from the white table after releasing it.",
+      "primary_object": "white table",
+      "secondary_objects": [],
+      "actor_motion": "retract",
+      "contact_state": "no_contact",
+      "object_motion": "placed",
+      "goal": "Both grippers retract from the white table after releasing it",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "retracting",
+      "right_hand_state": "retracting",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": []
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 4 818-1755."
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_state_opening at sample 111/frame 832: gripper_state_opening from 111.689 to 35.156 over trajectory frames 795..832",
+        "trajectory trajectory_motion_peak at sample 124/frame 930: active end/joint motion has a local high score at trajectory frame 933"
+      ],
+      "confidence": 0.82
+    }
+  ],
+  "boundaries": [
+    {
+      "boundary_sample_index": 23,
+      "boundary_frame_id": 172,
+      "boundary_time": 5.733333333333333,
+      "before_action": "reach_for",
+      "after_action": "grasp",
+      "transition_type": "reach_for_to_grasp",
+      "visual_evidence": [
+        "Before: Both grippers move toward opposite sides of the white table edge.",
+        "After: Left and right grippers close on the white table edge and establish contact."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 172"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and white table edge state around the boundary"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close near sample 27/frame 202: gripper_command_close from 0.000 to 1.000 over trajectory frames 204..206"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_visual_review_from_visual_candidate_202"
+      ]
+    },
+    {
+      "boundary_sample_index": 33,
+      "boundary_frame_id": 248,
+      "boundary_time": 8.266666666666667,
+      "before_action": "grasp",
+      "after_action": "move",
+      "transition_type": "grasp_to_move",
+      "visual_evidence": [
+        "Before: Left and right grippers close on the white table edge and establish contact.",
+        "After: Both grippers keep contact with the white table edge while moving the table across the marked floor area."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 248"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and white table state around the boundary"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close near sample 27/frame 202: gripper_command_close from 0.000 to 1.000 over trajectory frames 204..206"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_visual_review_from_visual_candidate_218"
+      ]
+    },
+    {
+      "boundary_sample_index": 97,
+      "boundary_frame_id": 728,
+      "boundary_time": 24.266666666666666,
+      "before_action": "move",
+      "after_action": "release",
+      "transition_type": "move_to_release",
+      "visual_evidence": [
+        "Before: Both grippers keep contact with the white table edge while moving the table across the marked floor area.",
+        "After: Left and right grippers open and release the white table edge."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 728"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and white table edge state around the boundary"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_open near sample 103/frame 772: gripper_command_open from 1.000 to 0.000 over trajectory frames 769..771"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_visual_review_from_visual_candidate_728"
+      ]
+    },
+    {
+      "boundary_sample_index": 109,
+      "boundary_frame_id": 818,
+      "boundary_time": 27.266666666666666,
+      "before_action": "release",
+      "after_action": "retract",
+      "transition_type": "release_to_retract",
+      "visual_evidence": [
+        "Before: Left and right grippers open and release the white table edge.",
+        "After: Both grippers retract from the white table after releasing it."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 818"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and white table state around the boundary"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_open near sample 103/frame 772: gripper_command_open from 1.000 to 0.000 over trajectory frames 769..771",
+        "trajectory gripper_state_opening near sample 111/frame 832: gripper_state_opening from 111.689 to 35.156 over trajectory frames 795..832"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_visual_review_from_visual_candidate_810"
+      ]
+    }
+  ],
+  "prompt_versions": {
+    "codex_vlm_decision": "codex_vlm_decision_v2",
+    "action_set": "reach_for,grasp,pick,lift,carry,transport,move,place,lower,release,pull,push,open,close,rotate,press,insert,remove,retract,hold,wait"
+  }
+}

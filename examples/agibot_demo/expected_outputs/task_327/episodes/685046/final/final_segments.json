@@ -1,0 +1,760 @@
+{
+  "video": {
+    "path": "/mnt/f/ai/video grounding/dataset/AgiBotWorld-Alpha/observations/327/685046-685393/685046/videos/head_color.mp4",
+    "fps": 30.0,
+    "total_frames": 1265,
+    "duration_seconds": 42.166666666666664,
+    "width": 640,
+    "height": 480,
+    "sample_fps": 4.0,
+    "timestamp_source": "original_frame_id/native_fps",
+    "sampling_note": "Used OpenCV metadata for frame count."
+  },
+  "segments": [
+    {
+      "segment_id": 0,
+      "start_sample_index": 0,
+      "end_sample_index": 51,
+      "start_frame_id": 0,
+      "end_frame_id": 382,
+      "start_time": 0.0,
+      "end_time": 12.733333333333333,
+      "action_label": "carry",
+      "description": "Right gripper carries a held red tomato-like produce piece toward the clear plastic shopping bag while the left gripper remains near the produce bin.",
+      "primary_object": "red tomato-like produce",
+      "secondary_objects": [],
+      "actor_motion": "transport",
+      "contact_state": "grasped",
+      "object_motion": "moving_with_right_gripper",
+      "goal": "Right gripper carries a held red tomato-like produce piece toward the clear plastic shopping bag while the left gripper remains near the produce bin",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "carrying",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "red tomato-like produce"
+        ]
+      },
+      "visual_evidence": [
+        "At frame 0 and frame 240 the red tomato-like produce remains controlled by the right gripper.",
+        "By frame 382 the right gripper is at the bag opening, before the release transition."
+      ],
+      "trajectory_evidence": [],
+      "confidence": 0.72
+    },
+    {
+      "segment_id": 1,
+      "start_sample_index": 51,
+      "end_sample_index": 57,
+      "start_frame_id": 382,
+      "end_frame_id": 428,
+      "start_time": 12.733333333333333,
+      "end_time": 14.266666666666667,
+      "action_label": "release",
+      "description": "Right gripper opens above the clear plastic shopping bag and releases the red tomato-like produce piece into the bag.",
+      "primary_object": "red tomato-like produce",
+      "secondary_objects": [],
+      "actor_motion": "release",
+      "contact_state": "released",
+      "object_motion": "placed",
+      "goal": "Right gripper opens above the clear plastic shopping bag and releases the red tomato-like produce piece into the bag",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "releasing",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "red tomato-like produce"
+        ]
+      },
+      "visual_evidence": [
+        "Trajectory gripper_command_open at frame 382 supports the start of release.",
+        "Frame 428 shows the red produce no longer being carried as the right gripper transitions away."
+      ],
+      "trajectory_evidence": [],
+      "confidence": 0.72
+    },
+    {
+      "segment_id": 2,
+      "start_sample_index": 57,
+      "end_sample_index": 76,
+      "start_frame_id": 428,
+      "end_frame_id": 570,
+      "start_time": 14.266666666666667,
+      "end_time": 19.0,
+      "action_label": "reach_for",
+      "description": "Right gripper reaches from the bag area back toward an orange corn cob in the wooden produce bin.",
+      "primary_object": "orange corn cob",
+      "secondary_objects": [
+        "wooden produce bin",
+        "clear plastic shopping bag"
+      ],
+      "actor_motion": "approach",
+      "contact_state": "no_contact",
+      "object_motion": "stationary",
+      "goal": "Right gripper reaches from the bag area back toward an orange corn cob in the wooden produce bin",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "approaching",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": []
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 1 428-570."
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_state_opening at sample 60/frame 450: gripper_state_opening from 107.156 to 34.800 over trajectory frames 415..451"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 3,
+      "start_sample_index": 76,
+      "end_sample_index": 86,
+      "start_frame_id": 570,
+      "end_frame_id": 645,
+      "start_time": 19.0,
+      "end_time": 21.5,
+      "action_label": "grasp",
+      "description": "Right gripper closes around the orange corn cob while the left gripper remains clear of the produce.",
+      "primary_object": "orange corn cob",
+      "secondary_objects": [],
+      "actor_motion": "grasp",
+      "contact_state": "grasped",
+      "object_motion": "stationary_to_moving",
+      "goal": "Right gripper closes around the orange corn cob while the left gripper remains clear of the produce",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "grasping",
+      "right_hand_state": "free",
+      "held_objects_by_hand": {
+        "left": [
+          "orange corn cob"
+        ],
+        "right": []
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 2 570-645."
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close at sample 80/frame 600: gripper_command_close from 0.000 to 1.000 over trajectory frames 597..600"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 4,
+      "start_sample_index": 86,
+      "end_sample_index": 102,
+      "start_frame_id": 645,
+      "end_frame_id": 765,
+      "start_time": 21.5,
+      "end_time": 25.5,
+      "action_label": "carry",
+      "description": "Right gripper carries the orange corn cob from the wooden bin toward the clear plastic shopping bag.",
+      "primary_object": "orange corn cob",
+      "secondary_objects": [
+        "clear plastic shopping bag"
+      ],
+      "actor_motion": "transport",
+      "contact_state": "grasped",
+      "object_motion": "moving_with_right_gripper",
+      "goal": "Right gripper carries the orange corn cob from the wooden bin toward the clear plastic shopping bag",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "carrying",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "orange corn cob"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 3 645-765."
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak at sample 96/frame 720: active end/joint motion has a local high score at trajectory frame 719"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 5,
+      "start_sample_index": 102,
+      "end_sample_index": 114,
+      "start_frame_id": 765,
+      "end_frame_id": 855,
+      "start_time": 25.5,
+      "end_time": 28.5,
+      "action_label": "release",
+      "description": "Right gripper opens over the clear plastic shopping bag and drops the orange corn cob into the bag.",
+      "primary_object": "orange corn cob",
+      "secondary_objects": [
+        "clear plastic shopping bag"
+      ],
+      "actor_motion": "release",
+      "contact_state": "released",
+      "object_motion": "placed",
+      "goal": "Right gripper opens over the clear plastic shopping bag and drops the orange corn cob into the bag",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "releasing",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "orange corn cob"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 4 765-855."
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_open at sample 108/frame 810: gripper_command_open from 0.940 to 0.000 over trajectory frames 809..811"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 6,
+      "start_sample_index": 114,
+      "end_sample_index": 122,
+      "start_frame_id": 855,
+      "end_frame_id": 915,
+      "start_time": 28.5,
+      "end_time": 30.5,
+      "action_label": "reach_for",
+      "description": "Right gripper returns to the wooden produce bin and reaches toward the purple cabbage-shaped vegetable near the other produce.",
+      "primary_object": "purple cabbage-shaped vegetable",
+      "secondary_objects": [
+        "wooden produce bin",
+        "green cucumber",
+        "orange corn cob"
+      ],
+      "actor_motion": "approach",
+      "contact_state": "no_contact",
+      "object_motion": "stationary",
+      "goal": "Right gripper returns to the wooden produce bin and reaches toward the purple cabbage-shaped vegetable near the other produce",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "approaching",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": []
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 5 855-915."
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak at sample 116/frame 870: active end/joint motion has a local high score at trajectory frame 870"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 7,
+      "start_sample_index": 122,
+      "end_sample_index": 132,
+      "start_frame_id": 915,
+      "end_frame_id": 990,
+      "start_time": 30.5,
+      "end_time": 33.0,
+      "action_label": "grasp",
+      "description": "Right gripper closes on the purple cabbage-shaped vegetable while the left gripper stays away from the grasp.",
+      "primary_object": "purple cabbage-shaped vegetable",
+      "secondary_objects": [],
+      "actor_motion": "grasp",
+      "contact_state": "grasped",
+      "object_motion": "stationary_to_moving",
+      "goal": "Right gripper closes on the purple cabbage-shaped vegetable while the left gripper stays away from the grasp",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "grasping",
+      "right_hand_state": "free",
+      "held_objects_by_hand": {
+        "left": [
+          "purple cabbage-shaped vegetable"
+        ],
+        "right": []
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 6 915-990."
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close at sample 126/frame 945: gripper_command_close from 0.000 to 0.970 over trajectory frames 947..949"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 8,
+      "start_sample_index": 132,
+      "end_sample_index": 146,
+      "start_frame_id": 990,
+      "end_frame_id": 1095,
+      "start_time": 33.0,
+      "end_time": 36.5,
+      "action_label": "carry",
+      "description": "Right gripper carries the purple cabbage-shaped vegetable out of the bin toward the clear plastic shopping bag.",
+      "primary_object": "purple cabbage-shaped vegetable",
+      "secondary_objects": [
+        "clear plastic shopping bag"
+      ],
+      "actor_motion": "transport",
+      "contact_state": "grasped",
+      "object_motion": "moving_with_right_gripper",
+      "goal": "Right gripper carries the purple cabbage-shaped vegetable out of the bin toward the clear plastic shopping bag",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "carrying",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "purple cabbage-shaped vegetable"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 7 990-1095."
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak at sample 140/frame 1050: active end/joint motion has a local high score at trajectory frame 1047",
+        "trajectory trajectory_motion_peak at sample 146/frame 1095: active end/joint motion has a local high score at trajectory frame 1094"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 9,
+      "start_sample_index": 146,
+      "end_sample_index": 168,
+      "start_frame_id": 1095,
+      "end_frame_id": 1260,
+      "start_time": 36.5,
+      "end_time": 42.0,
+      "action_label": "release",
+      "description": "Right gripper releases the purple cabbage-shaped vegetable into the clear plastic shopping bag.",
+      "primary_object": "purple cabbage-shaped vegetable",
+      "secondary_objects": [
+        "clear plastic shopping bag"
+      ],
+      "actor_motion": "release",
+      "contact_state": "released",
+      "object_motion": "placed",
+      "goal": "Right gripper releases the purple cabbage-shaped vegetable into the clear plastic shopping bag",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "releasing",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "purple cabbage-shaped vegetable"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 8 1095-1260."
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak at sample 146/frame 1095: active end/joint motion has a local high score at trajectory frame 1094",
+        "trajectory gripper_command_open at sample 152/frame 1140: gripper_command_open from 1.000 to 0.000 over trajectory frames 1137..1139"
+      ],
+      "confidence": 0.82
+    }
+  ],
+  "boundaries": [
+    {
+      "boundary_sample_index": 51,
+      "boundary_frame_id": 382,
+      "boundary_time": 12.733333333333333,
+      "before_action": "carry",
+      "after_action": "release",
+      "transition_type": "carry_to_release",
+      "visual_evidence": [
+        "Before frame 382: Right gripper carries a held red tomato-like produce piece toward the clear plastic shopping bag while the left gripper remains near the produce bin.",
+        "After frame 382: Right gripper opens above the clear plastic shopping bag and releases the red tomato-like produce piece into the bag."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "checked object location and workspace state at frame 382"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper contact/idle state at frame 382"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact/idle state at frame 382"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_open near frame 382: gripper_command_open from 1.000 to 0.000 over trajectory frames 384..386",
+        "trajectory trajectory_motion_peak near frame 322: active end/joint motion has a local high score at trajectory frame 325"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.72,
+      "source_proposal_ids": [
+        "codex_vlm_codex_vlm_visual_review_from_visual_candidate_382"
+      ]
+    },
+    {
+      "boundary_sample_index": 57,
+      "boundary_frame_id": 428,
+      "boundary_time": 14.266666666666667,
+      "before_action": "release",
+      "after_action": "reach_for",
+      "transition_type": "release_to_reach_for",
+      "visual_evidence": [
+        "Before frame 428: Right gripper opens above the clear plastic shopping bag and releases the red tomato-like produce piece into the bag.",
+        "After frame 428: Right gripper reaches from the bag area back toward an orange corn cob in the wooden produce bin."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "checked object location and workspace state at frame 428"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper contact/idle state at frame 428"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact/idle state at frame 428"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_state_opening near frame 450: gripper_state_opening from 107.156 to 34.800 over trajectory frames 415..451",
+        "trajectory gripper_command_open near frame 382: gripper_command_open from 1.000 to 0.000 over trajectory frames 384..386"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.72,
+      "source_proposal_ids": [
+        "codex_vlm_codex_vlm_visual_review_from_visual_candidate_428"
+      ]
+    },
+    {
+      "boundary_sample_index": 76,
+      "boundary_frame_id": 570,
+      "boundary_time": 19.0,
+      "before_action": "reach_for",
+      "after_action": "grasp",
+      "transition_type": "reach_for_to_grasp",
+      "visual_evidence": [
+        "Before frame 570: Right gripper reaches from the bag area back toward an orange corn cob in the wooden produce bin.",
+        "After frame 570: Right gripper closes around the orange corn cob while the left gripper remains clear of the produce."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "checked object location and workspace state at frame 570"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper contact/idle state at frame 570"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact/idle state at frame 570"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close near frame 600: gripper_command_close from 0.000 to 1.000 over trajectory frames 597..600"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_vlm_visual_review_from_visual_candidate_570"
+      ]
+    },
+    {
+      "boundary_sample_index": 86,
+      "boundary_frame_id": 645,
+      "boundary_time": 21.5,
+      "before_action": "grasp",
+      "after_action": "carry",
+      "transition_type": "grasp_to_carry",
+      "visual_evidence": [
+        "Before frame 645: Right gripper closes around the orange corn cob while the left gripper remains clear of the produce.",
+        "After frame 645: Right gripper carries the orange corn cob from the wooden bin toward the clear plastic shopping bag."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "checked object location and workspace state at frame 645"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper contact/idle state at frame 645"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact/idle state at frame 645"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close near frame 600: gripper_command_close from 0.000 to 1.000 over trajectory frames 597..600"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_vlm_visual_review_from_visual_candidate_645"
+      ]
+    },
+    {
+      "boundary_sample_index": 102,
+      "boundary_frame_id": 765,
+      "boundary_time": 25.5,
+      "before_action": "carry",
+      "after_action": "release",
+      "transition_type": "carry_to_release",
+      "visual_evidence": [
+        "Before frame 765: Right gripper carries the orange corn cob from the wooden bin toward the clear plastic shopping bag.",
+        "After frame 765: Right gripper opens over the clear plastic shopping bag and drops the orange corn cob into the bag."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "checked object location and workspace state at frame 765"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper contact/idle state at frame 765"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact/idle state at frame 765"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak near frame 720: active end/joint motion has a local high score at trajectory frame 719",
+        "trajectory gripper_command_open near frame 810: gripper_command_open from 0.940 to 0.000 over trajectory frames 809..811"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_vlm_visual_review_from_visual_candidate_765"
+      ]
+    },
+    {
+      "boundary_sample_index": 114,
+      "boundary_frame_id": 855,
+      "boundary_time": 28.5,
+      "before_action": "release",
+      "after_action": "reach_for",
+      "transition_type": "release_to_reach_for",
+      "visual_evidence": [
+        "Before frame 855: Right gripper opens over the clear plastic shopping bag and drops the orange corn cob into the bag.",
+        "After frame 855: Right gripper returns to the wooden produce bin and reaches toward the purple cabbage-shaped vegetable near the other produce."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "checked object location and workspace state at frame 855"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper contact/idle state at frame 855"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact/idle state at frame 855"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak near frame 870: active end/joint motion has a local high score at trajectory frame 870",
+        "trajectory gripper_command_open near frame 810: gripper_command_open from 0.940 to 0.000 over trajectory frames 809..811"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_vlm_visual_review_from_visual_candidate_855"
+      ]
+    },
+    {
+      "boundary_sample_index": 122,
+      "boundary_frame_id": 915,
+      "boundary_time": 30.5,
+      "before_action": "reach_for",
+      "after_action": "grasp",
+      "transition_type": "reach_for_to_grasp",
+      "visual_evidence": [
+        "Before frame 915: Right gripper returns to the wooden produce bin and reaches toward the purple cabbage-shaped vegetable near the other produce.",
+        "After frame 915: Right gripper closes on the purple cabbage-shaped vegetable while the left gripper stays away from the grasp."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "checked object location and workspace state at frame 915"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper contact/idle state at frame 915"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact/idle state at frame 915"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close near frame 945: gripper_command_close from 0.000 to 0.970 over trajectory frames 947..949",
+        "trajectory trajectory_motion_peak near frame 870: active end/joint motion has a local high score at trajectory frame 870"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_vlm_visual_review_from_visual_candidate_915"
+      ]
+    },
+    {
+      "boundary_sample_index": 132,
+      "boundary_frame_id": 990,
+      "boundary_time": 33.0,
+      "before_action": "grasp",
+      "after_action": "carry",
+      "transition_type": "grasp_to_carry",
+      "visual_evidence": [
+        "Before frame 990: Right gripper closes on the purple cabbage-shaped vegetable while the left gripper stays away from the grasp.",
+        "After frame 990: Right gripper carries the purple cabbage-shaped vegetable out of the bin toward the clear plastic shopping bag."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "checked object location and workspace state at frame 990"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper contact/idle state at frame 990"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact/idle state at frame 990"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close near frame 945: gripper_command_close from 0.000 to 0.970 over trajectory frames 947..949",
+        "trajectory trajectory_motion_peak near frame 1050: active end/joint motion has a local high score at trajectory frame 1047"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_vlm_visual_review_from_visual_candidate_990"
+      ]
+    },
+    {
+      "boundary_sample_index": 146,
+      "boundary_frame_id": 1095,
+      "boundary_time": 36.5,
+      "before_action": "carry",
+      "after_action": "release",
+      "transition_type": "carry_to_release",
+      "visual_evidence": [
+        "Before frame 1095: Right gripper carries the purple cabbage-shaped vegetable out of the bin toward the clear plastic shopping bag.",
+        "After frame 1095: Right gripper releases the purple cabbage-shaped vegetable into the clear plastic shopping bag."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "checked object location and workspace state at frame 1095"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper contact/idle state at frame 1095"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact/idle state at frame 1095"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak near frame 1095: active end/joint motion has a local high score at trajectory frame 1094",
+        "trajectory trajectory_motion_peak near frame 1050: active end/joint motion has a local high score at trajectory frame 1047"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_vlm_visual_review_from_visual_candidate_1095"
+      ]
+    }
+  ],
+  "prompt_versions": {
+    "codex_vlm_decision": "codex_vlm_decision_v2",
+    "action_set": "reach_for,grasp,pick,lift,carry,transport,move,place,lower,release,pull,push,open,close,rotate,press,insert,remove,retract,hold,wait"
+  }
+}

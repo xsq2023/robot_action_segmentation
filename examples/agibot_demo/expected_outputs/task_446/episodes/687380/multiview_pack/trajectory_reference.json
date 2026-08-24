@@ -1,0 +1,404 @@
+{
+  "description": "Trajectory-derived non-visual hints for candidate recall, local timing refinement, and joint evidence. Visual semantics remain primary.",
+  "timeseries_csv": "/mnt/f/ai/video grounding/dataset/AgiBotWorld-Alpha/proprio_stats_extracted/446/687380/timeseries.csv",
+  "row_count": 1759,
+  "active_signals": {
+    "effector_index": 1,
+    "action_gripper_column": "action.effector.position[1]",
+    "state_gripper_column": "state.effector.position[1]",
+    "end_position_columns": [
+      "state.end.position[3]",
+      "state.end.position[4]",
+      "state.end.position[5]"
+    ],
+    "end_orientation_columns": [
+      "state.end.orientation[4]",
+      "state.end.orientation[5]",
+      "state.end.orientation[6]",
+      "state.end.orientation[7]"
+    ],
+    "joint_position_columns": [
+      "state.joint.position[7]",
+      "state.joint.position[8]",
+      "state.joint.position[9]",
+      "state.joint.position[10]",
+      "state.joint.position[11]",
+      "state.joint.position[12]",
+      "state.joint.position[13]"
+    ]
+  },
+  "signal_scales": {
+    "end_position_delta_p95": 0.0034314988719514705,
+    "end_orientation_delta_p95": 0.008030463667726619,
+    "joint_delta_p95": 0.014227696035735541,
+    "gripper_command_delta_scale": 0.75,
+    "gripper_state_delta_scale": 28.240000000000002,
+    "gripper_state_median": 34.93333333333333
+  },
+  "selected_candidates": [
+    {
+      "candidate_sample_index": 9,
+      "candidate_frame_id": 68,
+      "raw_trajectory_frame_id": 71,
+      "candidate_time_seconds": 2.2666666666666666,
+      "event_type": "trajectory_motion_peak",
+      "trajectory_score": 2.243687033990269,
+      "semantic_hint": "possible phase change; verify object/contact semantics visually",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "active end/joint motion has a local high score at trajectory frame 71"
+      ],
+      "signals": {
+        "end_position_delta": 0.013061145450714367,
+        "end_orientation_delta": 0.02375341737533493,
+        "joint_delta": 0.061407384648608385,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      }
+    },
+    {
+      "candidate_sample_index": 27,
+      "candidate_frame_id": 202,
+      "raw_trajectory_frame_id": 204,
+      "candidate_time_seconds": 6.733333333333333,
+      "event_type": "gripper_command_close",
+      "trajectory_score": 3.0,
+      "semantic_hint": "possible grasp subphase",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "gripper_command_close from 0.000 to 1.000 over trajectory frames 204..206"
+      ],
+      "signals": {
+        "gripper_command_before": 0.0,
+        "gripper_command_after": 1.0
+      }
+    },
+    {
+      "candidate_sample_index": 103,
+      "candidate_frame_id": 772,
+      "raw_trajectory_frame_id": 769,
+      "candidate_time_seconds": 25.733333333333334,
+      "event_type": "gripper_command_open",
+      "trajectory_score": 3.0,
+      "semantic_hint": "possible release/place subphase",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "gripper_command_open from 1.000 to 0.000 over trajectory frames 769..771"
+      ],
+      "signals": {
+        "gripper_command_before": 1.0,
+        "gripper_command_after": 0.0
+      }
+    },
+    {
+      "candidate_sample_index": 124,
+      "candidate_frame_id": 930,
+      "raw_trajectory_frame_id": 933,
+      "candidate_time_seconds": 31.0,
+      "event_type": "trajectory_motion_peak",
+      "trajectory_score": 1.7077379710557752,
+      "semantic_hint": "possible phase change; verify object/contact semantics visually",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "active end/joint motion has a local high score at trajectory frame 933"
+      ],
+      "signals": {
+        "end_position_delta": 0.009672915796014673,
+        "end_orientation_delta": 0.014392035648561506,
+        "joint_delta": 0.028135406786545022,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      }
+    }
+  ],
+  "top_records": [
+    {
+      "raw_trajectory_frame_id": 71,
+      "candidate_sample_index": 9,
+      "candidate_frame_id": 68,
+      "candidate_time_seconds": 2.2666666666666666,
+      "trajectory_score": 2.243687033990269,
+      "end_position_delta": 0.013061145450714367,
+      "end_orientation_delta": 0.02375341737533493,
+      "joint_delta": 0.061407384648608385,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 76,
+      "candidate_sample_index": 10,
+      "candidate_frame_id": 75,
+      "candidate_time_seconds": 2.5,
+      "trajectory_score": 2.223347794830591,
+      "end_position_delta": 0.01325721059851153,
+      "end_orientation_delta": 0.022664527234661638,
+      "joint_delta": 0.06433031118133092,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 79,
+      "candidate_sample_index": 11,
+      "candidate_frame_id": 82,
+      "candidate_time_seconds": 2.7333333333333334,
+      "trajectory_score": 2.1812560005645203,
+      "end_position_delta": 0.012723242317688017,
+      "end_orientation_delta": 0.02041108307090759,
+      "joint_delta": 0.06268378453561495,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 83,
+      "candidate_sample_index": 11,
+      "candidate_frame_id": 82,
+      "candidate_time_seconds": 2.7333333333333334,
+      "trajectory_score": 2.119082912555904,
+      "end_position_delta": 0.011085201593071997,
+      "end_orientation_delta": 0.017082558241817185,
+      "joint_delta": 0.059089759407508435,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 86,
+      "candidate_sample_index": 11,
+      "candidate_frame_id": 82,
+      "candidate_time_seconds": 2.7333333333333334,
+      "trajectory_score": 2.00943414070126,
+      "end_position_delta": 0.009360372183891215,
+      "end_orientation_delta": 0.015584469157584479,
+      "joint_delta": 0.05036977801844886,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 89,
+      "candidate_sample_index": 12,
+      "candidate_frame_id": 90,
+      "candidate_time_seconds": 3.0,
+      "trajectory_score": 1.9761975591524772,
+      "end_position_delta": 0.008778009589299968,
+      "end_orientation_delta": 0.0165308150702904,
+      "joint_delta": 0.0466756944056084,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 62,
+      "candidate_sample_index": 8,
+      "candidate_frame_id": 60,
+      "candidate_time_seconds": 2.0,
+      "trajectory_score": 1.966826084903976,
+      "end_position_delta": 0.008658024535794567,
+      "end_orientation_delta": 0.01804836467203754,
+      "joint_delta": 0.04139178939581131,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 94,
+      "candidate_sample_index": 12,
+      "candidate_frame_id": 90,
+      "candidate_time_seconds": 3.0,
+      "trajectory_score": 1.9060700835779185,
+      "end_position_delta": 0.008141235799400702,
+      "end_orientation_delta": 0.017501694657128183,
+      "joint_delta": 0.04113737995000179,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 91,
+      "candidate_sample_index": 12,
+      "candidate_frame_id": 90,
+      "candidate_time_seconds": 3.0,
+      "trajectory_score": 1.8968186934051605,
+      "end_position_delta": 0.008057725369964125,
+      "end_orientation_delta": 0.015777904326973433,
+      "joint_delta": 0.04257191096830846,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 57,
+      "candidate_sample_index": 8,
+      "candidate_frame_id": 60,
+      "candidate_time_seconds": 2.0,
+      "trajectory_score": 1.74381901377396,
+      "end_position_delta": 0.007801136372683738,
+      "end_orientation_delta": 0.018394287037039735,
+      "joint_delta": 0.03406192888542996,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 933,
+      "candidate_sample_index": 124,
+      "candidate_frame_id": 930,
+      "candidate_time_seconds": 31.0,
+      "trajectory_score": 1.7077379710557752,
+      "end_position_delta": 0.009672915796014673,
+      "end_orientation_delta": 0.014392035648561506,
+      "joint_delta": 0.028135406786545022,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 97,
+      "candidate_sample_index": 13,
+      "candidate_frame_id": 98,
+      "candidate_time_seconds": 3.2666666666666666,
+      "trajectory_score": 1.635961357608779,
+      "end_position_delta": 0.006827583948138062,
+      "end_orientation_delta": 0.016069603608351486,
+      "joint_delta": 0.03504259519632124,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 931,
+      "candidate_sample_index": 124,
+      "candidate_frame_id": 930,
+      "candidate_time_seconds": 31.0,
+      "trajectory_score": 1.5721412561376278,
+      "end_position_delta": 0.008963415168012061,
+      "end_orientation_delta": 0.013311802822021233,
+      "joint_delta": 0.025603311225697582,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 936,
+      "candidate_sample_index": 125,
+      "candidate_frame_id": 938,
+      "candidate_time_seconds": 31.266666666666666,
+      "trajectory_score": 1.5142694865697424,
+      "end_position_delta": 0.008460697309462372,
+      "end_orientation_delta": 0.012570998457665506,
+      "joint_delta": 0.025599323025729134,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 939,
+      "candidate_sample_index": 125,
+      "candidate_frame_id": 938,
+      "candidate_time_seconds": 31.266666666666666,
+      "trajectory_score": 1.5018476245725445,
+      "end_position_delta": 0.008524949090079016,
+      "end_orientation_delta": 0.012152426472350281,
+      "joint_delta": 0.02511460229526851,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 72,
+      "candidate_sample_index": 10,
+      "candidate_frame_id": 75,
+      "candidate_time_seconds": 2.5,
+      "trajectory_score": 1.4598403366577668,
+      "end_position_delta": 0.00655668933245536,
+      "end_orientation_delta": 0.01141786890696382,
+      "joint_delta": 0.03193390013399859,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 77,
+      "candidate_sample_index": 10,
+      "candidate_frame_id": 75,
+      "candidate_time_seconds": 2.5,
+      "trajectory_score": 1.4497046688377897,
+      "end_position_delta": 0.006596071525188769,
+      "end_orientation_delta": 0.010722813758903178,
+      "joint_delta": 0.03190564278998131,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 78,
+      "candidate_sample_index": 10,
+      "candidate_frame_id": 75,
+      "candidate_time_seconds": 2.5,
+      "trajectory_score": 1.4466154678146386,
+      "end_position_delta": 0.0064827596815004804,
+      "end_orientation_delta": 0.010261661665964936,
+      "joint_delta": 0.032637464617203016,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 70,
+      "candidate_sample_index": 9,
+      "candidate_frame_id": 68,
+      "candidate_time_seconds": 2.2666666666666666,
+      "trajectory_score": 1.4452112987143586,
+      "end_position_delta": 0.00632504021862549,
+      "end_orientation_delta": 0.011595858154256298,
+      "joint_delta": 0.03204289990241034,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 925,
+      "candidate_sample_index": 123,
+      "candidate_frame_id": 922,
+      "candidate_time_seconds": 30.733333333333334,
+      "trajectory_score": 1.4442117036773854,
+      "end_position_delta": 0.00815840546519531,
+      "end_orientation_delta": 0.012718716064590609,
+      "joint_delta": 0.023399293916620944,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 927,
+      "candidate_sample_index": 124,
+      "candidate_frame_id": 930,
+      "candidate_time_seconds": 31.0,
+      "trajectory_score": 1.4340540744586225,
+      "end_position_delta": 0.008109418606916942,
+      "end_orientation_delta": 0.012489099335973503,
+      "joint_delta": 0.02332407899068693,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 75,
+      "candidate_sample_index": 10,
+      "candidate_frame_id": 75,
+      "candidate_time_seconds": 2.5,
+      "trajectory_score": 1.4274114035814396,
+      "end_position_delta": 0.006553035031401113,
+      "end_orientation_delta": 0.011189163313229123,
+      "joint_delta": 0.030613688881159146,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 74,
+      "candidate_sample_index": 10,
+      "candidate_frame_id": 75,
+      "candidate_time_seconds": 2.5,
+      "trajectory_score": 1.4264411066733258,
+      "end_position_delta": 0.0065323704067818305,
+      "end_orientation_delta": 0.011179057760499992,
+      "joint_delta": 0.03066230375728867,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 73,
+      "candidate_sample_index": 10,
+      "candidate_frame_id": 75,
+      "candidate_time_seconds": 2.5,
+      "trajectory_score": 1.4246503500574499,
+      "end_position_delta": 0.0064987154379874245,
+      "end_orientation_delta": 0.011109470034154812,
+      "joint_delta": 0.03077856116010232,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    }
+  ]
+}

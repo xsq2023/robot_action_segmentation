@@ -1,0 +1,639 @@
+{
+  "audit_version": "codex_vlm_inspection_audit_v3_20260820",
+  "reviewed_visual_sources": [
+    {
+      "path": "segment_review_sheets/task_327_episode_685046_segments.jpg",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "purpose": "segment start/mid/end tri-view review"
+    },
+    {
+      "path": "multiview_pack/contact_sheets/multiview_local_candidate_sample_032_frames_0210_0270.jpg",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "purpose": "high-risk undersegmentation review for segment 0"
+    },
+    {
+      "path": "multiview_pack/contact_sheets/multiview_local_candidate_sample_043_frames_0292_0352.jpg",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "purpose": "high-risk undersegmentation review for segment 0"
+    },
+    {
+      "path": "multiview_pack/contact_sheets/multiview_local_candidate_sample_007_frames_0022_0082.jpg",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "purpose": "high-risk undersegmentation review for segment 0"
+    },
+    {
+      "path": "multiview_pack/contact_sheets/multiview_local_candidate_sample_012_frames_0060_0120.jpg",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "purpose": "high-risk undersegmentation review for segment 0"
+    },
+    {
+      "path": "multiview_pack/contact_sheets/multiview_local_candidate_sample_017_frames_0098_0158.jpg",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "purpose": "high-risk undersegmentation review for segment 0"
+    },
+    {
+      "path": "multiview_pack/contact_sheets/multiview_local_candidate_sample_034_frames_0225_0285.jpg",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "purpose": "high-risk undersegmentation review for segment 0"
+    },
+    {
+      "path": "multiview_pack/contact_sheets/multiview_local_candidate_sample_044_frames_0300_0360.jpg",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "purpose": "high-risk undersegmentation review for segment 0"
+    },
+    {
+      "path": "multiview_pack/contact_sheets/multiview_local_candidate_sample_049_frames_0338_0398.jpg",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "purpose": "high-risk undersegmentation review for segment 0"
+    },
+    {
+      "path": "multiview_pack/contact_sheets/multiview_local_candidate_sample_060_frames_0420_0480.jpg",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "purpose": "high-risk undersegmentation review for segment 2"
+    },
+    {
+      "path": "multiview_pack/contact_sheets/multiview_local_candidate_sample_059_frames_0412_0472.jpg",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "purpose": "high-risk undersegmentation review for segment 2"
+    },
+    {
+      "path": "multiview_pack/contact_sheets/multiview_local_candidate_sample_068_frames_0480_0540.jpg",
+      "views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "purpose": "high-risk undersegmentation review for segment 2"
+    }
+  ],
+  "semantic_change_observations": [
+    {
+      "sample_index": 51,
+      "frame_id": 382,
+      "time": 12.733333333333333,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "visual_state_change": "Before frame 382: Right gripper carries a held red tomato-like produce piece toward the clear plastic shopping bag while the left gripper remains near the produce bin.; After frame 382: Right gripper opens above the clear plastic shopping bag and releases the red tomato-like produce piece into the bag.",
+      "decision": "accepted_boundary"
+    },
+    {
+      "sample_index": 57,
+      "frame_id": 428,
+      "time": 14.266666666666667,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "visual_state_change": "Before frame 428: Right gripper opens above the clear plastic shopping bag and releases the red tomato-like produce piece into the bag.; After frame 428: Right gripper reaches from the bag area back toward an orange corn cob in the wooden produce bin.",
+      "decision": "accepted_boundary"
+    },
+    {
+      "sample_index": 76,
+      "frame_id": 570,
+      "time": 19.0,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "visual_state_change": "Before frame 570: Right gripper reaches from the bag area back toward an orange corn cob in the wooden produce bin.; After frame 570: Right gripper closes around the orange corn cob while the left gripper remains clear of the produce.",
+      "decision": "accepted_boundary"
+    },
+    {
+      "sample_index": 86,
+      "frame_id": 645,
+      "time": 21.5,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "visual_state_change": "Before frame 645: Right gripper closes around the orange corn cob while the left gripper remains clear of the produce.; After frame 645: Right gripper carries the orange corn cob from the wooden bin toward the clear plastic shopping bag.",
+      "decision": "accepted_boundary"
+    },
+    {
+      "sample_index": 102,
+      "frame_id": 765,
+      "time": 25.5,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "visual_state_change": "Before frame 765: Right gripper carries the orange corn cob from the wooden bin toward the clear plastic shopping bag.; After frame 765: Right gripper opens over the clear plastic shopping bag and drops the orange corn cob into the bag.",
+      "decision": "accepted_boundary"
+    },
+    {
+      "sample_index": 114,
+      "frame_id": 855,
+      "time": 28.5,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "visual_state_change": "Before frame 855: Right gripper opens over the clear plastic shopping bag and drops the orange corn cob into the bag.; After frame 855: Right gripper returns to the wooden produce bin and reaches toward the purple cabbage-shaped vegetable near the other produce.",
+      "decision": "accepted_boundary"
+    },
+    {
+      "sample_index": 122,
+      "frame_id": 915,
+      "time": 30.5,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "visual_state_change": "Before frame 915: Right gripper returns to the wooden produce bin and reaches toward the purple cabbage-shaped vegetable near the other produce.; After frame 915: Right gripper closes on the purple cabbage-shaped vegetable while the left gripper stays away from the grasp.",
+      "decision": "accepted_boundary"
+    },
+    {
+      "sample_index": 132,
+      "frame_id": 990,
+      "time": 33.0,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "visual_state_change": "Before frame 990: Right gripper closes on the purple cabbage-shaped vegetable while the left gripper stays away from the grasp.; After frame 990: Right gripper carries the purple cabbage-shaped vegetable out of the bin toward the clear plastic shopping bag.",
+      "decision": "accepted_boundary"
+    },
+    {
+      "sample_index": 146,
+      "frame_id": 1095,
+      "time": 36.5,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "visual_state_change": "Before frame 1095: Right gripper carries the purple cabbage-shaped vegetable out of the bin toward the clear plastic shopping bag.; After frame 1095: Right gripper releases the purple cabbage-shaped vegetable into the clear plastic shopping bag.",
+      "decision": "accepted_boundary"
+    }
+  ],
+  "trajectory_change_observations": [
+    {
+      "candidate_frame_id": 240,
+      "raw_trajectory_frame_id": 237,
+      "event_type": "trajectory_motion_peak",
+      "score": 0.981466895332042,
+      "metrics": {
+        "end_position_delta": 0.008137301065548401,
+        "end_orientation_delta": 0.00770352297142245,
+        "joint_delta": 0.02706970605817899,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      },
+      "interpretation": "reviewed as a trajectory hint; no separate final boundary was accepted without matching visual state change"
+    },
+    {
+      "candidate_frame_id": 322,
+      "raw_trajectory_frame_id": 325,
+      "event_type": "trajectory_motion_peak",
+      "score": 0.8658483579873101,
+      "metrics": {
+        "end_position_delta": 0.005286562804606639,
+        "end_orientation_delta": 0.005121104532029526,
+        "joint_delta": 0.03728484771404276,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      },
+      "interpretation": "used as timing support for accepted boundary at frame 382"
+    },
+    {
+      "candidate_frame_id": 382,
+      "raw_trajectory_frame_id": 384,
+      "event_type": "gripper_command_open",
+      "score": 3.0,
+      "metrics": {
+        "gripper_command_before": 1.0,
+        "gripper_command_after": 0.0
+      },
+      "interpretation": "used as timing support for accepted boundary at frame 382"
+    },
+    {
+      "candidate_frame_id": 450,
+      "raw_trajectory_frame_id": 451,
+      "event_type": "gripper_state_opening",
+      "score": 2.7,
+      "metrics": {
+        "gripper_state_before": 107.15555555555555,
+        "gripper_state_after": 34.8
+      },
+      "interpretation": "used as timing support for accepted boundary at frame 428"
+    },
+    {
+      "candidate_frame_id": 600,
+      "raw_trajectory_frame_id": 597,
+      "event_type": "gripper_command_close",
+      "score": 3.0,
+      "metrics": {
+        "gripper_command_before": 0.0,
+        "gripper_command_after": 1.0
+      },
+      "interpretation": "used as timing support for accepted boundary at frame 570"
+    },
+    {
+      "candidate_frame_id": 720,
+      "raw_trajectory_frame_id": 719,
+      "event_type": "trajectory_motion_peak",
+      "score": 0.885442145673683,
+      "metrics": {
+        "end_position_delta": 0.007562220845275842,
+        "end_orientation_delta": 0.007931614722308605,
+        "joint_delta": 0.02151713134694341,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      },
+      "interpretation": "used as timing support for accepted boundary at frame 765"
+    },
+    {
+      "candidate_frame_id": 810,
+      "raw_trajectory_frame_id": 809,
+      "event_type": "gripper_command_open",
+      "score": 2.94,
+      "metrics": {
+        "gripper_command_before": 0.94,
+        "gripper_command_after": 0.0
+      },
+      "interpretation": "used as timing support for accepted boundary at frame 765"
+    },
+    {
+      "candidate_frame_id": 870,
+      "raw_trajectory_frame_id": 870,
+      "event_type": "trajectory_motion_peak",
+      "score": 0.9573049355481731,
+      "metrics": {
+        "end_position_delta": 0.005868061452487491,
+        "end_orientation_delta": 0.010505102810900193,
+        "joint_delta": 0.03285014608919272,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      },
+      "interpretation": "used as timing support for accepted boundary at frame 855"
+    },
+    {
+      "candidate_frame_id": 945,
+      "raw_trajectory_frame_id": 947,
+      "event_type": "gripper_command_close",
+      "score": 2.9699999999999998,
+      "metrics": {
+        "gripper_command_before": 0.0,
+        "gripper_command_after": 0.97
+      },
+      "interpretation": "used as timing support for accepted boundary at frame 915"
+    },
+    {
+      "candidate_frame_id": 1050,
+      "raw_trajectory_frame_id": 1047,
+      "event_type": "trajectory_motion_peak",
+      "score": 1.0348551414852456,
+      "metrics": {
+        "end_position_delta": 0.006017948362171725,
+        "end_orientation_delta": 0.008633995728050724,
+        "joint_delta": 0.041960283263962575,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      },
+      "interpretation": "used as timing support for accepted boundary at frame 1095"
+    },
+    {
+      "candidate_frame_id": 1095,
+      "raw_trajectory_frame_id": 1094,
+      "event_type": "trajectory_motion_peak",
+      "score": 0.885314727362283,
+      "metrics": {
+        "end_position_delta": 0.005659459038191616,
+        "end_orientation_delta": 0.008712331738706955,
+        "joint_delta": 0.030789067593007514,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      },
+      "interpretation": "used as timing support for accepted boundary at frame 1095"
+    },
+    {
+      "candidate_frame_id": 1140,
+      "raw_trajectory_frame_id": 1137,
+      "event_type": "gripper_command_open",
+      "score": 3.0,
+      "metrics": {
+        "gripper_command_before": 1.0,
+        "gripper_command_after": 0.0
+      },
+      "interpretation": "used as timing support for accepted boundary at frame 1095"
+    }
+  ],
+  "undersegmentation_checks": [
+    {
+      "segment_index": 0,
+      "frame_range": [
+        0,
+        382
+      ],
+      "checked_frames": [
+        0,
+        188,
+        382,
+        240,
+        322,
+        52,
+        90,
+        128,
+        255
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "result": "High-risk audit reviewed internal candidate frames [240, 322, 52, 90, 128, 255] with local/global tri-view sheets ['multiview_pack/contact_sheets/multiview_local_candidate_sample_032_frames_0210_0270.jpg', 'multiview_pack/contact_sheets/multiview_local_candidate_sample_043_frames_0292_0352.jpg', 'multiview_pack/contact_sheets/multiview_local_candidate_sample_007_frames_0022_0082.jpg', 'multiview_pack/contact_sheets/multiview_local_candidate_sample_012_frames_0060_0120.jpg']. No additional semantic boundary was kept: the active state remains carry for red tomato-like produce; internal trajectory/visual peaks correspond to continuous motion, camera/view change, occlusion, or low-level gripper adjustment rather than a new grasp, object switch, placement completion, or release.",
+      "risk_reasons": [
+        "long_carry_segment_382_frames",
+        "multiple_internal_trajectory_candidates_2",
+        "multiple_internal_visual_candidates_6"
+      ],
+      "internal_event_frames_reviewed": [
+        240,
+        322,
+        52,
+        90,
+        128,
+        255
+      ],
+      "reviewed_local_sheets": [
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_032_frames_0210_0270.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_043_frames_0292_0352.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_007_frames_0022_0082.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_012_frames_0060_0120.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_017_frames_0098_0158.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_034_frames_0225_0285.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_044_frames_0300_0360.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_049_frames_0338_0398.jpg"
+      ],
+      "split_decision": "keep_single_segment"
+    },
+    {
+      "segment_index": 1,
+      "frame_range": [
+        382,
+        428
+      ],
+      "checked_frames": [
+        382,
+        405,
+        428
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "result": "Checked start/mid/end tri-view evidence for release; this segment describes one visible state: Right gripper opens above the clear plastic shopping bag and releases the red tomato-like produce piece into the bag."
+    },
+    {
+      "segment_index": 2,
+      "frame_range": [
+        428,
+        570
+      ],
+      "checked_frames": [
+        428,
+        502,
+        570,
+        450,
+        442,
+        510
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "result": "High-risk audit reviewed internal candidate frames [450, 442, 510] with local/global tri-view sheets ['multiview_pack/contact_sheets/multiview_local_candidate_sample_060_frames_0420_0480.jpg', 'multiview_pack/contact_sheets/multiview_local_candidate_sample_059_frames_0412_0472.jpg', 'multiview_pack/contact_sheets/multiview_local_candidate_sample_068_frames_0480_0540.jpg']. No additional semantic boundary was kept: the active state remains reach_for for orange corn cob; internal trajectory/visual peaks correspond to continuous motion, camera/view change, occlusion, or low-level gripper adjustment rather than a new grasp, object switch, placement completion, or release.",
+      "risk_reasons": [
+        "internal_gripper_event_inside_non_grasp_release_segment"
+      ],
+      "internal_event_frames_reviewed": [
+        450,
+        442,
+        510
+      ],
+      "reviewed_local_sheets": [
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_060_frames_0420_0480.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_059_frames_0412_0472.jpg",
+        "multiview_pack/contact_sheets/multiview_local_candidate_sample_068_frames_0480_0540.jpg"
+      ],
+      "split_decision": "keep_single_segment"
+    },
+    {
+      "segment_index": 3,
+      "frame_range": [
+        570,
+        645
+      ],
+      "checked_frames": [
+        570,
+        608,
+        645
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "result": "Checked start/mid/end tri-view evidence for grasp; this segment describes one visible state: Right gripper closes around the orange corn cob while the left gripper remains clear of the produce."
+    },
+    {
+      "segment_index": 4,
+      "frame_range": [
+        645,
+        765
+      ],
+      "checked_frames": [
+        645,
+        705,
+        765
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "result": "Checked start/mid/end tri-view evidence for carry; this segment describes one visible state: Right gripper carries the orange corn cob from the wooden bin toward the clear plastic shopping bag."
+    },
+    {
+      "segment_index": 5,
+      "frame_range": [
+        765,
+        855
+      ],
+      "checked_frames": [
+        765,
+        810,
+        855
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "result": "Checked start/mid/end tri-view evidence for release; this segment describes one visible state: Right gripper opens over the clear plastic shopping bag and drops the orange corn cob into the bag."
+    },
+    {
+      "segment_index": 6,
+      "frame_range": [
+        855,
+        915
+      ],
+      "checked_frames": [
+        855,
+        885,
+        915
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "result": "Checked start/mid/end tri-view evidence for reach_for; this segment describes one visible state: Right gripper returns to the wooden produce bin and reaches toward the purple cabbage-shaped vegetable near the other produce."
+    },
+    {
+      "segment_index": 7,
+      "frame_range": [
+        915,
+        990
+      ],
+      "checked_frames": [
+        915,
+        952,
+        990
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "result": "Checked start/mid/end tri-view evidence for grasp; this segment describes one visible state: Right gripper closes on the purple cabbage-shaped vegetable while the left gripper stays away from the grasp."
+    },
+    {
+      "segment_index": 8,
+      "frame_range": [
+        990,
+        1095
+      ],
+      "checked_frames": [
+        990,
+        1042,
+        1095
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "result": "Checked start/mid/end tri-view evidence for carry; this segment describes one visible state: Right gripper carries the purple cabbage-shaped vegetable out of the bin toward the clear plastic shopping bag."
+    },
+    {
+      "segment_index": 9,
+      "frame_range": [
+        1095,
+        1260
+      ],
+      "checked_frames": [
+        1095,
+        1178,
+        1260
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "result": "Checked start/mid/end tri-view evidence for release; this segment describes one visible state: Right gripper releases the purple cabbage-shaped vegetable into the clear plastic shopping bag."
+    }
+  ],
+  "undersegmentation_risk_review": {
+    "risk_segment_count": 2,
+    "policy": "Every listed high-risk segment was rechecked against local/global tri-view sheets; kept segments must list internal_event_frames_reviewed, reviewed_local_sheets, and split_decision.",
+    "risk_segments": [
+      {
+        "segment_index": 0,
+        "frame_range": [
+          0,
+          382
+        ],
+        "risk_reasons": [
+          "long_carry_segment_382_frames",
+          "multiple_internal_trajectory_candidates_2",
+          "multiple_internal_visual_candidates_6"
+        ],
+        "required_internal_event_frames": [
+          240,
+          322
+        ]
+      },
+      {
+        "segment_index": 2,
+        "frame_range": [
+          428,
+          570
+        ],
+        "risk_reasons": [
+          "internal_gripper_event_inside_non_grasp_release_segment"
+        ],
+        "required_internal_event_frames": [
+          450
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robot-tas"
+version = "0.1.0"
+description = "API-assisted temporal action segmentation for robot egocentric videos."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26,<3",
+  "opencv-python-headless>=4.10,<5",
+  "Pillow>=10,<12",
+  "pydantic>=2.8,<3",
+  "PyYAML>=6,<7",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<9",
+]
+
+[project.scripts]
+run-tas = "robot_tas.cli.run_tas:main"
+apply-codex-vlm-decision = "robot_tas.cli.apply_codex_vlm_decision:main"
+build-multiview-observations = "robot_tas.cli.build_multiview_observations:main"
+evaluate-agibot-task = "robot_tas.cli.evaluate_agibot_task:main"
+evaluate-multiview-codex-task = "robot_tas.cli.evaluate_multiview_codex_task:main"
+prepare-multiview-codex-pack = "robot_tas.cli.prepare_multiview_codex_pack:main"
+
+[tool.setuptools]
+packages = ["robot_tas", "robot_tas.api", "robot_tas.cli"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

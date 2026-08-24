@@ -1,0 +1,994 @@
+{
+  "description": "Merged visual and trajectory candidate sources used to build local sheets.",
+  "visual_candidate_count": 16,
+  "trajectory_candidate_count": 12,
+  "combined_candidate_count": 28,
+  "combined_candidates": [
+    {
+      "sample_index": 5,
+      "original_frame_id": 38,
+      "time_seconds": 1.2666666666666666,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 5,
+        "original_frame_id": 38,
+        "time_seconds": 1.2666666666666666,
+        "fused_score": 0.04482231124862902,
+        "source_scores": {
+          "overhead_video": 0.03054857281454248,
+          "tri_view_video": 0.05884410317946623,
+          "pixel_cv_prior": 0.05934799618596487
+        },
+        "weighted_mean_score": 0.05961932318946414,
+        "top3_mean_score": 0.05884410317946623,
+        "per_view_scores": {
+          "head_color": 0.03054857281454248,
+          "hand_left_color": 0.030271465226715682,
+          "hand_right_color": 0.11571227149714053
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.11571227149714053
+          },
+          {
+            "view": "head_color",
+            "score": 0.03054857281454248
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.030271465226715682
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 7,
+      "original_frame_id": 52,
+      "time_seconds": 1.7333333333333334,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 7,
+        "candidate_frame_id": 52,
+        "raw_trajectory_frame_id": 54,
+        "candidate_time_seconds": 1.7333333333333334,
+        "event_type": "trajectory_motion_peak",
+        "trajectory_score": 1.3751379741806624,
+        "semantic_hint": "possible phase change; verify object/contact semantics visually",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "active end/joint motion has a local high score at trajectory frame 54"
+        ],
+        "signals": {
+          "end_position_delta": 0.0034886553767797864,
+          "end_orientation_delta": 0.023461897420766008,
+          "joint_delta": 0.04979617095700826,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        }
+      }
+    },
+    {
+      "sample_index": 41,
+      "original_frame_id": 308,
+      "time_seconds": 10.266666666666667,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 41,
+        "original_frame_id": 308,
+        "time_seconds": 10.266666666666667,
+        "fused_score": 0.042147746585747256,
+        "source_scores": {
+          "overhead_video": 0.03152569061478759,
+          "tri_view_video": 0.05258231209150329,
+          "pixel_cv_prior": 0.052957293021910545
+        },
+        "weighted_mean_score": 0.05315920583059138,
+        "top3_mean_score": 0.05258231209150329,
+        "per_view_scores": {
+          "head_color": 0.03152569061478759,
+          "hand_left_color": 0.029616383272058844,
+          "hand_right_color": 0.09660486238766341
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.09660486238766341
+          },
+          {
+            "view": "head_color",
+            "score": 0.03152569061478759
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.029616383272058844
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 43,
+      "original_frame_id": 322,
+      "time_seconds": 10.733333333333333,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 43,
+        "candidate_frame_id": 322,
+        "raw_trajectory_frame_id": 326,
+        "candidate_time_seconds": 10.733333333333333,
+        "event_type": "trajectory_motion_peak",
+        "trajectory_score": 1.051283112910661,
+        "semantic_hint": "possible phase change; verify object/contact semantics visually",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "active end/joint motion has a local high score at trajectory frame 326"
+        ],
+        "signals": {
+          "end_position_delta": 0.0046780979454362276,
+          "end_orientation_delta": 0.016197743543962608,
+          "joint_delta": 0.031468617258961135,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        }
+      }
+    },
+    {
+      "sample_index": 53,
+      "original_frame_id": 398,
+      "time_seconds": 13.266666666666667,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 53,
+        "candidate_frame_id": 398,
+        "raw_trajectory_frame_id": 399,
+        "candidate_time_seconds": 13.266666666666667,
+        "event_type": "gripper_command_close",
+        "trajectory_score": 2.96,
+        "semantic_hint": "possible grasp subphase",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "gripper_command_close from 0.000 to 0.960 over trajectory frames 399..401"
+        ],
+        "signals": {
+          "gripper_command_before": 0.0,
+          "gripper_command_after": 0.96
+        }
+      }
+    },
+    {
+      "sample_index": 65,
+      "original_frame_id": 488,
+      "time_seconds": 16.266666666666666,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 65,
+        "original_frame_id": 488,
+        "time_seconds": 16.266666666666666,
+        "fused_score": 0.03488840513677646,
+        "source_scores": {
+          "overhead_video": 0.020889444189133986,
+          "tri_view_video": 0.048640269692946624,
+          "pixel_cv_prior": 0.04913446247589125
+        },
+        "weighted_mean_score": 0.04940056628209218,
+        "top3_mean_score": 0.04864026969294663,
+        "per_view_scores": {
+          "head_color": 0.020889444189133986,
+          "hand_left_color": 0.023020801419526164,
+          "hand_right_color": 0.10201056347017973
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.10201056347017973
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.023020801419526164
+          },
+          {
+            "view": "head_color",
+            "score": 0.020889444189133986
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 71,
+      "original_frame_id": 532,
+      "time_seconds": 17.733333333333334,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 71,
+        "original_frame_id": 532,
+        "time_seconds": 17.733333333333334,
+        "fused_score": 0.03463133078127798,
+        "source_scores": {
+          "overhead_video": 0.025910896650326795,
+          "tri_view_video": 0.04319784007352941,
+          "pixel_cv_prior": 0.04350568975092891
+        },
+        "weighted_mean_score": 0.04367145496183633,
+        "top3_mean_score": 0.04319784007352941,
+        "per_view_scores": {
+          "head_color": 0.025910896650326795,
+          "hand_left_color": 0.03808120149101308,
+          "hand_right_color": 0.06560142207924836
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.06560142207924836
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.03808120149101308
+          },
+          {
+            "view": "head_color",
+            "score": 0.025910896650326795
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 90,
+      "original_frame_id": 675,
+      "time_seconds": 22.5,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 90,
+        "candidate_frame_id": 675,
+        "raw_trajectory_frame_id": 672,
+        "candidate_time_seconds": 22.5,
+        "event_type": "gripper_command_open",
+        "trajectory_score": 3.0,
+        "semantic_hint": "possible release/place subphase",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "gripper_command_open from 1.000 to 0.000 over trajectory frames 672..673"
+        ],
+        "signals": {
+          "gripper_command_before": 1.0,
+          "gripper_command_after": 0.0
+        }
+      }
+    },
+    {
+      "sample_index": 99,
+      "original_frame_id": 742,
+      "time_seconds": 24.733333333333334,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 99,
+        "candidate_frame_id": 742,
+        "raw_trajectory_frame_id": 740,
+        "candidate_time_seconds": 24.733333333333334,
+        "event_type": "gripper_state_opening",
+        "trajectory_score": 2.6900314795383,
+        "semantic_hint": "possible release completion timing",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "gripper_state_opening from 119.467 to 35.600 over trajectory frames 703..740"
+        ],
+        "signals": {
+          "gripper_state_before": 119.46666666666667,
+          "gripper_state_after": 35.6
+        }
+      }
+    },
+    {
+      "sample_index": 100,
+      "original_frame_id": 750,
+      "time_seconds": 25.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 100,
+        "original_frame_id": 750,
+        "time_seconds": 25.0,
+        "fused_score": 0.03469073177791557,
+        "source_scores": {
+          "overhead_video": 0.016160615808823522,
+          "tri_view_video": 0.05289377170138889,
+          "pixel_cv_prior": 0.05354792379262635
+        },
+        "weighted_mean_score": 0.05390015953406191,
+        "top3_mean_score": 0.05289377170138889,
+        "per_view_scores": {
+          "head_color": 0.016160615808823522,
+          "hand_left_color": 0.018239449295343144,
+          "hand_right_color": 0.12428125
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.12428125
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.018239449295343144
+          },
+          {
+            "view": "head_color",
+            "score": 0.016160615808823522
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 105,
+      "original_frame_id": 788,
+      "time_seconds": 26.266666666666666,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 105,
+        "original_frame_id": 788,
+        "time_seconds": 26.266666666666666,
+        "fused_score": 0.040105190503132965,
+        "source_scores": {
+          "overhead_video": 0.015450584660947703,
+          "tri_view_video": 0.06432461660879629,
+          "pixel_cv_prior": 0.06519497608184018
+        },
+        "weighted_mean_score": 0.06566363118270996,
+        "top3_mean_score": 0.06432461660879629,
+        "per_view_scores": {
+          "head_color": 0.015450584660947703,
+          "hand_left_color": 0.018932917177287584,
+          "hand_right_color": 0.15859034798815358
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.15859034798815358
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.018932917177287584
+          },
+          {
+            "view": "head_color",
+            "score": 0.015450584660947703
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 110,
+      "original_frame_id": 825,
+      "time_seconds": 27.5,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 110,
+        "original_frame_id": 825,
+        "time_seconds": 27.5,
+        "fused_score": 0.04069732223266197,
+        "source_scores": {
+          "overhead_video": 0.020197016697303918,
+          "tri_view_video": 0.0608357758033769,
+          "pixel_cv_prior": 0.06155947973266314
+        },
+        "weighted_mean_score": 0.061949166463817255,
+        "top3_mean_score": 0.06083577580337691,
+        "per_view_scores": {
+          "head_color": 0.020197016697303918,
+          "hand_left_color": 0.020282226562499995,
+          "hand_right_color": 0.1420280841503268
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.1420280841503268
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.020282226562499995
+          },
+          {
+            "view": "head_color",
+            "score": 0.020197016697303918
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 116,
+      "original_frame_id": 870,
+      "time_seconds": 29.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 116,
+        "original_frame_id": 870,
+        "time_seconds": 29.0,
+        "fused_score": 0.03937534400461097,
+        "source_scores": {
+          "overhead_video": 0.023784811580882352,
+          "tri_view_video": 0.05469068712554467,
+          "pixel_cv_prior": 0.055241065731134534
+        },
+        "weighted_mean_score": 0.05553742344183678,
+        "top3_mean_score": 0.05469068712554467,
+        "per_view_scores": {
+          "head_color": 0.023784811580882352,
+          "hand_left_color": 0.0263207146139706,
+          "hand_right_color": 0.11396653518178104
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.11396653518178104
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.0263207146139706
+          },
+          {
+            "view": "head_color",
+            "score": 0.023784811580882352
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 121,
+      "original_frame_id": 908,
+      "time_seconds": 30.266666666666666,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 121,
+        "candidate_frame_id": 908,
+        "raw_trajectory_frame_id": 909,
+        "candidate_time_seconds": 30.266666666666666,
+        "event_type": "gripper_command_close",
+        "trajectory_score": 2.9699999999999998,
+        "semantic_hint": "possible grasp subphase",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "gripper_command_close from 0.000 to 0.970 over trajectory frames 909..912"
+        ],
+        "signals": {
+          "gripper_command_before": 0.0,
+          "gripper_command_after": 0.97
+        }
+      }
+    },
+    {
+      "sample_index": 131,
+      "original_frame_id": 982,
+      "time_seconds": 32.733333333333334,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 131,
+        "original_frame_id": 982,
+        "time_seconds": 32.733333333333334,
+        "fused_score": 0.04827230417075863,
+        "source_scores": {
+          "overhead_video": 0.03932845690359477,
+          "tri_view_video": 0.0570582831222767,
+          "pixel_cv_prior": 0.05737401975356829
+        },
+        "weighted_mean_score": 0.057544031785802224,
+        "top3_mean_score": 0.05705828312227668,
+        "per_view_scores": {
+          "head_color": 0.03932845690359477,
+          "hand_left_color": 0.04168016620710784,
+          "hand_right_color": 0.09016622625612745
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.09016622625612745
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.04168016620710784
+          },
+          {
+            "view": "head_color",
+            "score": 0.03932845690359477
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 136,
+      "original_frame_id": 1020,
+      "time_seconds": 34.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 136,
+        "original_frame_id": 1020,
+        "time_seconds": 34.0,
+        "fused_score": 0.04258571049009466,
+        "source_scores": {
+          "overhead_video": 0.026757212520424838,
+          "tri_view_video": 0.05813481881467864,
+          "pixel_cv_prior": 0.058693598104850295
+        },
+        "weighted_mean_score": 0.058994479261096563,
+        "top3_mean_score": 0.058134818814678656,
+        "per_view_scores": {
+          "head_color": 0.026757212520424838,
+          "hand_left_color": 0.029695414624183014,
+          "hand_right_color": 0.11795182929942809
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.11795182929942809
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.029695414624183014
+          },
+          {
+            "view": "head_color",
+            "score": 0.026757212520424838
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 148,
+      "original_frame_id": 1110,
+      "time_seconds": 37.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 148,
+        "original_frame_id": 1110,
+        "time_seconds": 37.0,
+        "fused_score": 0.04178565096865837,
+        "source_scores": {
+          "overhead_video": 0.017155560661764713,
+          "tri_view_video": 0.06598099426402505,
+          "pixel_cv_prior": 0.06685048828707901
+        },
+        "weighted_mean_score": 0.06731867737641575,
+        "top3_mean_score": 0.06598099426402505,
+        "per_view_scores": {
+          "head_color": 0.017155560661764713,
+          "hand_left_color": 0.02153909441380719,
+          "hand_right_color": 0.15924832771650327
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.15924832771650327
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.02153909441380719
+          },
+          {
+            "view": "head_color",
+            "score": 0.017155560661764713
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 149,
+      "original_frame_id": 1118,
+      "time_seconds": 37.266666666666666,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 149,
+        "candidate_frame_id": 1118,
+        "raw_trajectory_frame_id": 1120,
+        "candidate_time_seconds": 37.266666666666666,
+        "event_type": "trajectory_motion_peak",
+        "trajectory_score": 1.1020448910690925,
+        "semantic_hint": "possible phase change; verify object/contact semantics visually",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "active end/joint motion has a local high score at trajectory frame 1120"
+        ],
+        "signals": {
+          "end_position_delta": 0.00789925587359371,
+          "end_orientation_delta": 0.011377801864992954,
+          "joint_delta": 0.0262343358143281,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        }
+      }
+    },
+    {
+      "sample_index": 155,
+      "original_frame_id": 1162,
+      "time_seconds": 38.733333333333334,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 155,
+        "candidate_frame_id": 1162,
+        "raw_trajectory_frame_id": 1159,
+        "candidate_time_seconds": 38.733333333333334,
+        "event_type": "gripper_command_open",
+        "trajectory_score": 3.0,
+        "semantic_hint": "possible release/place subphase",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "gripper_command_open from 1.000 to 0.000 over trajectory frames 1159..1162"
+        ],
+        "signals": {
+          "gripper_command_before": 1.0,
+          "gripper_command_after": 0.0
+        }
+      }
+    },
+    {
+      "sample_index": 163,
+      "original_frame_id": 1222,
+      "time_seconds": 40.733333333333334,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 163,
+        "candidate_frame_id": 1222,
+        "raw_trajectory_frame_id": 1226,
+        "candidate_time_seconds": 40.733333333333334,
+        "event_type": "gripper_state_opening",
+        "trajectory_score": 2.6863588667366214,
+        "semantic_hint": "possible release completion timing",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "gripper_state_opening from 119.467 to 35.911 over trajectory frames 1189..1226"
+        ],
+        "signals": {
+          "gripper_state_before": 119.46666666666667,
+          "gripper_state_after": 35.91111111111111
+        }
+      }
+    },
+    {
+      "sample_index": 172,
+      "original_frame_id": 1290,
+      "time_seconds": 43.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 172,
+        "original_frame_id": 1290,
+        "time_seconds": 43.0,
+        "fused_score": 0.0485042250142869,
+        "source_scores": {
+          "overhead_video": 0.017215654360702624,
+          "tri_view_video": 0.07924051947167757,
+          "pixel_cv_prior": 0.08034507186406478
+        },
+        "weighted_mean_score": 0.08093983084458098,
+        "top3_mean_score": 0.07924051947167757,
+        "per_view_scores": {
+          "head_color": 0.017215654360702624,
+          "hand_left_color": 0.020030943627450986,
+          "hand_right_color": 0.2004749604268791
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.2004749604268791
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.020030943627450986
+          },
+          {
+            "view": "head_color",
+            "score": 0.017215654360702624
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 183,
+      "original_frame_id": 1372,
+      "time_seconds": 45.733333333333334,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 183,
+        "candidate_frame_id": 1372,
+        "raw_trajectory_frame_id": 1371,
+        "candidate_time_seconds": 45.733333333333334,
+        "event_type": "trajectory_motion_peak",
+        "trajectory_score": 1.011857233462802,
+        "semantic_hint": "possible phase change; verify object/contact semantics visually",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "active end/joint motion has a local high score at trajectory frame 1371"
+        ],
+        "signals": {
+          "end_position_delta": 0.005580178057987442,
+          "end_orientation_delta": 0.009152226450992743,
+          "joint_delta": 0.03237594538469748,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        }
+      }
+    },
+    {
+      "sample_index": 184,
+      "original_frame_id": 1380,
+      "time_seconds": 46.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 184,
+        "original_frame_id": 1380,
+        "time_seconds": 46.0,
+        "fused_score": 0.04289967977773302,
+        "source_scores": {
+          "overhead_video": 0.0373085235396242,
+          "tri_view_video": 0.04839214622480937,
+          "pixel_cv_prior": 0.04858952580687431
+        },
+        "weighted_mean_score": 0.0486958071202939,
+        "top3_mean_score": 0.04839214622480937,
+        "per_view_scores": {
+          "head_color": 0.0373085235396242,
+          "hand_left_color": 0.03538307419321895,
+          "hand_right_color": 0.07248484094158497
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.07248484094158497
+          },
+          {
+            "view": "head_color",
+            "score": 0.0373085235396242
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.03538307419321895
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 189,
+      "original_frame_id": 1418,
+      "time_seconds": 47.266666666666666,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 189,
+        "original_frame_id": 1418,
+        "time_seconds": 47.266666666666666,
+        "fused_score": 0.03597622248898667,
+        "source_scores": {
+          "overhead_video": 0.027834814133986925,
+          "tri_view_video": 0.04397392641952615,
+          "pixel_cv_prior": 0.04426133526844671
+        },
+        "weighted_mean_score": 0.04441609387940393,
+        "top3_mean_score": 0.04397392641952615,
+        "per_view_scores": {
+          "head_color": 0.027834814133986925,
+          "hand_left_color": 0.020758086958741838,
+          "hand_right_color": 0.08332887816584968
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.08332887816584968
+          },
+          {
+            "view": "head_color",
+            "score": 0.027834814133986925
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.020758086958741838
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 235,
+      "original_frame_id": 1762,
+      "time_seconds": 58.733333333333334,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 235,
+        "original_frame_id": 1762,
+        "time_seconds": 58.733333333333334,
+        "fused_score": 0.037312118809246016,
+        "source_scores": {
+          "overhead_video": 0.02430584277982026,
+          "tri_view_video": 0.05008882038058279,
+          "pixel_cv_prior": 0.05054796929676076
+        },
+        "weighted_mean_score": 0.050795203328548894,
+        "top3_mean_score": 0.050088820380582794,
+        "per_view_scores": {
+          "head_color": 0.02430584277982026,
+          "hand_left_color": 0.0339307981004902,
+          "hand_right_color": 0.09202982026143791
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.09202982026143791
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.0339307981004902
+          },
+          {
+            "view": "head_color",
+            "score": 0.02430584277982026
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 236,
+      "original_frame_id": 1770,
+      "time_seconds": 59.0,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 236,
+        "candidate_frame_id": 1770,
+        "raw_trajectory_frame_id": 1772,
+        "candidate_time_seconds": 59.0,
+        "event_type": "trajectory_motion_peak",
+        "trajectory_score": 1.0719488720675923,
+        "semantic_hint": "possible phase change; verify object/contact semantics visually",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "active end/joint motion has a local high score at trajectory frame 1772"
+        ],
+        "signals": {
+          "end_position_delta": 0.004624510082709842,
+          "end_orientation_delta": 0.009979556784218859,
+          "joint_delta": 0.03936940907111367,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        }
+      }
+    },
+    {
+      "sample_index": 240,
+      "original_frame_id": 1800,
+      "time_seconds": 60.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 240,
+        "original_frame_id": 1800,
+        "time_seconds": 60.0,
+        "fused_score": 0.04417500678277697,
+        "source_scores": {
+          "overhead_video": 0.033391256893382355,
+          "tri_view_video": 0.05476841213916122,
+          "pixel_cv_prior": 0.05514910120518195
+        },
+        "weighted_mean_score": 0.055354087625346944,
+        "top3_mean_score": 0.05476841213916122,
+        "per_view_scores": {
+          "head_color": 0.033391256893382355,
+          "hand_left_color": 0.0484429061989379,
+          "hand_right_color": 0.0824710733251634
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.0824710733251634
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.0484429061989379
+          },
+          {
+            "view": "head_color",
+            "score": 0.033391256893382355
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 243,
+      "original_frame_id": 1822,
+      "time_seconds": 60.733333333333334,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 243,
+        "candidate_frame_id": 1822,
+        "raw_trajectory_frame_id": 1819,
+        "candidate_time_seconds": 60.733333333333334,
+        "event_type": "trajectory_motion_peak",
+        "trajectory_score": 1.0976449617117428,
+        "semantic_hint": "possible phase change; verify object/contact semantics visually",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "active end/joint motion has a local high score at trajectory frame 1819"
+        ],
+        "signals": {
+          "end_position_delta": 0.006034686018489445,
+          "end_orientation_delta": 0.013361782688659117,
+          "joint_delta": 0.031691469576417344,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        }
+      }
+    }
+  ]
+}

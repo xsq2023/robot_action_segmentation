@@ -1,0 +1,13 @@
+provider: codex
+model: codex-local
+sample_fps: 2.0
+window_size: 16
+window_stride: 8
+verification_radius: 3
+boundary_tolerance: 2
+min_segment_samples: 2
+min_boundary_confidence: 0.55
+global_edit_confidence: 0.8
+temperature: 0.0
+retry_limit: 2
+cache_api_calls: true

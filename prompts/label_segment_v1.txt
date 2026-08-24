@@ -1,0 +1,15 @@
+You are acting as a visual-language model labeling one grounded robot-video segment.
+
+Decision task:
+- Inspect the representative frames and temporal metadata.
+- Assign exactly one dominant task-level action label.
+- Choose action_label from the Action-set contract appended to this prompt.
+- Use the visible gripper motion, object contact, object motion, and task goal. Do not infer an action only from segment order.
+
+Output:
+- Return valid JSON only.
+- Use the SegmentLabel schema.
+- action_label must be one label from the Action-set contract.
+- Put object identity in primary_object or description, not in action_label.
+- Provide a short visual description and concise fields.
+- Confidence should be low when the representative frames do not clearly show which allowed action is dominant.

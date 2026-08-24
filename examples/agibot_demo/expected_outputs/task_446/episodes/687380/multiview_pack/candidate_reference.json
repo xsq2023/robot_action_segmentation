@@ -1,0 +1,774 @@
+{
+  "description": "Merged visual and trajectory candidate sources used to build local sheets.",
+  "visual_candidate_count": 16,
+  "trajectory_candidate_count": 4,
+  "combined_candidate_count": 20,
+  "combined_candidates": [
+    {
+      "sample_index": 8,
+      "original_frame_id": 60,
+      "time_seconds": 2.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 8,
+        "original_frame_id": 60,
+        "time_seconds": 2.0,
+        "fused_score": 0.05791698795345586,
+        "source_scores": {
+          "overhead_video": 0.03890857970792484,
+          "tri_view_video": 0.07658987779139434,
+          "pixel_cv_prior": 0.07726091460657941
+        },
+        "weighted_mean_score": 0.0776222421224483,
+        "top3_mean_score": 0.07658987779139433,
+        "per_view_scores": {
+          "head_color": 0.03890857970792484,
+          "hand_left_color": 0.09373480264501634,
+          "hand_right_color": 0.09712625102124184
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.09712625102124184
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.09373480264501634
+          },
+          {
+            "view": "head_color",
+            "score": 0.03890857970792484
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 9,
+      "original_frame_id": 68,
+      "time_seconds": 2.2666666666666666,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 9,
+        "candidate_frame_id": 68,
+        "raw_trajectory_frame_id": 71,
+        "candidate_time_seconds": 2.2666666666666666,
+        "event_type": "trajectory_motion_peak",
+        "trajectory_score": 2.243687033990269,
+        "semantic_hint": "possible phase change; verify object/contact semantics visually",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "active end/joint motion has a local high score at trajectory frame 71"
+        ],
+        "signals": {
+          "end_position_delta": 0.013061145450714367,
+          "end_orientation_delta": 0.02375341737533493,
+          "joint_delta": 0.061407384648608385,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        }
+      }
+    },
+    {
+      "sample_index": 13,
+      "original_frame_id": 98,
+      "time_seconds": 3.2666666666666666,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 13,
+        "original_frame_id": 98,
+        "time_seconds": 3.2666666666666666,
+        "fused_score": 0.03105226022763201,
+        "source_scores": {
+          "overhead_video": 0.00809855621936275,
+          "tri_view_video": 0.053600807206563184,
+          "pixel_cv_prior": 0.05441112126523936
+        },
+        "weighted_mean_score": 0.05484744421991115,
+        "top3_mean_score": 0.053600807206563184,
+        "per_view_scores": {
+          "head_color": 0.00809855621936275,
+          "hand_left_color": 0.06421280126633987,
+          "hand_right_color": 0.08849106413398693
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.08849106413398693
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.06421280126633987
+          },
+          {
+            "view": "head_color",
+            "score": 0.00809855621936275
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 18,
+      "original_frame_id": 135,
+      "time_seconds": 4.5,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 18,
+        "original_frame_id": 135,
+        "time_seconds": 4.5,
+        "fused_score": 0.0222344992190298,
+        "source_scores": {
+          "overhead_video": 0.005982779309640526,
+          "tri_view_video": 0.038199359170751644,
+          "pixel_cv_prior": 0.0387730790860865
+        },
+        "weighted_mean_score": 0.039082005194343725,
+        "top3_mean_score": 0.038199359170751644,
+        "per_view_scores": {
+          "head_color": 0.005982779309640526,
+          "hand_left_color": 0.06848270271650328,
+          "hand_right_color": 0.04013259548611112
+        },
+        "top_views": [
+          {
+            "view": "hand_left_color",
+            "score": 0.06848270271650328
+          },
+          {
+            "view": "hand_right_color",
+            "score": 0.04013259548611112
+          },
+          {
+            "view": "head_color",
+            "score": 0.005982779309640526
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 27,
+      "original_frame_id": 202,
+      "time_seconds": 6.733333333333333,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 27,
+        "candidate_frame_id": 202,
+        "raw_trajectory_frame_id": 204,
+        "candidate_time_seconds": 6.733333333333333,
+        "event_type": "gripper_command_close",
+        "trajectory_score": 3.0,
+        "semantic_hint": "possible grasp subphase",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "gripper_command_close from 0.000 to 1.000 over trajectory frames 204..206"
+        ],
+        "signals": {
+          "gripper_command_before": 0.0,
+          "gripper_command_after": 1.0
+        }
+      }
+    },
+    {
+      "sample_index": 29,
+      "original_frame_id": 218,
+      "time_seconds": 7.266666666666667,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 29,
+        "original_frame_id": 218,
+        "time_seconds": 7.266666666666667,
+        "fused_score": 0.018958309404535578,
+        "source_scores": {
+          "overhead_video": 0.015408222273284318,
+          "tri_view_video": 0.022445733762254904,
+          "pixel_cv_prior": 0.022571059309318766
+        },
+        "weighted_mean_score": 0.022638542296199306,
+        "top3_mean_score": 0.022445733762254904,
+        "per_view_scores": {
+          "head_color": 0.015408222273284318,
+          "hand_left_color": 0.0080052530126634,
+          "hand_right_color": 0.043923726000816996
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.043923726000816996
+          },
+          {
+            "view": "head_color",
+            "score": 0.015408222273284318
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.0080052530126634
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 60,
+      "original_frame_id": 450,
+      "time_seconds": 15.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 60,
+        "original_frame_id": 450,
+        "time_seconds": 15.0,
+        "fused_score": 0.02665553112400603,
+        "source_scores": {
+          "overhead_video": 0.014522952410130716,
+          "tri_view_video": 0.03857395705678103,
+          "pixel_cv_prior": 0.039002262618981653
+        },
+        "weighted_mean_score": 0.03923288869093584,
+        "top3_mean_score": 0.03857395705678103,
+        "per_view_scores": {
+          "head_color": 0.014522952410130716,
+          "hand_left_color": 0.054092518127042466,
+          "hand_right_color": 0.04710640063316991
+        },
+        "top_views": [
+          {
+            "view": "hand_left_color",
+            "score": 0.054092518127042466
+          },
+          {
+            "view": "hand_right_color",
+            "score": 0.04710640063316991
+          },
+          {
+            "view": "head_color",
+            "score": 0.014522952410130716
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 79,
+      "original_frame_id": 592,
+      "time_seconds": 19.733333333333334,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 79,
+        "original_frame_id": 592,
+        "time_seconds": 19.733333333333334,
+        "fused_score": 0.024414438639191762,
+        "source_scores": {
+          "overhead_video": 0.0227261412377451,
+          "tri_view_video": 0.026072935814950977,
+          "pixel_cv_prior": 0.02613253626632588
+        },
+        "weighted_mean_score": 0.02616462881706621,
+        "top3_mean_score": 0.026072935814950977,
+        "per_view_scores": {
+          "head_color": 0.0227261412377451,
+          "hand_left_color": 0.02846336933210785,
+          "hand_right_color": 0.02702929687499999
+        },
+        "top_views": [
+          {
+            "view": "hand_left_color",
+            "score": 0.02846336933210785
+          },
+          {
+            "view": "hand_right_color",
+            "score": 0.02702929687499999
+          },
+          {
+            "view": "head_color",
+            "score": 0.0227261412377451
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 88,
+      "original_frame_id": 660,
+      "time_seconds": 22.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 88,
+        "original_frame_id": 660,
+        "time_seconds": 22.0,
+        "fused_score": 0.02650595493717963,
+        "source_scores": {
+          "overhead_video": 0.024122255412581693,
+          "tri_view_video": 0.028847579656862743,
+          "pixel_cv_prior": 0.0289317292666924
+        },
+        "weighted_mean_score": 0.02897704059506222,
+        "top3_mean_score": 0.028847579656862743,
+        "per_view_scores": {
+          "head_color": 0.024122255412581693,
+          "hand_left_color": 0.03187057036356209,
+          "hand_right_color": 0.030549913194444438
+        },
+        "top_views": [
+          {
+            "view": "hand_left_color",
+            "score": 0.03187057036356209
+          },
+          {
+            "view": "hand_right_color",
+            "score": 0.030549913194444438
+          },
+          {
+            "view": "head_color",
+            "score": 0.024122255412581693
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 97,
+      "original_frame_id": 728,
+      "time_seconds": 24.266666666666666,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 97,
+        "original_frame_id": 728,
+        "time_seconds": 24.266666666666666,
+        "fused_score": 0.019136124580486438,
+        "source_scores": {
+          "overhead_video": 0.010692401960784307,
+          "tri_view_video": 0.02743080661083877,
+          "pixel_cv_prior": 0.02772888778953837
+        },
+        "weighted_mean_score": 0.027889393039607382,
+        "top3_mean_score": 0.02743080661083877,
+        "per_view_scores": {
+          "head_color": 0.010692401960784307,
+          "hand_left_color": 0.029086524714052278,
+          "hand_right_color": 0.04251349315767972
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.04251349315767972
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.029086524714052278
+          },
+          {
+            "view": "head_color",
+            "score": 0.010692401960784307
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 103,
+      "original_frame_id": 772,
+      "time_seconds": 25.733333333333334,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 103,
+        "candidate_frame_id": 772,
+        "raw_trajectory_frame_id": 769,
+        "candidate_time_seconds": 25.733333333333334,
+        "event_type": "gripper_command_open",
+        "trajectory_score": 3.0,
+        "semantic_hint": "possible release/place subphase",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "gripper_command_open from 1.000 to 0.000 over trajectory frames 769..771"
+        ],
+        "signals": {
+          "gripper_command_before": 1.0,
+          "gripper_command_after": 0.0
+        }
+      }
+    },
+    {
+      "sample_index": 108,
+      "original_frame_id": 810,
+      "time_seconds": 27.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 108,
+        "original_frame_id": 810,
+        "time_seconds": 27.0,
+        "fused_score": 0.028405210206630095,
+        "source_scores": {
+          "overhead_video": 0.009976032730800645,
+          "tri_view_video": 0.04650909330746187,
+          "pixel_cv_prior": 0.04715968205745721
+        },
+        "weighted_mean_score": 0.04750999907668547,
+        "top3_mean_score": 0.04650909330746186,
+        "per_view_scores": {
+          "head_color": 0.009976032730800645,
+          "hand_left_color": 0.05510770271650327,
+          "hand_right_color": 0.0744435444750817
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.0744435444750817
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.05510770271650327
+          },
+          {
+            "view": "head_color",
+            "score": 0.009976032730800645
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 120,
+      "original_frame_id": 900,
+      "time_seconds": 30.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 120,
+        "original_frame_id": 900,
+        "time_seconds": 30.0,
+        "fused_score": 0.025260046470875017,
+        "source_scores": {
+          "overhead_video": 0.011161432802287572,
+          "tri_view_video": 0.039109804772603486,
+          "pixel_cv_prior": 0.03960751550632144
+        },
+        "weighted_mean_score": 0.03987551359370803,
+        "top3_mean_score": 0.039109804772603486,
+        "per_view_scores": {
+          "head_color": 0.011161432802287572,
+          "hand_left_color": 0.055581622753267966,
+          "hand_right_color": 0.05058635876225492
+        },
+        "top_views": [
+          {
+            "view": "hand_left_color",
+            "score": 0.055581622753267966
+          },
+          {
+            "view": "hand_right_color",
+            "score": 0.05058635876225492
+          },
+          {
+            "view": "head_color",
+            "score": 0.011161432802287572
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 124,
+      "original_frame_id": 930,
+      "time_seconds": 31.0,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "visual_prior": null,
+      "trajectory_reference": {
+        "candidate_sample_index": 124,
+        "candidate_frame_id": 930,
+        "raw_trajectory_frame_id": 933,
+        "candidate_time_seconds": 31.0,
+        "event_type": "trajectory_motion_peak",
+        "trajectory_score": 1.7077379710557752,
+        "semantic_hint": "possible phase change; verify object/contact semantics visually",
+        "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+        "evidence": [
+          "active end/joint motion has a local high score at trajectory frame 933"
+        ],
+        "signals": {
+          "end_position_delta": 0.009672915796014673,
+          "end_orientation_delta": 0.014392035648561506,
+          "joint_delta": 0.028135406786545022,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        }
+      }
+    },
+    {
+      "sample_index": 125,
+      "original_frame_id": 938,
+      "time_seconds": 31.266666666666666,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 125,
+        "original_frame_id": 938,
+        "time_seconds": 31.266666666666666,
+        "fused_score": 0.043768247552079836,
+        "source_scores": {
+          "overhead_video": 0.013265133527369282,
+          "tri_view_video": 0.0737329495166122,
+          "pixel_cv_prior": 0.07480977363696857
+        },
+        "weighted_mean_score": 0.07538960200946816,
+        "top3_mean_score": 0.0737329495166122,
+        "per_view_scores": {
+          "head_color": 0.013265133527369282,
+          "hand_left_color": 0.08675300628063726,
+          "hand_right_color": 0.12118070874183007
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.12118070874183007
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.08675300628063726
+          },
+          {
+            "view": "head_color",
+            "score": 0.013265133527369282
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 132,
+      "original_frame_id": 990,
+      "time_seconds": 33.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 132,
+        "original_frame_id": 990,
+        "time_seconds": 33.0,
+        "fused_score": 0.03356427499786658,
+        "source_scores": {
+          "overhead_video": 0.015279379850898687,
+          "tri_view_video": 0.05152642250476578,
+          "pixel_cv_prior": 0.05217191778490315
+        },
+        "weighted_mean_score": 0.05251949216651557,
+        "top3_mean_score": 0.051526422504765794,
+        "per_view_scores": {
+          "head_color": 0.015279379850898687,
+          "hand_left_color": 0.07113860166462417,
+          "hand_right_color": 0.06816128599877451
+        },
+        "top_views": [
+          {
+            "view": "hand_left_color",
+            "score": 0.07113860166462417
+          },
+          {
+            "view": "hand_right_color",
+            "score": 0.06816128599877451
+          },
+          {
+            "view": "head_color",
+            "score": 0.015279379850898687
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 139,
+      "original_frame_id": 1042,
+      "time_seconds": 34.733333333333334,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 139,
+        "original_frame_id": 1042,
+        "time_seconds": 34.733333333333334,
+        "fused_score": 0.03714970149223716,
+        "source_scores": {
+          "overhead_video": 0.018795662275326804,
+          "tri_view_video": 0.05517977260348583,
+          "pixel_cv_prior": 0.05582770881480921
+        },
+        "weighted_mean_score": 0.05617659754398334,
+        "top3_mean_score": 0.05517977260348583,
+        "per_view_scores": {
+          "head_color": 0.018795662275326804,
+          "hand_left_color": 0.08513158062704247,
+          "hand_right_color": 0.06161207490808823
+        },
+        "top_views": [
+          {
+            "view": "hand_left_color",
+            "score": 0.08513158062704247
+          },
+          {
+            "view": "hand_right_color",
+            "score": 0.06161207490808823
+          },
+          {
+            "view": "head_color",
+            "score": 0.018795662275326804
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 144,
+      "original_frame_id": 1080,
+      "time_seconds": 36.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 144,
+        "original_frame_id": 1080,
+        "time_seconds": 36.0,
+        "fused_score": 0.05491277969391774,
+        "source_scores": {
+          "overhead_video": 0.044704210069444444,
+          "tri_view_video": 0.06494115732230392,
+          "pixel_cv_prior": 0.06530154131447813
+        },
+        "weighted_mean_score": 0.06549559423334116,
+        "top3_mean_score": 0.06494115732230392,
+        "per_view_scores": {
+          "head_color": 0.044704210069444444,
+          "hand_left_color": 0.08495995455473855,
+          "hand_right_color": 0.06515930734272875
+        },
+        "top_views": [
+          {
+            "view": "hand_left_color",
+            "score": 0.08495995455473855
+          },
+          {
+            "view": "hand_right_color",
+            "score": 0.06515930734272875
+          },
+          {
+            "view": "head_color",
+            "score": 0.044704210069444444
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 159,
+      "original_frame_id": 1192,
+      "time_seconds": 39.733333333333334,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 159,
+        "original_frame_id": 1192,
+        "time_seconds": 39.733333333333334,
+        "fused_score": 0.030767058727787993,
+        "source_scores": {
+          "overhead_video": 0.026069680606617653,
+          "tri_view_video": 0.03538152318218954,
+          "pixel_cv_prior": 0.03554735051572712
+        },
+        "weighted_mean_score": 0.03563664215686274,
+        "top3_mean_score": 0.03538152318218954,
+        "per_view_scores": {
+          "head_color": 0.026069680606617653,
+          "hand_left_color": 0.05750947840073528,
+          "hand_right_color": 0.022565410539215687
+        },
+        "top_views": [
+          {
+            "view": "hand_left_color",
+            "score": 0.05750947840073528
+          },
+          {
+            "view": "head_color",
+            "score": 0.026069680606617653
+          },
+          {
+            "view": "hand_right_color",
+            "score": 0.022565410539215687
+          }
+        ]
+      },
+      "trajectory_reference": null
+    },
+    {
+      "sample_index": 221,
+      "original_frame_id": 1658,
+      "time_seconds": 55.266666666666666,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "visual_prior": {
+        "sample_index": 221,
+        "original_frame_id": 1658,
+        "time_seconds": 55.266666666666666,
+        "fused_score": 0.01938639129247946,
+        "source_scores": {
+          "overhead_video": 0.021128114787581694,
+          "tri_view_video": 0.0176754110498366,
+          "pixel_cv_prior": 0.01761392454491785
+        },
+        "weighted_mean_score": 0.017580816426884676,
+        "top3_mean_score": 0.0176754110498366,
+        "per_view_scores": {
+          "head_color": 0.021128114787581694,
+          "hand_left_color": 0.005194208282271235,
+          "hand_right_color": 0.026703910079656862
+        },
+        "top_views": [
+          {
+            "view": "hand_right_color",
+            "score": 0.026703910079656862
+          },
+          {
+            "view": "head_color",
+            "score": 0.021128114787581694
+          },
+          {
+            "view": "hand_left_color",
+            "score": 0.005194208282271235
+          }
+        ]
+      },
+      "trajectory_reference": null
+    }
+  ]
+}

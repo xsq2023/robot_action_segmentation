@@ -1,0 +1,552 @@
+{
+  "description": "Trajectory-derived non-visual hints for candidate recall, local timing refinement, and joint evidence. Visual semantics remain primary.",
+  "timeseries_csv": "/mnt/f/ai/video grounding/dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/timeseries.csv",
+  "row_count": 1899,
+  "active_signals": {
+    "effector_index": 1,
+    "action_gripper_column": "action.effector.position[1]",
+    "state_gripper_column": "state.effector.position[1]",
+    "end_position_columns": [
+      "state.end.position[3]",
+      "state.end.position[4]",
+      "state.end.position[5]"
+    ],
+    "end_orientation_columns": [
+      "state.end.orientation[4]",
+      "state.end.orientation[5]",
+      "state.end.orientation[6]",
+      "state.end.orientation[7]"
+    ],
+    "joint_position_columns": [
+      "state.joint.position[7]",
+      "state.joint.position[8]",
+      "state.joint.position[9]",
+      "state.joint.position[10]",
+      "state.joint.position[11]",
+      "state.joint.position[12]",
+      "state.joint.position[13]"
+    ]
+  },
+  "signal_scales": {
+    "end_position_delta_p95": 0.004624510082709842,
+    "end_orientation_delta_p95": 0.009429438742255086,
+    "joint_delta_p95": 0.01926103247320286,
+    "gripper_command_delta_scale": 0.53,
+    "gripper_state_delta_scale": 29.59111111111112,
+    "gripper_state_median": 34.8
+  },
+  "selected_candidates": [
+    {
+      "candidate_sample_index": 7,
+      "candidate_frame_id": 52,
+      "raw_trajectory_frame_id": 54,
+      "candidate_time_seconds": 1.7333333333333334,
+      "event_type": "trajectory_motion_peak",
+      "trajectory_score": 1.3751379741806624,
+      "semantic_hint": "possible phase change; verify object/contact semantics visually",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "active end/joint motion has a local high score at trajectory frame 54"
+      ],
+      "signals": {
+        "end_position_delta": 0.0034886553767797864,
+        "end_orientation_delta": 0.023461897420766008,
+        "joint_delta": 0.04979617095700826,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      }
+    },
+    {
+      "candidate_sample_index": 43,
+      "candidate_frame_id": 322,
+      "raw_trajectory_frame_id": 326,
+      "candidate_time_seconds": 10.733333333333333,
+      "event_type": "trajectory_motion_peak",
+      "trajectory_score": 1.051283112910661,
+      "semantic_hint": "possible phase change; verify object/contact semantics visually",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "active end/joint motion has a local high score at trajectory frame 326"
+      ],
+      "signals": {
+        "end_position_delta": 0.0046780979454362276,
+        "end_orientation_delta": 0.016197743543962608,
+        "joint_delta": 0.031468617258961135,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      }
+    },
+    {
+      "candidate_sample_index": 53,
+      "candidate_frame_id": 398,
+      "raw_trajectory_frame_id": 399,
+      "candidate_time_seconds": 13.266666666666667,
+      "event_type": "gripper_command_close",
+      "trajectory_score": 2.96,
+      "semantic_hint": "possible grasp subphase",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "gripper_command_close from 0.000 to 0.960 over trajectory frames 399..401"
+      ],
+      "signals": {
+        "gripper_command_before": 0.0,
+        "gripper_command_after": 0.96
+      }
+    },
+    {
+      "candidate_sample_index": 90,
+      "candidate_frame_id": 675,
+      "raw_trajectory_frame_id": 672,
+      "candidate_time_seconds": 22.5,
+      "event_type": "gripper_command_open",
+      "trajectory_score": 3.0,
+      "semantic_hint": "possible release/place subphase",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "gripper_command_open from 1.000 to 0.000 over trajectory frames 672..673"
+      ],
+      "signals": {
+        "gripper_command_before": 1.0,
+        "gripper_command_after": 0.0
+      }
+    },
+    {
+      "candidate_sample_index": 99,
+      "candidate_frame_id": 742,
+      "raw_trajectory_frame_id": 740,
+      "candidate_time_seconds": 24.733333333333334,
+      "event_type": "gripper_state_opening",
+      "trajectory_score": 2.6900314795383,
+      "semantic_hint": "possible release completion timing",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "gripper_state_opening from 119.467 to 35.600 over trajectory frames 703..740"
+      ],
+      "signals": {
+        "gripper_state_before": 119.46666666666667,
+        "gripper_state_after": 35.6
+      }
+    },
+    {
+      "candidate_sample_index": 121,
+      "candidate_frame_id": 908,
+      "raw_trajectory_frame_id": 909,
+      "candidate_time_seconds": 30.266666666666666,
+      "event_type": "gripper_command_close",
+      "trajectory_score": 2.9699999999999998,
+      "semantic_hint": "possible grasp subphase",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "gripper_command_close from 0.000 to 0.970 over trajectory frames 909..912"
+      ],
+      "signals": {
+        "gripper_command_before": 0.0,
+        "gripper_command_after": 0.97
+      }
+    },
+    {
+      "candidate_sample_index": 149,
+      "candidate_frame_id": 1118,
+      "raw_trajectory_frame_id": 1120,
+      "candidate_time_seconds": 37.266666666666666,
+      "event_type": "trajectory_motion_peak",
+      "trajectory_score": 1.1020448910690925,
+      "semantic_hint": "possible phase change; verify object/contact semantics visually",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "active end/joint motion has a local high score at trajectory frame 1120"
+      ],
+      "signals": {
+        "end_position_delta": 0.00789925587359371,
+        "end_orientation_delta": 0.011377801864992954,
+        "joint_delta": 0.0262343358143281,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      }
+    },
+    {
+      "candidate_sample_index": 155,
+      "candidate_frame_id": 1162,
+      "raw_trajectory_frame_id": 1159,
+      "candidate_time_seconds": 38.733333333333334,
+      "event_type": "gripper_command_open",
+      "trajectory_score": 3.0,
+      "semantic_hint": "possible release/place subphase",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "gripper_command_open from 1.000 to 0.000 over trajectory frames 1159..1162"
+      ],
+      "signals": {
+        "gripper_command_before": 1.0,
+        "gripper_command_after": 0.0
+      }
+    },
+    {
+      "candidate_sample_index": 163,
+      "candidate_frame_id": 1222,
+      "raw_trajectory_frame_id": 1226,
+      "candidate_time_seconds": 40.733333333333334,
+      "event_type": "gripper_state_opening",
+      "trajectory_score": 2.6863588667366214,
+      "semantic_hint": "possible release completion timing",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "gripper_state_opening from 119.467 to 35.911 over trajectory frames 1189..1226"
+      ],
+      "signals": {
+        "gripper_state_before": 119.46666666666667,
+        "gripper_state_after": 35.91111111111111
+      }
+    },
+    {
+      "candidate_sample_index": 183,
+      "candidate_frame_id": 1372,
+      "raw_trajectory_frame_id": 1371,
+      "candidate_time_seconds": 45.733333333333334,
+      "event_type": "trajectory_motion_peak",
+      "trajectory_score": 1.011857233462802,
+      "semantic_hint": "possible phase change; verify object/contact semantics visually",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "active end/joint motion has a local high score at trajectory frame 1371"
+      ],
+      "signals": {
+        "end_position_delta": 0.005580178057987442,
+        "end_orientation_delta": 0.009152226450992743,
+        "joint_delta": 0.03237594538469748,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      }
+    },
+    {
+      "candidate_sample_index": 236,
+      "candidate_frame_id": 1770,
+      "raw_trajectory_frame_id": 1772,
+      "candidate_time_seconds": 59.0,
+      "event_type": "trajectory_motion_peak",
+      "trajectory_score": 1.0719488720675923,
+      "semantic_hint": "possible phase change; verify object/contact semantics visually",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "active end/joint motion has a local high score at trajectory frame 1772"
+      ],
+      "signals": {
+        "end_position_delta": 0.004624510082709842,
+        "end_orientation_delta": 0.009979556784218859,
+        "joint_delta": 0.03936940907111367,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      }
+    },
+    {
+      "candidate_sample_index": 243,
+      "candidate_frame_id": 1822,
+      "raw_trajectory_frame_id": 1819,
+      "candidate_time_seconds": 60.733333333333334,
+      "event_type": "trajectory_motion_peak",
+      "trajectory_score": 1.0976449617117428,
+      "semantic_hint": "possible phase change; verify object/contact semantics visually",
+      "timing_refinement_hint": "Use this as a local timing anchor only after visual evidence confirms the semantic transition.",
+      "evidence": [
+        "active end/joint motion has a local high score at trajectory frame 1819"
+      ],
+      "signals": {
+        "end_position_delta": 0.006034686018489445,
+        "end_orientation_delta": 0.013361782688659117,
+        "joint_delta": 0.031691469576417344,
+        "gripper_command_delta": 0.0,
+        "gripper_state_delta": 0.0
+      }
+    }
+  ],
+  "top_records": [
+    {
+      "raw_trajectory_frame_id": 54,
+      "candidate_sample_index": 7,
+      "candidate_frame_id": 52,
+      "candidate_time_seconds": 1.7333333333333334,
+      "trajectory_score": 1.3751379741806624,
+      "end_position_delta": 0.0034886553767797864,
+      "end_orientation_delta": 0.023461897420766008,
+      "joint_delta": 0.04979617095700826,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 39,
+      "candidate_sample_index": 5,
+      "candidate_frame_id": 38,
+      "candidate_time_seconds": 1.2666666666666666,
+      "trajectory_score": 1.185894597589371,
+      "end_position_delta": 0.005131444688280198,
+      "end_orientation_delta": 0.019644949364197577,
+      "joint_delta": 0.03470223821534303,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 42,
+      "candidate_sample_index": 6,
+      "candidate_frame_id": 45,
+      "candidate_time_seconds": 1.5,
+      "trajectory_score": 1.1815391148693615,
+      "end_position_delta": 0.004921001079611912,
+      "end_orientation_delta": 0.019028188007840126,
+      "joint_delta": 0.035929009944283594,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 60,
+      "candidate_sample_index": 8,
+      "candidate_frame_id": 60,
+      "candidate_time_seconds": 2.0,
+      "trajectory_score": 1.1470017077987782,
+      "end_position_delta": 0.0028584405400207354,
+      "end_orientation_delta": 0.02001796047029891,
+      "joint_delta": 0.04129125218749058,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 36,
+      "candidate_sample_index": 5,
+      "candidate_frame_id": 38,
+      "candidate_time_seconds": 1.2666666666666666,
+      "trajectory_score": 1.1096794798038467,
+      "end_position_delta": 0.005594714641570009,
+      "end_orientation_delta": 0.01692093684770467,
+      "joint_delta": 0.030661551765305155,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 1120,
+      "candidate_sample_index": 149,
+      "candidate_frame_id": 1118,
+      "candidate_time_seconds": 37.266666666666666,
+      "trajectory_score": 1.1020448910690925,
+      "end_position_delta": 0.00789925587359371,
+      "end_orientation_delta": 0.011377801864992954,
+      "joint_delta": 0.0262343358143281,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 1819,
+      "candidate_sample_index": 243,
+      "candidate_frame_id": 1822,
+      "candidate_time_seconds": 60.733333333333334,
+      "trajectory_score": 1.0976449617117428,
+      "end_position_delta": 0.006034686018489445,
+      "end_orientation_delta": 0.013361782688659117,
+      "joint_delta": 0.031691469576417344,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 57,
+      "candidate_sample_index": 8,
+      "candidate_frame_id": 60,
+      "candidate_time_seconds": 2.0,
+      "trajectory_score": 1.0898086154537474,
+      "end_position_delta": 0.003085994891135945,
+      "end_orientation_delta": 0.0190800165489926,
+      "joint_delta": 0.0376294425614095,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 45,
+      "candidate_sample_index": 6,
+      "candidate_frame_id": 45,
+      "candidate_time_seconds": 1.5,
+      "trajectory_score": 1.0858491054377892,
+      "end_position_delta": 0.004382978955904455,
+      "end_orientation_delta": 0.017713089781975697,
+      "joint_delta": 0.03336938006541004,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 1772,
+      "candidate_sample_index": 236,
+      "candidate_frame_id": 1770,
+      "candidate_time_seconds": 59.0,
+      "trajectory_score": 1.0719488720675923,
+      "end_position_delta": 0.004624510082709842,
+      "end_orientation_delta": 0.009979556784218859,
+      "joint_delta": 0.03936940907111367,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 326,
+      "candidate_sample_index": 43,
+      "candidate_frame_id": 322,
+      "candidate_time_seconds": 10.733333333333333,
+      "trajectory_score": 1.051283112910661,
+      "end_position_delta": 0.0046780979454362276,
+      "end_orientation_delta": 0.016197743543962608,
+      "joint_delta": 0.031468617258961135,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 323,
+      "candidate_sample_index": 43,
+      "candidate_frame_id": 322,
+      "candidate_time_seconds": 10.733333333333333,
+      "trajectory_score": 1.0276970885107757,
+      "end_position_delta": 0.004491168597597865,
+      "end_orientation_delta": 0.015967012307048414,
+      "joint_delta": 0.030968523401509594,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 48,
+      "candidate_sample_index": 6,
+      "candidate_frame_id": 45,
+      "candidate_time_seconds": 1.5,
+      "trajectory_score": 1.0194460807343775,
+      "end_position_delta": 0.003953937391963204,
+      "end_orientation_delta": 0.01707721811420212,
+      "joint_delta": 0.031542461910389445,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 1371,
+      "candidate_sample_index": 183,
+      "candidate_frame_id": 1372,
+      "candidate_time_seconds": 45.733333333333334,
+      "trajectory_score": 1.011857233462802,
+      "end_position_delta": 0.005580178057987442,
+      "end_orientation_delta": 0.009152226450992743,
+      "joint_delta": 0.03237594538469748,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 1374,
+      "candidate_sample_index": 183,
+      "candidate_frame_id": 1372,
+      "candidate_time_seconds": 45.733333333333334,
+      "trajectory_score": 1.008461976608418,
+      "end_position_delta": 0.005957665174579805,
+      "end_orientation_delta": 0.006311109639535265,
+      "joint_delta": 0.033487430649890355,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 1769,
+      "candidate_sample_index": 236,
+      "candidate_frame_id": 1770,
+      "candidate_time_seconds": 59.0,
+      "trajectory_score": 0.9855981679599147,
+      "end_position_delta": 0.0032818627960954513,
+      "end_orientation_delta": 0.011755888611410333,
+      "joint_delta": 0.03760329642256937,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 51,
+      "candidate_sample_index": 7,
+      "candidate_frame_id": 52,
+      "candidate_time_seconds": 1.7333333333333334,
+      "trajectory_score": 0.9844117359759251,
+      "end_position_delta": 0.0031921666594410536,
+      "end_orientation_delta": 0.01767577543260893,
+      "joint_delta": 0.03185458171763063,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 651,
+      "candidate_sample_index": 87,
+      "candidate_frame_id": 652,
+      "candidate_time_seconds": 21.733333333333334,
+      "trajectory_score": 0.9434061944974781,
+      "end_position_delta": 0.006086288989049894,
+      "end_orientation_delta": 0.010147758163139826,
+      "joint_delta": 0.02485644590122339,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 1123,
+      "candidate_sample_index": 150,
+      "candidate_frame_id": 1125,
+      "candidate_time_seconds": 37.5,
+      "trajectory_score": 0.9366527739317073,
+      "end_position_delta": 0.0069365029651366475,
+      "end_orientation_delta": 0.009383251721285438,
+      "joint_delta": 0.02164806594695066,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.04444444444445139
+    },
+    {
+      "raw_trajectory_frame_id": 643,
+      "candidate_sample_index": 86,
+      "candidate_frame_id": 645,
+      "candidate_time_seconds": 21.5,
+      "trajectory_score": 0.9365033151690563,
+      "end_position_delta": 0.006273619914398961,
+      "end_orientation_delta": 0.009938770125438137,
+      "joint_delta": 0.023846470685190913,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 320,
+      "candidate_sample_index": 43,
+      "candidate_frame_id": 322,
+      "candidate_time_seconds": 10.733333333333333,
+      "trajectory_score": 0.9211659243786665,
+      "end_position_delta": 0.005501453282204663,
+      "end_orientation_delta": 0.013521497726666472,
+      "joint_delta": 0.022418695490004022,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 646,
+      "candidate_sample_index": 86,
+      "candidate_frame_id": 645,
+      "candidate_time_seconds": 21.5,
+      "trajectory_score": 0.9202268786039366,
+      "end_position_delta": 0.006783871259794746,
+      "end_orientation_delta": 0.009548735095362275,
+      "joint_delta": 0.02107462863576769,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 332,
+      "candidate_sample_index": 44,
+      "candidate_frame_id": 330,
+      "candidate_time_seconds": 11.0,
+      "trajectory_score": 0.9197883785259143,
+      "end_position_delta": 0.0037199707113124854,
+      "end_orientation_delta": 0.013917670676522323,
+      "joint_delta": 0.02934548605724182,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    },
+    {
+      "raw_trajectory_frame_id": 328,
+      "candidate_sample_index": 44,
+      "candidate_frame_id": 330,
+      "candidate_time_seconds": 11.0,
+      "trajectory_score": 0.8909563066514614,
+      "end_position_delta": 0.0037245329393503263,
+      "end_orientation_delta": 0.013838404358965467,
+      "joint_delta": 0.027556322813975957,
+      "gripper_command_delta": 0.0,
+      "gripper_state_delta": 0.0
+    }
+  ]
+}

@@ -1,0 +1,1576 @@
+{
+  "episode_id": "685716",
+  "prompt_version": "codex_vlm_decision_v2",
+  "decision_mode": "codex_visual_review_of_fresh_multiview_and_trajectory_pack",
+  "video_summary": "Visual review produced 9 grounded segments using head, left-hand, and right-hand views.",
+  "multiview_manifest": "/mnt/f/ai/video grounding/api/outputs/codex_vlm_fresh_multiview_20260820_143004/task_388/episodes/685716/multiview_pack/manifest.json",
+  "accepted_or_corrected_boundaries": [
+    {
+      "boundary_sample_index": 49,
+      "boundary_frame_id": 368,
+      "boundary_time": 12.266666666666667,
+      "before_action": "reach_for",
+      "after_action": "grasp",
+      "transition_type": "reach_for_to_grasp",
+      "source": "codex_visual_review",
+      "source_candidate_frame_id": 398,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak near sample 43/frame 322: active end/joint motion has a local high score at trajectory frame 326",
+        "trajectory gripper_command_close near sample 53/frame 398: gripper_command_close from 0.000 to 0.960 over trajectory frames 399..401"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 368"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and red transparent packaged grocery bag state around the boundary"
+        }
+      ],
+      "visual_evidence": [
+        "Before: Right gripper reaches toward a red transparent packaged grocery bag inside the metal shopping cart.",
+        "After: Right gripper closes on the red transparent packaged grocery bag."
+      ],
+      "confidence": 0.82
+    },
+    {
+      "boundary_sample_index": 59,
+      "boundary_frame_id": 442,
+      "boundary_time": 14.733333333333333,
+      "before_action": "grasp",
+      "after_action": "carry",
+      "transition_type": "grasp_to_carry",
+      "source": "codex_visual_review",
+      "source_candidate_frame_id": 398,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close near sample 53/frame 398: gripper_command_close from 0.000 to 0.960 over trajectory frames 399..401"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 442"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and red transparent packaged grocery bag state around the boundary"
+        }
+      ],
+      "visual_evidence": [
+        "Before: Right gripper closes on the red transparent packaged grocery bag.",
+        "After: Right gripper carries the red transparent packaged grocery bag away from the cart area."
+      ],
+      "confidence": 0.82
+    },
+    {
+      "boundary_sample_index": 84,
+      "boundary_frame_id": 630,
+      "boundary_time": 21.0,
+      "before_action": "carry",
+      "after_action": "release",
+      "transition_type": "carry_to_release",
+      "source": "codex_visual_review",
+      "source_candidate_frame_id": 675,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_open near sample 90/frame 675: gripper_command_open from 1.000 to 0.000 over trajectory frames 672..673"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 630"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and red transparent packaged grocery bag state around the boundary"
+        }
+      ],
+      "visual_evidence": [
+        "Before: Right gripper carries the red transparent packaged grocery bag away from the cart area.",
+        "After: Right gripper sets down and releases the red transparent packaged grocery bag with the other groceries."
+      ],
+      "confidence": 0.82
+    },
+    {
+      "boundary_sample_index": 96,
+      "boundary_frame_id": 720,
+      "boundary_time": 24.0,
+      "before_action": "release",
+      "after_action": "reach_for",
+      "transition_type": "release_to_reach_for",
+      "source": "codex_visual_review",
+      "source_candidate_frame_id": 742,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_open near sample 90/frame 675: gripper_command_open from 1.000 to 0.000 over trajectory frames 672..673",
+        "trajectory gripper_state_opening near sample 99/frame 742: gripper_state_opening from 119.467 to 35.600 over trajectory frames 703..740"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 720"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and blue long packaged grocery item state around the boundary"
+        }
+      ],
+      "visual_evidence": [
+        "Before: Right gripper sets down and releases the red transparent packaged grocery bag with the other groceries.",
+        "After: Right gripper reaches back toward a blue long packaged grocery item in the cart."
+      ],
+      "confidence": 0.82
+    },
+    {
+      "boundary_sample_index": 117,
+      "boundary_frame_id": 878,
+      "boundary_time": 29.266666666666666,
+      "before_action": "reach_for",
+      "after_action": "grasp",
+      "transition_type": "reach_for_to_grasp",
+      "source": "codex_visual_review",
+      "source_candidate_frame_id": 870,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close near sample 121/frame 908: gripper_command_close from 0.000 to 0.970 over trajectory frames 909..912"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 878"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and blue long packaged grocery item state around the boundary"
+        }
+      ],
+      "visual_evidence": [
+        "Before: Right gripper reaches back toward a blue long packaged grocery item in the cart.",
+        "After: Right gripper closes on the blue long packaged grocery item."
+      ],
+      "confidence": 0.82
+    },
+    {
+      "boundary_sample_index": 127,
+      "boundary_frame_id": 952,
+      "boundary_time": 31.733333333333334,
+      "before_action": "grasp",
+      "after_action": "carry",
+      "transition_type": "grasp_to_carry",
+      "source": "codex_visual_review",
+      "source_candidate_frame_id": 982,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close near sample 121/frame 908: gripper_command_close from 0.000 to 0.970 over trajectory frames 909..912"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 952"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and blue long packaged grocery item state around the boundary"
+        }
+      ],
+      "visual_evidence": [
+        "Before: Right gripper closes on the blue long packaged grocery item.",
+        "After: Right gripper carries the blue long packaged grocery item away from the cart."
+      ],
+      "confidence": 0.82
+    },
+    {
+      "boundary_sample_index": 149,
+      "boundary_frame_id": 1118,
+      "boundary_time": 37.266666666666666,
+      "before_action": "carry",
+      "after_action": "release",
+      "transition_type": "carry_to_release",
+      "source": "codex_visual_review",
+      "source_candidate_frame_id": 1118,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak near sample 149/frame 1118: active end/joint motion has a local high score at trajectory frame 1120",
+        "trajectory gripper_command_open near sample 155/frame 1162: gripper_command_open from 1.000 to 0.000 over trajectory frames 1159..1162"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 1118"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and blue long packaged grocery item state around the boundary"
+        }
+      ],
+      "visual_evidence": [
+        "Before: Right gripper carries the blue long packaged grocery item away from the cart.",
+        "After: Right gripper releases the blue long packaged grocery item beside the other groceries."
+      ],
+      "confidence": 0.82
+    },
+    {
+      "boundary_sample_index": 161,
+      "boundary_frame_id": 1208,
+      "boundary_time": 40.266666666666666,
+      "before_action": "release",
+      "after_action": "retract",
+      "transition_type": "release_to_retract",
+      "source": "codex_visual_review",
+      "source_candidate_frame_id": 1222,
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_open near sample 155/frame 1162: gripper_command_open from 1.000 to 0.000 over trajectory frames 1159..1162",
+        "trajectory gripper_state_opening near sample 163/frame 1222: gripper_state_opening from 119.467 to 35.911 over trajectory frames 1189..1226"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 1208"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and shopping cart state around the boundary"
+        }
+      ],
+      "visual_evidence": [
+        "Before: Right gripper releases the blue long packaged grocery item beside the other groceries.",
+        "After: Both grippers retract from the shopping cart after the red and blue packaged groceries are left in place."
+      ],
+      "confidence": 0.82
+    }
+  ],
+  "rejected_visual_candidates": [],
+  "segments": [
+    {
+      "start_sample_index": 0,
+      "end_sample_index": 49,
+      "start_frame_id": 0,
+      "end_frame_id": 368,
+      "start_time": 0.0,
+      "end_time": 12.266666666666667,
+      "segment_id": 0,
+      "action_label": "reach_for",
+      "description": "Right gripper reaches toward a red transparent packaged grocery bag inside the metal shopping cart.",
+      "primary_object": "red transparent packaged grocery bag",
+      "secondary_objects": [
+        "metal shopping cart"
+      ],
+      "actor_motion": "approach",
+      "contact_state": "no_contact",
+      "object_motion": "stationary",
+      "goal": "Right gripper reaches toward a red transparent packaged grocery bag inside the metal shopping cart",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "confidence": 0.82,
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak at sample 7/frame 52: active end/joint motion has a local high score at trajectory frame 54",
+        "trajectory trajectory_motion_peak at sample 43/frame 322: active end/joint motion has a local high score at trajectory frame 326"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "approaching",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": []
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 0 0-368."
+      ]
+    },
+    {
+      "start_sample_index": 49,
+      "end_sample_index": 59,
+      "start_frame_id": 368,
+      "end_frame_id": 442,
+      "start_time": 12.266666666666667,
+      "end_time": 14.733333333333333,
+      "segment_id": 1,
+      "action_label": "grasp",
+      "description": "Right gripper closes on the red transparent packaged grocery bag.",
+      "primary_object": "red transparent packaged grocery bag",
+      "secondary_objects": [],
+      "actor_motion": "grasp",
+      "contact_state": "grasped",
+      "object_motion": "stationary_to_moving",
+      "goal": "Right gripper closes on the red transparent packaged grocery bag",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "confidence": 0.82,
+      "trajectory_evidence": [
+        "trajectory gripper_command_close at sample 53/frame 398: gripper_command_close from 0.000 to 0.960 over trajectory frames 399..401"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "grasping",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "red transparent packaged grocery bag"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 1 368-442."
+      ]
+    },
+    {
+      "start_sample_index": 59,
+      "end_sample_index": 84,
+      "start_frame_id": 442,
+      "end_frame_id": 630,
+      "start_time": 14.733333333333333,
+      "end_time": 21.0,
+      "segment_id": 2,
+      "action_label": "carry",
+      "description": "Right gripper carries the red transparent packaged grocery bag away from the cart area.",
+      "primary_object": "red transparent packaged grocery bag",
+      "secondary_objects": [
+        "metal shopping cart"
+      ],
+      "actor_motion": "transport",
+      "contact_state": "grasped",
+      "object_motion": "moving_with_right_gripper",
+      "goal": "Right gripper carries the red transparent packaged grocery bag away from the cart area",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "confidence": 0.82,
+      "trajectory_evidence": [],
+      "left_hand_state": "free",
+      "right_hand_state": "carrying",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "red transparent packaged grocery bag"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 2 442-630."
+      ]
+    },
+    {
+      "start_sample_index": 84,
+      "end_sample_index": 96,
+      "start_frame_id": 630,
+      "end_frame_id": 720,
+      "start_time": 21.0,
+      "end_time": 24.0,
+      "segment_id": 3,
+      "action_label": "release",
+      "description": "Right gripper sets down and releases the red transparent packaged grocery bag with the other groceries.",
+      "primary_object": "red transparent packaged grocery bag",
+      "secondary_objects": [],
+      "actor_motion": "release",
+      "contact_state": "released",
+      "object_motion": "placed",
+      "goal": "Right gripper sets down and releases the red transparent packaged grocery bag with the other groceries",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "confidence": 0.82,
+      "trajectory_evidence": [
+        "trajectory gripper_command_open at sample 90/frame 675: gripper_command_open from 1.000 to 0.000 over trajectory frames 672..673"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "releasing",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "red transparent packaged grocery bag"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 3 630-720."
+      ]
+    },
+    {
+      "start_sample_index": 96,
+      "end_sample_index": 117,
+      "start_frame_id": 720,
+      "end_frame_id": 878,
+      "start_time": 24.0,
+      "end_time": 29.266666666666666,
+      "segment_id": 4,
+      "action_label": "reach_for",
+      "description": "Right gripper reaches back toward a blue long packaged grocery item in the cart.",
+      "primary_object": "blue long packaged grocery item",
+      "secondary_objects": [
+        "red transparent packaged grocery bag",
+        "metal shopping cart"
+      ],
+      "actor_motion": "approach",
+      "contact_state": "no_contact",
+      "object_motion": "stationary",
+      "goal": "Right gripper reaches back toward a blue long packaged grocery item in the cart",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "confidence": 0.82,
+      "trajectory_evidence": [
+        "trajectory gripper_state_opening at sample 99/frame 742: gripper_state_opening from 119.467 to 35.600 over trajectory frames 703..740"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "approaching",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": []
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 4 720-878."
+      ]
+    },
+    {
+      "start_sample_index": 117,
+      "end_sample_index": 127,
+      "start_frame_id": 878,
+      "end_frame_id": 952,
+      "start_time": 29.266666666666666,
+      "end_time": 31.733333333333334,
+      "segment_id": 5,
+      "action_label": "grasp",
+      "description": "Right gripper closes on the blue long packaged grocery item.",
+      "primary_object": "blue long packaged grocery item",
+      "secondary_objects": [],
+      "actor_motion": "grasp",
+      "contact_state": "grasped",
+      "object_motion": "stationary_to_moving",
+      "goal": "Right gripper closes on the blue long packaged grocery item",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "confidence": 0.82,
+      "trajectory_evidence": [
+        "trajectory gripper_command_close at sample 121/frame 908: gripper_command_close from 0.000 to 0.970 over trajectory frames 909..912"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "grasping",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "blue long packaged grocery item"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 5 878-952."
+      ]
+    },
+    {
+      "start_sample_index": 127,
+      "end_sample_index": 149,
+      "start_frame_id": 952,
+      "end_frame_id": 1118,
+      "start_time": 31.733333333333334,
+      "end_time": 37.266666666666666,
+      "segment_id": 6,
+      "action_label": "carry",
+      "description": "Right gripper carries the blue long packaged grocery item away from the cart.",
+      "primary_object": "blue long packaged grocery item",
+      "secondary_objects": [
+        "metal shopping cart"
+      ],
+      "actor_motion": "transport",
+      "contact_state": "grasped",
+      "object_motion": "moving_with_right_gripper",
+      "goal": "Right gripper carries the blue long packaged grocery item away from the cart",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "confidence": 0.82,
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak at sample 149/frame 1118: active end/joint motion has a local high score at trajectory frame 1120"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "carrying",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "blue long packaged grocery item"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 6 952-1118."
+      ]
+    },
+    {
+      "start_sample_index": 149,
+      "end_sample_index": 161,
+      "start_frame_id": 1118,
+      "end_frame_id": 1208,
+      "start_time": 37.266666666666666,
+      "end_time": 40.266666666666666,
+      "segment_id": 7,
+      "action_label": "release",
+      "description": "Right gripper releases the blue long packaged grocery item beside the other groceries.",
+      "primary_object": "blue long packaged grocery item",
+      "secondary_objects": [
+        "red transparent packaged grocery bag"
+      ],
+      "actor_motion": "release",
+      "contact_state": "released",
+      "object_motion": "placed",
+      "goal": "Right gripper releases the blue long packaged grocery item beside the other groceries",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "confidence": 0.82,
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak at sample 149/frame 1118: active end/joint motion has a local high score at trajectory frame 1120",
+        "trajectory gripper_command_open at sample 155/frame 1162: gripper_command_open from 1.000 to 0.000 over trajectory frames 1159..1162"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "releasing",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "blue long packaged grocery item"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 7 1118-1208."
+      ]
+    },
+    {
+      "start_sample_index": 161,
+      "end_sample_index": 253,
+      "start_frame_id": 1208,
+      "end_frame_id": 1898,
+      "start_time": 40.266666666666666,
+      "end_time": 63.266666666666666,
+      "segment_id": 8,
+      "action_label": "retract",
+      "description": "Both grippers retract from the shopping cart after the red and blue packaged groceries are left in place.",
+      "primary_object": "shopping cart",
+      "secondary_objects": [
+        "red transparent packaged grocery bag",
+        "blue long packaged grocery item"
+      ],
+      "actor_motion": "retract",
+      "contact_state": "no_contact",
+      "object_motion": "placed",
+      "goal": "Both grippers retract from the shopping cart after the red and blue packaged groceries are left in place",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "confidence": 0.82,
+      "trajectory_evidence": [
+        "trajectory gripper_state_opening at sample 163/frame 1222: gripper_state_opening from 119.467 to 35.911 over trajectory frames 1189..1226",
+        "trajectory trajectory_motion_peak at sample 183/frame 1372: active end/joint motion has a local high score at trajectory frame 1371"
+      ],
+      "left_hand_state": "retracting",
+      "right_hand_state": "retracting",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": []
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 8 1208-1898."
+      ]
+    }
+  ],
+  "uncertainties": [],
+  "review_revision": "rechecked_388_685716_audit_sharpened_20260820",
+  "inspection_audit": {
+    "audit_version": "codex_vlm_inspection_audit_v4_recheck_356_388_20260820",
+    "reviewed_visual_sources": [
+      {
+        "path": "segment_review_sheets/task_388_episode_685716_segments.jpg",
+        "views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "purpose": "segment start/mid/end tri-view review"
+      },
+      {
+        "path": "debug_zoom_reviews/task388_ep685716_key_zoom.jpg",
+        "views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "purpose": "Codex VLM targeted re-review sheet generated from synchronized sampled frames"
+      },
+      {
+        "path": "debug_zoom_reviews/task388_ep685716_000_442_early_multiview.jpg",
+        "views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "purpose": "Codex VLM targeted re-review sheet generated from synchronized sampled frames"
+      },
+      {
+        "path": "debug_zoom_reviews/task388_ep685716_1208_1898_late_multiview.jpg",
+        "views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "purpose": "Codex VLM targeted re-review sheet generated from synchronized sampled frames"
+      }
+    ],
+    "semantic_change_observations": [
+      {
+        "sample_index": 49,
+        "frame_id": 368,
+        "time": 12.266666666666667,
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "visual_state_change": "Before frame 368: Right gripper reaches toward a red transparent packaged grocery bag inside the metal shopping cart.; After frame 368: Right gripper closes on the red transparent packaged grocery bag.",
+        "decision": "accepted_boundary"
+      },
+      {
+        "sample_index": 59,
+        "frame_id": 442,
+        "time": 14.733333333333333,
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "visual_state_change": "Before frame 442: Right gripper closes on the red transparent packaged grocery bag.; After frame 442: Right gripper carries the red transparent packaged grocery bag away from the cart area.",
+        "decision": "accepted_boundary"
+      },
+      {
+        "sample_index": 84,
+        "frame_id": 630,
+        "time": 21.0,
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "visual_state_change": "Before frame 630: Right gripper carries the red transparent packaged grocery bag away from the cart area.; After frame 630: Right gripper sets down and releases the red transparent packaged grocery bag with the other groceries.",
+        "decision": "accepted_boundary"
+      },
+      {
+        "sample_index": 96,
+        "frame_id": 720,
+        "time": 24.0,
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "visual_state_change": "Before frame 720: Right gripper sets down and releases the red transparent packaged grocery bag with the other groceries.; After frame 720: Right gripper reaches back toward a blue long packaged grocery item in the cart.",
+        "decision": "accepted_boundary"
+      },
+      {
+        "sample_index": 117,
+        "frame_id": 878,
+        "time": 29.266666666666666,
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "visual_state_change": "Before frame 878: Right gripper reaches back toward a blue long packaged grocery item in the cart.; After frame 878: Right gripper closes on the blue long packaged grocery item.",
+        "decision": "accepted_boundary"
+      },
+      {
+        "sample_index": 127,
+        "frame_id": 952,
+        "time": 31.733333333333334,
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "visual_state_change": "Before frame 952: Right gripper closes on the blue long packaged grocery item.; After frame 952: Right gripper carries the blue long packaged grocery item away from the cart.",
+        "decision": "accepted_boundary"
+      },
+      {
+        "sample_index": 149,
+        "frame_id": 1118,
+        "time": 37.266666666666666,
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "visual_state_change": "Before frame 1118: Right gripper carries the blue long packaged grocery item away from the cart.; After frame 1118: Right gripper releases the blue long packaged grocery item beside the other groceries.",
+        "decision": "accepted_boundary"
+      },
+      {
+        "sample_index": 161,
+        "frame_id": 1208,
+        "time": 40.266666666666666,
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "visual_state_change": "Before frame 1208: Right gripper releases the blue long packaged grocery item beside the other groceries.; After frame 1208: Both grippers retract from the shopping cart after the red and blue packaged groceries are left in place.",
+        "decision": "accepted_boundary"
+      }
+    ],
+    "trajectory_change_observations": [
+      {
+        "candidate_sample_index": 7,
+        "candidate_frame_id": 52,
+        "event_type": "trajectory_motion_peak",
+        "metrics": {
+          "end_position_delta": 0.0034886553767797864,
+          "end_orientation_delta": 0.023461897420766008,
+          "joint_delta": 0.04979617095700826,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        },
+        "interpretation": "active end/joint motion has a local high score at trajectory frame 54 -- used as timing evidence only after checking tri-view contact/object state."
+      },
+      {
+        "candidate_sample_index": 43,
+        "candidate_frame_id": 322,
+        "event_type": "trajectory_motion_peak",
+        "metrics": {
+          "end_position_delta": 0.0046780979454362276,
+          "end_orientation_delta": 0.016197743543962608,
+          "joint_delta": 0.031468617258961135,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        },
+        "interpretation": "active end/joint motion has a local high score at trajectory frame 326 -- used as timing evidence only after checking tri-view contact/object state."
+      },
+      {
+        "candidate_sample_index": 53,
+        "candidate_frame_id": 398,
+        "event_type": "gripper_command_close",
+        "metrics": {
+          "gripper_command_before": 0.0,
+          "gripper_command_after": 0.96
+        },
+        "interpretation": "gripper_command_close from 0.000 to 0.960 over trajectory frames 399..401 -- used as timing evidence only after checking tri-view contact/object state."
+      },
+      {
+        "candidate_sample_index": 90,
+        "candidate_frame_id": 675,
+        "event_type": "gripper_command_open",
+        "metrics": {
+          "gripper_command_before": 1.0,
+          "gripper_command_after": 0.0
+        },
+        "interpretation": "gripper_command_open from 1.000 to 0.000 over trajectory frames 672..673 -- used as timing evidence only after checking tri-view contact/object state."
+      },
+      {
+        "candidate_sample_index": 99,
+        "candidate_frame_id": 742,
+        "event_type": "gripper_state_opening",
+        "metrics": {
+          "gripper_state_before": 119.46666666666667,
+          "gripper_state_after": 35.6
+        },
+        "interpretation": "gripper_state_opening from 119.467 to 35.600 over trajectory frames 703..740 -- used as timing evidence only after checking tri-view contact/object state."
+      },
+      {
+        "candidate_sample_index": 121,
+        "candidate_frame_id": 908,
+        "event_type": "gripper_command_close",
+        "metrics": {
+          "gripper_command_before": 0.0,
+          "gripper_command_after": 0.97
+        },
+        "interpretation": "gripper_command_close from 0.000 to 0.970 over trajectory frames 909..912 -- used as timing evidence only after checking tri-view contact/object state."
+      },
+      {
+        "candidate_sample_index": 149,
+        "candidate_frame_id": 1118,
+        "event_type": "trajectory_motion_peak",
+        "metrics": {
+          "end_position_delta": 0.00789925587359371,
+          "end_orientation_delta": 0.011377801864992954,
+          "joint_delta": 0.0262343358143281,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        },
+        "interpretation": "active end/joint motion has a local high score at trajectory frame 1120 -- used as timing evidence only after checking tri-view contact/object state."
+      },
+      {
+        "candidate_sample_index": 155,
+        "candidate_frame_id": 1162,
+        "event_type": "gripper_command_open",
+        "metrics": {
+          "gripper_command_before": 1.0,
+          "gripper_command_after": 0.0
+        },
+        "interpretation": "gripper_command_open from 1.000 to 0.000 over trajectory frames 1159..1162 -- used as timing evidence only after checking tri-view contact/object state."
+      },
+      {
+        "candidate_sample_index": 163,
+        "candidate_frame_id": 1222,
+        "event_type": "gripper_state_opening",
+        "metrics": {
+          "gripper_state_before": 119.46666666666667,
+          "gripper_state_after": 35.91111111111111
+        },
+        "interpretation": "gripper_state_opening from 119.467 to 35.911 over trajectory frames 1189..1226 -- used as timing evidence only after checking tri-view contact/object state."
+      },
+      {
+        "candidate_sample_index": 183,
+        "candidate_frame_id": 1372,
+        "event_type": "trajectory_motion_peak",
+        "metrics": {
+          "end_position_delta": 0.005580178057987442,
+          "end_orientation_delta": 0.009152226450992743,
+          "joint_delta": 0.03237594538469748,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        },
+        "interpretation": "active end/joint motion has a local high score at trajectory frame 1371 -- used as timing evidence only after checking tri-view contact/object state."
+      },
+      {
+        "candidate_sample_index": 236,
+        "candidate_frame_id": 1770,
+        "event_type": "trajectory_motion_peak",
+        "metrics": {
+          "end_position_delta": 0.004624510082709842,
+          "end_orientation_delta": 0.009979556784218859,
+          "joint_delta": 0.03936940907111367,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        },
+        "interpretation": "active end/joint motion has a local high score at trajectory frame 1772 -- used as timing evidence only after checking tri-view contact/object state."
+      },
+      {
+        "candidate_sample_index": 243,
+        "candidate_frame_id": 1822,
+        "event_type": "trajectory_motion_peak",
+        "metrics": {
+          "end_position_delta": 0.006034686018489445,
+          "end_orientation_delta": 0.013361782688659117,
+          "joint_delta": 0.031691469576417344,
+          "gripper_command_delta": 0.0,
+          "gripper_state_delta": 0.0
+        },
+        "interpretation": "active end/joint motion has a local high score at trajectory frame 1819 -- used as timing evidence only after checking tri-view contact/object state."
+      }
+    ],
+    "undersegmentation_checks": [
+      {
+        "segment_index": 0,
+        "action_label": "reach_for",
+        "frame_range": [
+          0,
+          368
+        ],
+        "checked_frames": [
+          0,
+          180,
+          368
+        ],
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "result": "High-risk cues were reviewed in tri-view sheets; they show continuous motion within this segment, not a new object grasp/release boundary.",
+        "risk_reasons": [
+          "long_reach_for_segment_368_frames",
+          "multiple_internal_trajectory_candidates_2"
+        ],
+        "internal_event_frames_reviewed": [
+          52,
+          322
+        ],
+        "reviewed_local_sheets": [
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_007_frames_0022_0082.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_043_frames_0292_0352.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_005_frames_0008_0068.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_041_frames_0278_0338.jpg"
+        ],
+        "split_decision": "keep_single_segment"
+      },
+      {
+        "segment_index": 1,
+        "action_label": "grasp",
+        "frame_range": [
+          368,
+          442
+        ],
+        "checked_frames": [
+          368,
+          405,
+          442
+        ],
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "result": "No additional grasp/release/object-identity change visible inside this final segment; any motion is continuous within the stated action."
+      },
+      {
+        "segment_index": 2,
+        "action_label": "carry",
+        "frame_range": [
+          442,
+          630
+        ],
+        "checked_frames": [
+          442,
+          532,
+          630
+        ],
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "result": "No additional grasp/release/object-identity change visible inside this final segment; any motion is continuous within the stated action."
+      },
+      {
+        "segment_index": 3,
+        "action_label": "release",
+        "frame_range": [
+          630,
+          720
+        ],
+        "checked_frames": [
+          630,
+          675,
+          720
+        ],
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "result": "No additional grasp/release/object-identity change visible inside this final segment; any motion is continuous within the stated action."
+      },
+      {
+        "segment_index": 4,
+        "action_label": "reach_for",
+        "frame_range": [
+          720,
+          878
+        ],
+        "checked_frames": [
+          720,
+          795,
+          878
+        ],
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "result": "High-risk cues were reviewed in tri-view sheets; they show continuous motion within this segment, not a new object grasp/release boundary.",
+        "risk_reasons": [
+          "internal_gripper_event_inside_non_grasp_release_segment",
+          "multiple_internal_visual_candidates_4"
+        ],
+        "internal_event_frames_reviewed": [
+          742
+        ],
+        "reviewed_local_sheets": [
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_099_frames_0712_0772.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_100_frames_0720_0780.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_105_frames_0758_0818.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_110_frames_0795_0855.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_116_frames_0840_0900.jpg"
+        ],
+        "split_decision": "keep_single_segment"
+      },
+      {
+        "segment_index": 5,
+        "action_label": "grasp",
+        "frame_range": [
+          878,
+          952
+        ],
+        "checked_frames": [
+          878,
+          915,
+          952
+        ],
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "result": "No additional grasp/release/object-identity change visible inside this final segment; any motion is continuous within the stated action."
+      },
+      {
+        "segment_index": 6,
+        "action_label": "carry",
+        "frame_range": [
+          952,
+          1118
+        ],
+        "checked_frames": [
+          952,
+          1035,
+          1118
+        ],
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "result": "High-risk cues were reviewed in tri-view sheets; they show continuous motion within this segment, not a new object grasp/release boundary.",
+        "risk_reasons": [
+          "multiple_internal_visual_candidates_3"
+        ],
+        "internal_event_frames_reviewed": [],
+        "reviewed_local_sheets": [
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_131_frames_0952_1012.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_136_frames_0990_1050.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_148_frames_1080_1140.jpg"
+        ],
+        "split_decision": "keep_single_segment"
+      },
+      {
+        "segment_index": 7,
+        "action_label": "release",
+        "frame_range": [
+          1118,
+          1208
+        ],
+        "checked_frames": [
+          1118,
+          1162,
+          1208
+        ],
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "result": "No additional grasp/release/object-identity change visible inside this final segment; any motion is continuous within the stated action."
+      },
+      {
+        "segment_index": 8,
+        "action_label": "retract",
+        "frame_range": [
+          1208,
+          1898
+        ],
+        "checked_frames": [
+          1208,
+          1552,
+          1898
+        ],
+        "selected_views": [
+          "head_color",
+          "hand_left_color",
+          "hand_right_color"
+        ],
+        "result": "High-risk cues were reviewed in tri-view sheets; they show continuous motion within this segment, not a new object grasp/release boundary.",
+        "risk_reasons": [
+          "long_retract_segment_690_frames",
+          "internal_gripper_event_inside_non_grasp_release_segment",
+          "multiple_internal_trajectory_candidates_4",
+          "multiple_internal_visual_candidates_5"
+        ],
+        "internal_event_frames_reviewed": [
+          1222,
+          1372,
+          1770,
+          1822
+        ],
+        "reviewed_local_sheets": [
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_163_frames_1192_1252.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_183_frames_1342_1402.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_236_frames_1740_1800.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_243_frames_1792_1852.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_172_frames_1260_1320.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_184_frames_1350_1410.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_189_frames_1388_1448.jpg",
+          "multiview_pack/contact_sheets/multiview_local_candidate_sample_235_frames_1732_1792.jpg"
+        ],
+        "split_decision": "keep_single_segment"
+      }
+    ],
+    "undersegmentation_risk_review": {
+      "risk_count_after_current_splits": 4,
+      "risks_reviewed": [
+        {
+          "segment_index": 0,
+          "action_label": "reach_for",
+          "frame_range": [
+            0,
+            368
+          ],
+          "duration_frames": 368,
+          "risk_reasons": [
+            "long_reach_for_segment_368_frames",
+            "multiple_internal_trajectory_candidates_2"
+          ],
+          "required_internal_event_frames": [
+            52,
+            322
+          ],
+          "internal_trajectory_events": [
+            {
+              "frame_id": 52,
+              "sample_index": 7,
+              "event_type": "trajectory_motion_peak",
+              "trajectory_score": 1.3751379741806624,
+              "signals": {
+                "end_position_delta": 0.0034886553767797864,
+                "end_orientation_delta": 0.023461897420766008,
+                "joint_delta": 0.04979617095700826,
+                "gripper_command_delta": 0.0,
+                "gripper_state_delta": 0.0
+              },
+              "candidate_sources": [],
+              "visual_fused_score": null,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_007_frames_0022_0082.jpg"
+              ]
+            },
+            {
+              "frame_id": 322,
+              "sample_index": 43,
+              "event_type": "trajectory_motion_peak",
+              "trajectory_score": 1.051283112910661,
+              "signals": {
+                "end_position_delta": 0.0046780979454362276,
+                "end_orientation_delta": 0.016197743543962608,
+                "joint_delta": 0.031468617258961135,
+                "gripper_command_delta": 0.0,
+                "gripper_state_delta": 0.0
+              },
+              "candidate_sources": [],
+              "visual_fused_score": null,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_043_frames_0292_0352.jpg"
+              ]
+            }
+          ],
+          "internal_visual_candidates": [
+            {
+              "frame_id": 38,
+              "sample_index": 5,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.04482231124862902,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_005_frames_0008_0068.jpg"
+              ]
+            },
+            {
+              "frame_id": 308,
+              "sample_index": 41,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.042147746585747256,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_041_frames_0278_0338.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "segment_index": 4,
+          "action_label": "reach_for",
+          "frame_range": [
+            720,
+            878
+          ],
+          "duration_frames": 158,
+          "risk_reasons": [
+            "internal_gripper_event_inside_non_grasp_release_segment",
+            "multiple_internal_visual_candidates_4"
+          ],
+          "required_internal_event_frames": [
+            742
+          ],
+          "internal_trajectory_events": [
+            {
+              "frame_id": 742,
+              "sample_index": 99,
+              "event_type": "gripper_state_opening",
+              "trajectory_score": 2.6900314795383,
+              "signals": {
+                "gripper_state_before": 119.46666666666667,
+                "gripper_state_after": 35.6
+              },
+              "candidate_sources": [],
+              "visual_fused_score": null,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_099_frames_0712_0772.jpg"
+              ]
+            }
+          ],
+          "internal_visual_candidates": [
+            {
+              "frame_id": 750,
+              "sample_index": 100,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.03469073177791557,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_100_frames_0720_0780.jpg"
+              ]
+            },
+            {
+              "frame_id": 788,
+              "sample_index": 105,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.040105190503132965,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_105_frames_0758_0818.jpg"
+              ]
+            },
+            {
+              "frame_id": 825,
+              "sample_index": 110,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.04069732223266197,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_110_frames_0795_0855.jpg"
+              ]
+            },
+            {
+              "frame_id": 870,
+              "sample_index": 116,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.03937534400461097,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_116_frames_0840_0900.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "segment_index": 6,
+          "action_label": "carry",
+          "frame_range": [
+            952,
+            1118
+          ],
+          "duration_frames": 166,
+          "risk_reasons": [
+            "multiple_internal_visual_candidates_3"
+          ],
+          "required_internal_event_frames": [],
+          "internal_trajectory_events": [],
+          "internal_visual_candidates": [
+            {
+              "frame_id": 982,
+              "sample_index": 131,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.04827230417075863,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_131_frames_0952_1012.jpg"
+              ]
+            },
+            {
+              "frame_id": 1020,
+              "sample_index": 136,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.04258571049009466,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_136_frames_0990_1050.jpg"
+              ]
+            },
+            {
+              "frame_id": 1110,
+              "sample_index": 148,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.04178565096865837,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_148_frames_1080_1140.jpg"
+              ]
+            }
+          ]
+        },
+        {
+          "segment_index": 8,
+          "action_label": "retract",
+          "frame_range": [
+            1208,
+            1898
+          ],
+          "duration_frames": 690,
+          "risk_reasons": [
+            "long_retract_segment_690_frames",
+            "internal_gripper_event_inside_non_grasp_release_segment",
+            "multiple_internal_trajectory_candidates_4",
+            "multiple_internal_visual_candidates_5"
+          ],
+          "required_internal_event_frames": [
+            1222,
+            1372,
+            1770,
+            1822
+          ],
+          "internal_trajectory_events": [
+            {
+              "frame_id": 1222,
+              "sample_index": 163,
+              "event_type": "gripper_state_opening",
+              "trajectory_score": 2.6863588667366214,
+              "signals": {
+                "gripper_state_before": 119.46666666666667,
+                "gripper_state_after": 35.91111111111111
+              },
+              "candidate_sources": [],
+              "visual_fused_score": null,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_163_frames_1192_1252.jpg"
+              ]
+            },
+            {
+              "frame_id": 1372,
+              "sample_index": 183,
+              "event_type": "trajectory_motion_peak",
+              "trajectory_score": 1.011857233462802,
+              "signals": {
+                "end_position_delta": 0.005580178057987442,
+                "end_orientation_delta": 0.009152226450992743,
+                "joint_delta": 0.03237594538469748,
+                "gripper_command_delta": 0.0,
+                "gripper_state_delta": 0.0
+              },
+              "candidate_sources": [],
+              "visual_fused_score": null,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_183_frames_1342_1402.jpg"
+              ]
+            },
+            {
+              "frame_id": 1770,
+              "sample_index": 236,
+              "event_type": "trajectory_motion_peak",
+              "trajectory_score": 1.0719488720675923,
+              "signals": {
+                "end_position_delta": 0.004624510082709842,
+                "end_orientation_delta": 0.009979556784218859,
+                "joint_delta": 0.03936940907111367,
+                "gripper_command_delta": 0.0,
+                "gripper_state_delta": 0.0
+              },
+              "candidate_sources": [],
+              "visual_fused_score": null,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_236_frames_1740_1800.jpg"
+              ]
+            },
+            {
+              "frame_id": 1822,
+              "sample_index": 243,
+              "event_type": "trajectory_motion_peak",
+              "trajectory_score": 1.0976449617117428,
+              "signals": {
+                "end_position_delta": 0.006034686018489445,
+                "end_orientation_delta": 0.013361782688659117,
+                "joint_delta": 0.031691469576417344,
+                "gripper_command_delta": 0.0,
+                "gripper_state_delta": 0.0
+              },
+              "candidate_sources": [],
+              "visual_fused_score": null,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_243_frames_1792_1852.jpg"
+              ]
+            }
+          ],
+          "internal_visual_candidates": [
+            {
+              "frame_id": 1290,
+              "sample_index": 172,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.0485042250142869,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_172_frames_1260_1320.jpg"
+              ]
+            },
+            {
+              "frame_id": 1380,
+              "sample_index": 184,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.04289967977773302,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_184_frames_1350_1410.jpg"
+              ]
+            },
+            {
+              "frame_id": 1418,
+              "sample_index": 189,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.03597622248898667,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_189_frames_1388_1448.jpg"
+              ]
+            },
+            {
+              "frame_id": 1762,
+              "sample_index": 235,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.037312118809246016,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_235_frames_1732_1792.jpg"
+              ]
+            },
+            {
+              "frame_id": 1800,
+              "sample_index": 240,
+              "event_type": "",
+              "trajectory_score": null,
+              "signals": {},
+              "candidate_sources": [
+                "visual_prior"
+              ],
+              "visual_fused_score": 0.04417500678277697,
+              "local_sheets": [
+                "multiview_pack/contact_sheets/multiview_local_candidate_sample_240_frames_1770_1830.jpg"
+              ]
+            }
+          ]
+        }
+      ],
+      "decision_note": "Rechecked requested episode 388/685716. The first object has reach/grasp/carry/release boundaries already; late trajectory peaks after frame 1208 show retraction/viewpoint/cart motion with empty grippers, not new object manipulation."
+    }
+  },
+  "refinement_reason": "Rechecked 388/685716 requested by user; retained segmentation after tri-view review and documented late motion peaks as no-contact retraction."
+}

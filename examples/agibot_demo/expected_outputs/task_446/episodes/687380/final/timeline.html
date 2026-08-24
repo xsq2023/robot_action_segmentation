@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Robot TAS Timeline</title>
+  <style>
+    body {
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      margin: 24px;
+      color: #1d1d1d;
+      background: linear-gradient(180deg, #f4efe6 0%, #ffffff 100%);
+    }
+    h1, h2 { margin-bottom: 8px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .thumb {
+      position: relative;
+      border: 1px solid #cfc6b9;
+      border-radius: 12px;
+      background: #fffdf9;
+      padding: 8px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+    .thumb img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+    .meta {
+      margin-top: 6px;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #b33a3a;
+      color: white;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #ddd3c5;
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 13px;
+    }
+    th {
+      background: #efe6d8;
+    }
+    .meta-box {
+      background: white;
+      border: 1px solid #ddd3c5;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Robot TAS Timeline</h1>
+  <div class="meta-box">
+    <div><strong>Video:</strong> /mnt/f/ai/video grounding/dataset/AgiBotWorld-Alpha/observations/446/687380/videos/head_color.mp4</div>
+    <div><strong>FPS:</strong> 30.000</div>
+    <div><strong>Total frames:</strong> 1759</div>
+    <div><strong>Duration:</strong> 58.633s</div>
+    <div><strong>Sample FPS:</strong> 4.000</div>
+    <div><strong>Resolution:</strong> 640 x 480</div>
+  </div>
+
+  <h2>Segments</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Label</th><th>Start Time</th><th>End Time</th><th>Start Frame</th><th>End Frame</th><th>Conf.</th><th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>0</td><td>reach_for</td><td>0.000</td><td>5.733</td><td>0</td><td>172</td><td>0.82</td><td>Both grippers move toward opposite sides of the white table edge.</td></tr>
+<tr><td>1</td><td>grasp</td><td>5.733</td><td>8.267</td><td>172</td><td>248</td><td>0.82</td><td>Left and right grippers close on the white table edge and establish contact.</td></tr>
+<tr><td>2</td><td>move</td><td>8.267</td><td>24.267</td><td>248</td><td>728</td><td>0.82</td><td>Both grippers keep contact with the white table edge while moving the table across the marked floor area.</td></tr>
+<tr><td>3</td><td>release</td><td>24.267</td><td>27.267</td><td>728</td><td>818</td><td>0.82</td><td>Left and right grippers open and release the white table edge.</td></tr>
+<tr><td>4</td><td>retract</td><td>27.267</td><td>58.500</td><td>818</td><td>1755</td><td>0.82</td><td>Both grippers retract from the white table after releasing it.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Boundaries</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Sample</th><th>Frame</th><th>Time</th><th>Transition</th><th>Conf.</th><th>Evidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>23</td><td>172</td><td>5.733</td><td>reach_for_to_grasp</td><td>0.82</td><td>Before: Both grippers move toward opposite sides of the white table edge.; After: Left and right grippers close on the white table edge and establish contact.</td></tr>
+<tr><td>33</td><td>248</td><td>8.267</td><td>grasp_to_move</td><td>0.82</td><td>Before: Left and right grippers close on the white table edge and establish contact.; After: Both grippers keep contact with the white table edge while moving the table across the marked floor area.</td></tr>
+<tr><td>97</td><td>728</td><td>24.267</td><td>move_to_release</td><td>0.82</td><td>Before: Both grippers keep contact with the white table edge while moving the table across the marked floor area.; After: Left and right grippers open and release the white table edge.</td></tr>
+<tr><td>109</td><td>818</td><td>27.267</td><td>release_to_retract</td><td>0.82</td><td>Before: Left and right grippers open and release the white table edge.; After: Both grippers retract from the white table after releasing it.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Sampled Frames</h2>
+  <div class="grid">
+    <div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000000_frame_000000.jpg' alt='sample 0'><div class='meta'>sample 0<br>frame 0<br>0.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000001_frame_000008.jpg' alt='sample 1'><div class='meta'>sample 1<br>frame 8<br>0.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000002_frame_000015.jpg' alt='sample 2'><div class='meta'>sample 2<br>frame 15<br>0.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000003_frame_000022.jpg' alt='sample 3'><div class='meta'>sample 3<br>frame 22<br>0.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000004_frame_000030.jpg' alt='sample 4'><div class='meta'>sample 4<br>frame 30<br>1.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000005_frame_000038.jpg' alt='sample 5'><div class='meta'>sample 5<br>frame 38<br>1.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000006_frame_000045.jpg' alt='sample 6'><div class='meta'>sample 6<br>frame 45<br>1.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000007_frame_000052.jpg' alt='sample 7'><div class='meta'>sample 7<br>frame 52<br>1.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000008_frame_000060.jpg' alt='sample 8'><div class='meta'>sample 8<br>frame 60<br>2.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000009_frame_000068.jpg' alt='sample 9'><div class='meta'>sample 9<br>frame 68<br>2.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000010_frame_000075.jpg' alt='sample 10'><div class='meta'>sample 10<br>frame 75<br>2.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000011_frame_000082.jpg' alt='sample 11'><div class='meta'>sample 11<br>frame 82<br>2.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000012_frame_000090.jpg' alt='sample 12'><div class='meta'>sample 12<br>frame 90<br>3.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000013_frame_000098.jpg' alt='sample 13'><div class='meta'>sample 13<br>frame 98<br>3.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000014_frame_000105.jpg' alt='sample 14'><div class='meta'>sample 14<br>frame 105<br>3.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000015_frame_000112.jpg' alt='sample 15'><div class='meta'>sample 15<br>frame 112<br>3.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000016_frame_000120.jpg' alt='sample 16'><div class='meta'>sample 16<br>frame 120<br>4.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000017_frame_000128.jpg' alt='sample 17'><div class='meta'>sample 17<br>frame 128<br>4.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000018_frame_000135.jpg' alt='sample 18'><div class='meta'>sample 18<br>frame 135<br>4.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000019_frame_000142.jpg' alt='sample 19'><div class='meta'>sample 19<br>frame 142<br>4.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000020_frame_000150.jpg' alt='sample 20'><div class='meta'>sample 20<br>frame 150<br>5.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000021_frame_000158.jpg' alt='sample 21'><div class='meta'>sample 21<br>frame 158<br>5.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000022_frame_000165.jpg' alt='sample 22'><div class='meta'>sample 22<br>frame 165<br>5.500s</div></div>
+<div class='thumb'><div class="badge">boundary</div><img src='../base_head_pipeline/sampled_frames/sample_000023_frame_000172.jpg' alt='sample 23'><div class='meta'>sample 23<br>frame 172<br>5.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000024_frame_000180.jpg' alt='sample 24'><div class='meta'>sample 24<br>frame 180<br>6.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000025_frame_000188.jpg' alt='sample 25'><div class='meta'>sample 25<br>frame 188<br>6.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000026_frame_000195.jpg' alt='sample 26'><div class='meta'>sample 26<br>frame 195<br>6.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000027_frame_000202.jpg' alt='sample 27'><div class='meta'>sample 27<br>frame 202<br>6.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000028_frame_000210.jpg' alt='sample 28'><div class='meta'>sample 28<br>frame 210<br>7.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000029_frame_000218.jpg' alt='sample 29'><div class='meta'>sample 29<br>frame 218<br>7.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000030_frame_000225.jpg' alt='sample 30'><div class='meta'>sample 30<br>frame 225<br>7.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000031_frame_000232.jpg' alt='sample 31'><div class='meta'>sample 31<br>frame 232<br>7.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000032_frame_000240.jpg' alt='sample 32'><div class='meta'>sample 32<br>frame 240<br>8.000s</div></div>
+<div class='thumb'><div class="badge">boundary</div><img src='../base_head_pipeline/sampled_frames/sample_000033_frame_000248.jpg' alt='sample 33'><div class='meta'>sample 33<br>frame 248<br>8.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000034_frame_000255.jpg' alt='sample 34'><div class='meta'>sample 34<br>frame 255<br>8.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000035_frame_000262.jpg' alt='sample 35'><div class='meta'>sample 35<br>frame 262<br>8.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000036_frame_000270.jpg' alt='sample 36'><div class='meta'>sample 36<br>frame 270<br>9.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000037_frame_000278.jpg' alt='sample 37'><div class='meta'>sample 37<br>frame 278<br>9.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000038_frame_000285.jpg' alt='sample 38'><div class='meta'>sample 38<br>frame 285<br>9.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000039_frame_000292.jpg' alt='sample 39'><div class='meta'>sample 39<br>frame 292<br>9.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000040_frame_000300.jpg' alt='sample 40'><div class='meta'>sample 40<br>frame 300<br>10.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000041_frame_000308.jpg' alt='sample 41'><div class='meta'>sample 41<br>frame 308<br>10.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000042_frame_000315.jpg' alt='sample 42'><div class='meta'>sample 42<br>frame 315<br>10.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000043_frame_000322.jpg' alt='sample 43'><div class='meta'>sample 43<br>frame 322<br>10.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000044_frame_000330.jpg' alt='sample 44'><div class='meta'>sample 44<br>frame 330<br>11.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000045_frame_000338.jpg' alt='sample 45'><div class='meta'>sample 45<br>frame 338<br>11.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000046_frame_000345.jpg' alt='sample 46'><div class='meta'>sample 46<br>frame 345<br>11.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000047_frame_000352.jpg' alt='sample 47'><div class='meta'>sample 47<br>frame 352<br>11.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000048_frame_000360.jpg' alt='sample 48'><div class='meta'>sample 48<br>frame 360<br>12.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000049_frame_000368.jpg' alt='sample 49'><div class='meta'>sample 49<br>frame 368<br>12.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000050_frame_000375.jpg' alt='sample 50'><div class='meta'>sample 50<br>frame 375<br>12.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000051_frame_000382.jpg' alt='sample 51'><div class='meta'>sample 51<br>frame 382<br>12.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000052_frame_000390.jpg' alt='sample 52'><div class='meta'>sample 52<br>frame 390<br>13.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000053_frame_000398.jpg' alt='sample 53'><div class='meta'>sample 53<br>frame 398<br>13.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000054_frame_000405.jpg' alt='sample 54'><div class='meta'>sample 54<br>frame 405<br>13.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000055_frame_000412.jpg' alt='sample 55'><div class='meta'>sample 55<br>frame 412<br>13.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000056_frame_000420.jpg' alt='sample 56'><div class='meta'>sample 56<br>frame 420<br>14.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000057_frame_000428.jpg' alt='sample 57'><div class='meta'>sample 57<br>frame 428<br>14.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000058_frame_000435.jpg' alt='sample 58'><div class='meta'>sample 58<br>frame 435<br>14.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000059_frame_000442.jpg' alt='sample 59'><div class='meta'>sample 59<br>frame 442<br>14.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000060_frame_000450.jpg' alt='sample 60'><div class='meta'>sample 60<br>frame 450<br>15.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000061_frame_000458.jpg' alt='sample 61'><div class='meta'>sample 61<br>frame 458<br>15.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000062_frame_000465.jpg' alt='sample 62'><div class='meta'>sample 62<br>frame 465<br>15.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000063_frame_000472.jpg' alt='sample 63'><div class='meta'>sample 63<br>frame 472<br>15.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000064_frame_000480.jpg' alt='sample 64'><div class='meta'>sample 64<br>frame 480<br>16.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000065_frame_000488.jpg' alt='sample 65'><div class='meta'>sample 65<br>frame 488<br>16.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000066_frame_000495.jpg' alt='sample 66'><div class='meta'>sample 66<br>frame 495<br>16.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000067_frame_000502.jpg' alt='sample 67'><div class='meta'>sample 67<br>frame 502<br>16.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000068_frame_000510.jpg' alt='sample 68'><div class='meta'>sample 68<br>frame 510<br>17.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000069_frame_000518.jpg' alt='sample 69'><div class='meta'>sample 69<br>frame 518<br>17.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000070_frame_000525.jpg' alt='sample 70'><div class='meta'>sample 70<br>frame 525<br>17.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000071_frame_000532.jpg' alt='sample 71'><div class='meta'>sample 71<br>frame 532<br>17.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000072_frame_000540.jpg' alt='sample 72'><div class='meta'>sample 72<br>frame 540<br>18.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000073_frame_000548.jpg' alt='sample 73'><div class='meta'>sample 73<br>frame 548<br>18.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000074_frame_000555.jpg' alt='sample 74'><div class='meta'>sample 74<br>frame 555<br>18.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000075_frame_000562.jpg' alt='sample 75'><div class='meta'>sample 75<br>frame 562<br>18.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000076_frame_000570.jpg' alt='sample 76'><div class='meta'>sample 76<br>frame 570<br>19.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000077_frame_000578.jpg' alt='sample 77'><div class='meta'>sample 77<br>frame 578<br>19.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000078_frame_000585.jpg' alt='sample 78'><div class='meta'>sample 78<br>frame 585<br>19.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000079_frame_000592.jpg' alt='sample 79'><div class='meta'>sample 79<br>frame 592<br>19.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000080_frame_000600.jpg' alt='sample 80'><div class='meta'>sample 80<br>frame 600<br>20.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000081_frame_000608.jpg' alt='sample 81'><div class='meta'>sample 81<br>frame 608<br>20.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000082_frame_000615.jpg' alt='sample 82'><div class='meta'>sample 82<br>frame 615<br>20.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000083_frame_000622.jpg' alt='sample 83'><div class='meta'>sample 83<br>frame 622<br>20.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000084_frame_000630.jpg' alt='sample 84'><div class='meta'>sample 84<br>frame 630<br>21.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000085_frame_000638.jpg' alt='sample 85'><div class='meta'>sample 85<br>frame 638<br>21.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000086_frame_000645.jpg' alt='sample 86'><div class='meta'>sample 86<br>frame 645<br>21.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000087_frame_000652.jpg' alt='sample 87'><div class='meta'>sample 87<br>frame 652<br>21.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000088_frame_000660.jpg' alt='sample 88'><div class='meta'>sample 88<br>frame 660<br>22.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000089_frame_000668.jpg' alt='sample 89'><div class='meta'>sample 89<br>frame 668<br>22.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000090_frame_000675.jpg' alt='sample 90'><div class='meta'>sample 90<br>frame 675<br>22.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000091_frame_000682.jpg' alt='sample 91'><div class='meta'>sample 91<br>frame 682<br>22.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000092_frame_000690.jpg' alt='sample 92'><div class='meta'>sample 92<br>frame 690<br>23.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000093_frame_000698.jpg' alt='sample 93'><div class='meta'>sample 93<br>frame 698<br>23.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000094_frame_000705.jpg' alt='sample 94'><div class='meta'>sample 94<br>frame 705<br>23.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000095_frame_000712.jpg' alt='sample 95'><div class='meta'>sample 95<br>frame 712<br>23.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000096_frame_000720.jpg' alt='sample 96'><div class='meta'>sample 96<br>frame 720<br>24.000s</div></div>
+<div class='thumb'><div class="badge">boundary</div><img src='../base_head_pipeline/sampled_frames/sample_000097_frame_000728.jpg' alt='sample 97'><div class='meta'>sample 97<br>frame 728<br>24.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000098_frame_000735.jpg' alt='sample 98'><div class='meta'>sample 98<br>frame 735<br>24.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000099_frame_000742.jpg' alt='sample 99'><div class='meta'>sample 99<br>frame 742<br>24.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000100_frame_000750.jpg' alt='sample 100'><div class='meta'>sample 100<br>frame 750<br>25.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000101_frame_000758.jpg' alt='sample 101'><div class='meta'>sample 101<br>frame 758<br>25.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000102_frame_000765.jpg' alt='sample 102'><div class='meta'>sample 102<br>frame 765<br>25.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000103_frame_000772.jpg' alt='sample 103'><div class='meta'>sample 103<br>frame 772<br>25.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000104_frame_000780.jpg' alt='sample 104'><div class='meta'>sample 104<br>frame 780<br>26.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000105_frame_000788.jpg' alt='sample 105'><div class='meta'>sample 105<br>frame 788<br>26.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000106_frame_000795.jpg' alt='sample 106'><div class='meta'>sample 106<br>frame 795<br>26.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000107_frame_000802.jpg' alt='sample 107'><div class='meta'>sample 107<br>frame 802<br>26.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000108_frame_000810.jpg' alt='sample 108'><div class='meta'>sample 108<br>frame 810<br>27.000s</div></div>
+<div class='thumb'><div class="badge">boundary</div><img src='../base_head_pipeline/sampled_frames/sample_000109_frame_000818.jpg' alt='sample 109'><div class='meta'>sample 109<br>frame 818<br>27.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000110_frame_000825.jpg' alt='sample 110'><div class='meta'>sample 110<br>frame 825<br>27.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000111_frame_000832.jpg' alt='sample 111'><div class='meta'>sample 111<br>frame 832<br>27.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000112_frame_000840.jpg' alt='sample 112'><div class='meta'>sample 112<br>frame 840<br>28.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000113_frame_000848.jpg' alt='sample 113'><div class='meta'>sample 113<br>frame 848<br>28.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000114_frame_000855.jpg' alt='sample 114'><div class='meta'>sample 114<br>frame 855<br>28.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000115_frame_000862.jpg' alt='sample 115'><div class='meta'>sample 115<br>frame 862<br>28.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000116_frame_000870.jpg' alt='sample 116'><div class='meta'>sample 116<br>frame 870<br>29.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000117_frame_000878.jpg' alt='sample 117'><div class='meta'>sample 117<br>frame 878<br>29.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000118_frame_000885.jpg' alt='sample 118'><div class='meta'>sample 118<br>frame 885<br>29.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000119_frame_000892.jpg' alt='sample 119'><div class='meta'>sample 119<br>frame 892<br>29.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000120_frame_000900.jpg' alt='sample 120'><div class='meta'>sample 120<br>frame 900<br>30.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000121_frame_000908.jpg' alt='sample 121'><div class='meta'>sample 121<br>frame 908<br>30.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000122_frame_000915.jpg' alt='sample 122'><div class='meta'>sample 122<br>frame 915<br>30.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000123_frame_000922.jpg' alt='sample 123'><div class='meta'>sample 123<br>frame 922<br>30.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000124_frame_000930.jpg' alt='sample 124'><div class='meta'>sample 124<br>frame 930<br>31.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000125_frame_000938.jpg' alt='sample 125'><div class='meta'>sample 125<br>frame 938<br>31.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000126_frame_000945.jpg' alt='sample 126'><div class='meta'>sample 126<br>frame 945<br>31.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000127_frame_000952.jpg' alt='sample 127'><div class='meta'>sample 127<br>frame 952<br>31.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000128_frame_000960.jpg' alt='sample 128'><div class='meta'>sample 128<br>frame 960<br>32.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000129_frame_000968.jpg' alt='sample 129'><div class='meta'>sample 129<br>frame 968<br>32.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000130_frame_000975.jpg' alt='sample 130'><div class='meta'>sample 130<br>frame 975<br>32.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000131_frame_000982.jpg' alt='sample 131'><div class='meta'>sample 131<br>frame 982<br>32.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000132_frame_000990.jpg' alt='sample 132'><div class='meta'>sample 132<br>frame 990<br>33.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000133_frame_000998.jpg' alt='sample 133'><div class='meta'>sample 133<br>frame 998<br>33.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000134_frame_001005.jpg' alt='sample 134'><div class='meta'>sample 134<br>frame 1005<br>33.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000135_frame_001012.jpg' alt='sample 135'><div class='meta'>sample 135<br>frame 1012<br>33.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000136_frame_001020.jpg' alt='sample 136'><div class='meta'>sample 136<br>frame 1020<br>34.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000137_frame_001028.jpg' alt='sample 137'><div class='meta'>sample 137<br>frame 1028<br>34.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000138_frame_001035.jpg' alt='sample 138'><div class='meta'>sample 138<br>frame 1035<br>34.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000139_frame_001042.jpg' alt='sample 139'><div class='meta'>sample 139<br>frame 1042<br>34.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000140_frame_001050.jpg' alt='sample 140'><div class='meta'>sample 140<br>frame 1050<br>35.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000141_frame_001058.jpg' alt='sample 141'><div class='meta'>sample 141<br>frame 1058<br>35.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000142_frame_001065.jpg' alt='sample 142'><div class='meta'>sample 142<br>frame 1065<br>35.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000143_frame_001072.jpg' alt='sample 143'><div class='meta'>sample 143<br>frame 1072<br>35.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000144_frame_001080.jpg' alt='sample 144'><div class='meta'>sample 144<br>frame 1080<br>36.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000145_frame_001088.jpg' alt='sample 145'><div class='meta'>sample 145<br>frame 1088<br>36.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000146_frame_001095.jpg' alt='sample 146'><div class='meta'>sample 146<br>frame 1095<br>36.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000147_frame_001102.jpg' alt='sample 147'><div class='meta'>sample 147<br>frame 1102<br>36.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000148_frame_001110.jpg' alt='sample 148'><div class='meta'>sample 148<br>frame 1110<br>37.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000149_frame_001118.jpg' alt='sample 149'><div class='meta'>sample 149<br>frame 1118<br>37.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000150_frame_001125.jpg' alt='sample 150'><div class='meta'>sample 150<br>frame 1125<br>37.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000151_frame_001132.jpg' alt='sample 151'><div class='meta'>sample 151<br>frame 1132<br>37.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000152_frame_001140.jpg' alt='sample 152'><div class='meta'>sample 152<br>frame 1140<br>38.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000153_frame_001148.jpg' alt='sample 153'><div class='meta'>sample 153<br>frame 1148<br>38.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000154_frame_001155.jpg' alt='sample 154'><div class='meta'>sample 154<br>frame 1155<br>38.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000155_frame_001162.jpg' alt='sample 155'><div class='meta'>sample 155<br>frame 1162<br>38.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000156_frame_001170.jpg' alt='sample 156'><div class='meta'>sample 156<br>frame 1170<br>39.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000157_frame_001178.jpg' alt='sample 157'><div class='meta'>sample 157<br>frame 1178<br>39.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000158_frame_001185.jpg' alt='sample 158'><div class='meta'>sample 158<br>frame 1185<br>39.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000159_frame_001192.jpg' alt='sample 159'><div class='meta'>sample 159<br>frame 1192<br>39.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000160_frame_001200.jpg' alt='sample 160'><div class='meta'>sample 160<br>frame 1200<br>40.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000161_frame_001208.jpg' alt='sample 161'><div class='meta'>sample 161<br>frame 1208<br>40.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000162_frame_001215.jpg' alt='sample 162'><div class='meta'>sample 162<br>frame 1215<br>40.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000163_frame_001222.jpg' alt='sample 163'><div class='meta'>sample 163<br>frame 1222<br>40.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000164_frame_001230.jpg' alt='sample 164'><div class='meta'>sample 164<br>frame 1230<br>41.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000165_frame_001238.jpg' alt='sample 165'><div class='meta'>sample 165<br>frame 1238<br>41.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000166_frame_001245.jpg' alt='sample 166'><div class='meta'>sample 166<br>frame 1245<br>41.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000167_frame_001252.jpg' alt='sample 167'><div class='meta'>sample 167<br>frame 1252<br>41.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000168_frame_001260.jpg' alt='sample 168'><div class='meta'>sample 168<br>frame 1260<br>42.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000169_frame_001268.jpg' alt='sample 169'><div class='meta'>sample 169<br>frame 1268<br>42.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000170_frame_001275.jpg' alt='sample 170'><div class='meta'>sample 170<br>frame 1275<br>42.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000171_frame_001282.jpg' alt='sample 171'><div class='meta'>sample 171<br>frame 1282<br>42.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000172_frame_001290.jpg' alt='sample 172'><div class='meta'>sample 172<br>frame 1290<br>43.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000173_frame_001298.jpg' alt='sample 173'><div class='meta'>sample 173<br>frame 1298<br>43.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000174_frame_001305.jpg' alt='sample 174'><div class='meta'>sample 174<br>frame 1305<br>43.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000175_frame_001312.jpg' alt='sample 175'><div class='meta'>sample 175<br>frame 1312<br>43.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000176_frame_001320.jpg' alt='sample 176'><div class='meta'>sample 176<br>frame 1320<br>44.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000177_frame_001328.jpg' alt='sample 177'><div class='meta'>sample 177<br>frame 1328<br>44.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000178_frame_001335.jpg' alt='sample 178'><div class='meta'>sample 178<br>frame 1335<br>44.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000179_frame_001342.jpg' alt='sample 179'><div class='meta'>sample 179<br>frame 1342<br>44.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000180_frame_001350.jpg' alt='sample 180'><div class='meta'>sample 180<br>frame 1350<br>45.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000181_frame_001358.jpg' alt='sample 181'><div class='meta'>sample 181<br>frame 1358<br>45.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000182_frame_001365.jpg' alt='sample 182'><div class='meta'>sample 182<br>frame 1365<br>45.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000183_frame_001372.jpg' alt='sample 183'><div class='meta'>sample 183<br>frame 1372<br>45.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000184_frame_001380.jpg' alt='sample 184'><div class='meta'>sample 184<br>frame 1380<br>46.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000185_frame_001388.jpg' alt='sample 185'><div class='meta'>sample 185<br>frame 1388<br>46.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000186_frame_001395.jpg' alt='sample 186'><div class='meta'>sample 186<br>frame 1395<br>46.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000187_frame_001402.jpg' alt='sample 187'><div class='meta'>sample 187<br>frame 1402<br>46.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000188_frame_001410.jpg' alt='sample 188'><div class='meta'>sample 188<br>frame 1410<br>47.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000189_frame_001418.jpg' alt='sample 189'><div class='meta'>sample 189<br>frame 1418<br>47.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000190_frame_001425.jpg' alt='sample 190'><div class='meta'>sample 190<br>frame 1425<br>47.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000191_frame_001432.jpg' alt='sample 191'><div class='meta'>sample 191<br>frame 1432<br>47.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000192_frame_001440.jpg' alt='sample 192'><div class='meta'>sample 192<br>frame 1440<br>48.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000193_frame_001448.jpg' alt='sample 193'><div class='meta'>sample 193<br>frame 1448<br>48.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000194_frame_001455.jpg' alt='sample 194'><div class='meta'>sample 194<br>frame 1455<br>48.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000195_frame_001462.jpg' alt='sample 195'><div class='meta'>sample 195<br>frame 1462<br>48.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000196_frame_001470.jpg' alt='sample 196'><div class='meta'>sample 196<br>frame 1470<br>49.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000197_frame_001478.jpg' alt='sample 197'><div class='meta'>sample 197<br>frame 1478<br>49.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000198_frame_001485.jpg' alt='sample 198'><div class='meta'>sample 198<br>frame 1485<br>49.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000199_frame_001492.jpg' alt='sample 199'><div class='meta'>sample 199<br>frame 1492<br>49.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000200_frame_001500.jpg' alt='sample 200'><div class='meta'>sample 200<br>frame 1500<br>50.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000201_frame_001508.jpg' alt='sample 201'><div class='meta'>sample 201<br>frame 1508<br>50.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000202_frame_001515.jpg' alt='sample 202'><div class='meta'>sample 202<br>frame 1515<br>50.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000203_frame_001522.jpg' alt='sample 203'><div class='meta'>sample 203<br>frame 1522<br>50.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000204_frame_001530.jpg' alt='sample 204'><div class='meta'>sample 204<br>frame 1530<br>51.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000205_frame_001538.jpg' alt='sample 205'><div class='meta'>sample 205<br>frame 1538<br>51.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000206_frame_001545.jpg' alt='sample 206'><div class='meta'>sample 206<br>frame 1545<br>51.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000207_frame_001552.jpg' alt='sample 207'><div class='meta'>sample 207<br>frame 1552<br>51.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000208_frame_001560.jpg' alt='sample 208'><div class='meta'>sample 208<br>frame 1560<br>52.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000209_frame_001568.jpg' alt='sample 209'><div class='meta'>sample 209<br>frame 1568<br>52.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000210_frame_001575.jpg' alt='sample 210'><div class='meta'>sample 210<br>frame 1575<br>52.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000211_frame_001582.jpg' alt='sample 211'><div class='meta'>sample 211<br>frame 1582<br>52.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000212_frame_001590.jpg' alt='sample 212'><div class='meta'>sample 212<br>frame 1590<br>53.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000213_frame_001598.jpg' alt='sample 213'><div class='meta'>sample 213<br>frame 1598<br>53.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000214_frame_001605.jpg' alt='sample 214'><div class='meta'>sample 214<br>frame 1605<br>53.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000215_frame_001612.jpg' alt='sample 215'><div class='meta'>sample 215<br>frame 1612<br>53.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000216_frame_001620.jpg' alt='sample 216'><div class='meta'>sample 216<br>frame 1620<br>54.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000217_frame_001628.jpg' alt='sample 217'><div class='meta'>sample 217<br>frame 1628<br>54.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000218_frame_001635.jpg' alt='sample 218'><div class='meta'>sample 218<br>frame 1635<br>54.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000219_frame_001642.jpg' alt='sample 219'><div class='meta'>sample 219<br>frame 1642<br>54.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000220_frame_001650.jpg' alt='sample 220'><div class='meta'>sample 220<br>frame 1650<br>55.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000221_frame_001658.jpg' alt='sample 221'><div class='meta'>sample 221<br>frame 1658<br>55.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000222_frame_001665.jpg' alt='sample 222'><div class='meta'>sample 222<br>frame 1665<br>55.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000223_frame_001672.jpg' alt='sample 223'><div class='meta'>sample 223<br>frame 1672<br>55.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000224_frame_001680.jpg' alt='sample 224'><div class='meta'>sample 224<br>frame 1680<br>56.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000225_frame_001688.jpg' alt='sample 225'><div class='meta'>sample 225<br>frame 1688<br>56.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000226_frame_001695.jpg' alt='sample 226'><div class='meta'>sample 226<br>frame 1695<br>56.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000227_frame_001702.jpg' alt='sample 227'><div class='meta'>sample 227<br>frame 1702<br>56.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000228_frame_001710.jpg' alt='sample 228'><div class='meta'>sample 228<br>frame 1710<br>57.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000229_frame_001718.jpg' alt='sample 229'><div class='meta'>sample 229<br>frame 1718<br>57.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000230_frame_001725.jpg' alt='sample 230'><div class='meta'>sample 230<br>frame 1725<br>57.500s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000231_frame_001732.jpg' alt='sample 231'><div class='meta'>sample 231<br>frame 1732<br>57.733s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000232_frame_001740.jpg' alt='sample 232'><div class='meta'>sample 232<br>frame 1740<br>58.000s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000233_frame_001748.jpg' alt='sample 233'><div class='meta'>sample 233<br>frame 1748<br>58.267s</div></div>
+<div class='thumb'><img src='../base_head_pipeline/sampled_frames/sample_000234_frame_001755.jpg' alt='sample 234'><div class='meta'>sample 234<br>frame 1755<br>58.500s</div></div>
+  </div>
+</body>
+</html>

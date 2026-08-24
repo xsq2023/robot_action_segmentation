@@ -1,0 +1,1241 @@
+{
+  "episode_id": "687380",
+  "episode_dir": "/mnt/f/ai/video grounding/dataset/AgiBotWorld-Alpha/observations/446/687380",
+  "sample_fps": 4.0,
+  "fps": 30.0,
+  "min_total_frames": 1759,
+  "sample_count": 235,
+  "views": [
+    "head_color",
+    "hand_left_color",
+    "hand_right_color"
+  ],
+  "contact_sheet_layout": "enlarged_tri_view_frame_rows",
+  "contact_sheet_columns": [
+    "head_color",
+    "hand_left_color",
+    "hand_right_color"
+  ],
+  "contact_sheet_row_axis": "sampled_frames",
+  "contact_sheet_view_thumb_size": [
+    360,
+    270
+  ],
+  "vision_source_weights": {
+    "overhead_video": 0.5,
+    "tri_view_video": 0.25,
+    "pixel_cv_prior": 0.25
+  },
+  "overhead_view": "head_color",
+  "tri_view_views": [
+    "head_color",
+    "hand_left_color",
+    "hand_right_color"
+  ],
+  "trajectory_reference": "trajectory_reference.json",
+  "candidate_reference": "candidate_reference.json",
+  "global_sheets": [
+    {
+      "path": "contact_sheets/multiview_global_000_011.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 0,
+      "end_sample_index": 11,
+      "start_frame_id": 0,
+      "end_frame_id": 82
+    },
+    {
+      "path": "contact_sheets/multiview_global_012_023.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 12,
+      "end_sample_index": 23,
+      "start_frame_id": 90,
+      "end_frame_id": 172
+    },
+    {
+      "path": "contact_sheets/multiview_global_024_035.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 24,
+      "end_sample_index": 35,
+      "start_frame_id": 180,
+      "end_frame_id": 262
+    },
+    {
+      "path": "contact_sheets/multiview_global_036_047.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 36,
+      "end_sample_index": 47,
+      "start_frame_id": 270,
+      "end_frame_id": 352
+    },
+    {
+      "path": "contact_sheets/multiview_global_048_059.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 48,
+      "end_sample_index": 59,
+      "start_frame_id": 360,
+      "end_frame_id": 442
+    },
+    {
+      "path": "contact_sheets/multiview_global_060_071.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 60,
+      "end_sample_index": 71,
+      "start_frame_id": 450,
+      "end_frame_id": 532
+    },
+    {
+      "path": "contact_sheets/multiview_global_072_083.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 72,
+      "end_sample_index": 83,
+      "start_frame_id": 540,
+      "end_frame_id": 622
+    },
+    {
+      "path": "contact_sheets/multiview_global_084_095.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 84,
+      "end_sample_index": 95,
+      "start_frame_id": 630,
+      "end_frame_id": 712
+    },
+    {
+      "path": "contact_sheets/multiview_global_096_107.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 96,
+      "end_sample_index": 107,
+      "start_frame_id": 720,
+      "end_frame_id": 802
+    },
+    {
+      "path": "contact_sheets/multiview_global_108_119.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 108,
+      "end_sample_index": 119,
+      "start_frame_id": 810,
+      "end_frame_id": 892
+    },
+    {
+      "path": "contact_sheets/multiview_global_120_131.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 120,
+      "end_sample_index": 131,
+      "start_frame_id": 900,
+      "end_frame_id": 982
+    },
+    {
+      "path": "contact_sheets/multiview_global_132_143.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 132,
+      "end_sample_index": 143,
+      "start_frame_id": 990,
+      "end_frame_id": 1072
+    },
+    {
+      "path": "contact_sheets/multiview_global_144_155.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 144,
+      "end_sample_index": 155,
+      "start_frame_id": 1080,
+      "end_frame_id": 1162
+    },
+    {
+      "path": "contact_sheets/multiview_global_156_167.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 156,
+      "end_sample_index": 167,
+      "start_frame_id": 1170,
+      "end_frame_id": 1252
+    },
+    {
+      "path": "contact_sheets/multiview_global_168_179.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 168,
+      "end_sample_index": 179,
+      "start_frame_id": 1260,
+      "end_frame_id": 1342
+    },
+    {
+      "path": "contact_sheets/multiview_global_180_191.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 180,
+      "end_sample_index": 191,
+      "start_frame_id": 1350,
+      "end_frame_id": 1432
+    },
+    {
+      "path": "contact_sheets/multiview_global_192_203.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 192,
+      "end_sample_index": 203,
+      "start_frame_id": 1440,
+      "end_frame_id": 1522
+    },
+    {
+      "path": "contact_sheets/multiview_global_204_215.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 204,
+      "end_sample_index": 215,
+      "start_frame_id": 1530,
+      "end_frame_id": 1612
+    },
+    {
+      "path": "contact_sheets/multiview_global_216_227.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 216,
+      "end_sample_index": 227,
+      "start_frame_id": 1620,
+      "end_frame_id": 1702
+    },
+    {
+      "path": "contact_sheets/multiview_global_228_234.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "start_sample_index": 228,
+      "end_sample_index": 234,
+      "start_frame_id": 1710,
+      "end_frame_id": 1755
+    }
+  ],
+  "local_candidate_sheets": [
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_008_frames_0030_0090.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 8,
+      "candidate_frame_id": 60,
+      "candidate_time_seconds": 2.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.05791698795345586,
+      "source_scores": {
+        "overhead_video": 0.03890857970792484,
+        "tri_view_video": 0.07658987779139434,
+        "pixel_cv_prior": 0.07726091460657941
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.09712625102124184
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.09373480264501634
+        },
+        {
+          "view": "head_color",
+          "score": 0.03890857970792484
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 4,
+      "end_sample_index": 12
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_009_frames_0038_0098.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 9,
+      "candidate_frame_id": 68,
+      "candidate_time_seconds": 2.2666666666666666,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "fused_score": null,
+      "source_scores": null,
+      "top_views": [],
+      "trajectory_event_type": "trajectory_motion_peak",
+      "trajectory_score": 2.243687033990269,
+      "trajectory_evidence": [
+        "active end/joint motion has a local high score at trajectory frame 71"
+      ],
+      "start_sample_index": 5,
+      "end_sample_index": 13
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_013_frames_0068_0128.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 13,
+      "candidate_frame_id": 98,
+      "candidate_time_seconds": 3.2666666666666666,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.03105226022763201,
+      "source_scores": {
+        "overhead_video": 0.00809855621936275,
+        "tri_view_video": 0.053600807206563184,
+        "pixel_cv_prior": 0.05441112126523936
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.08849106413398693
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.06421280126633987
+        },
+        {
+          "view": "head_color",
+          "score": 0.00809855621936275
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 9,
+      "end_sample_index": 17
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_018_frames_0105_0165.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 18,
+      "candidate_frame_id": 135,
+      "candidate_time_seconds": 4.5,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.0222344992190298,
+      "source_scores": {
+        "overhead_video": 0.005982779309640526,
+        "tri_view_video": 0.038199359170751644,
+        "pixel_cv_prior": 0.0387730790860865
+      },
+      "top_views": [
+        {
+          "view": "hand_left_color",
+          "score": 0.06848270271650328
+        },
+        {
+          "view": "hand_right_color",
+          "score": 0.04013259548611112
+        },
+        {
+          "view": "head_color",
+          "score": 0.005982779309640526
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 14,
+      "end_sample_index": 22
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_027_frames_0172_0232.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 27,
+      "candidate_frame_id": 202,
+      "candidate_time_seconds": 6.733333333333333,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "fused_score": null,
+      "source_scores": null,
+      "top_views": [],
+      "trajectory_event_type": "gripper_command_close",
+      "trajectory_score": 3.0,
+      "trajectory_evidence": [
+        "gripper_command_close from 0.000 to 1.000 over trajectory frames 204..206"
+      ],
+      "start_sample_index": 23,
+      "end_sample_index": 31
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_029_frames_0188_0248.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 29,
+      "candidate_frame_id": 218,
+      "candidate_time_seconds": 7.266666666666667,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.018958309404535578,
+      "source_scores": {
+        "overhead_video": 0.015408222273284318,
+        "tri_view_video": 0.022445733762254904,
+        "pixel_cv_prior": 0.022571059309318766
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.043923726000816996
+        },
+        {
+          "view": "head_color",
+          "score": 0.015408222273284318
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.0080052530126634
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 25,
+      "end_sample_index": 33
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_060_frames_0420_0480.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 60,
+      "candidate_frame_id": 450,
+      "candidate_time_seconds": 15.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.02665553112400603,
+      "source_scores": {
+        "overhead_video": 0.014522952410130716,
+        "tri_view_video": 0.03857395705678103,
+        "pixel_cv_prior": 0.039002262618981653
+      },
+      "top_views": [
+        {
+          "view": "hand_left_color",
+          "score": 0.054092518127042466
+        },
+        {
+          "view": "hand_right_color",
+          "score": 0.04710640063316991
+        },
+        {
+          "view": "head_color",
+          "score": 0.014522952410130716
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 56,
+      "end_sample_index": 64
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_079_frames_0562_0622.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 79,
+      "candidate_frame_id": 592,
+      "candidate_time_seconds": 19.733333333333334,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.024414438639191762,
+      "source_scores": {
+        "overhead_video": 0.0227261412377451,
+        "tri_view_video": 0.026072935814950977,
+        "pixel_cv_prior": 0.02613253626632588
+      },
+      "top_views": [
+        {
+          "view": "hand_left_color",
+          "score": 0.02846336933210785
+        },
+        {
+          "view": "hand_right_color",
+          "score": 0.02702929687499999
+        },
+        {
+          "view": "head_color",
+          "score": 0.0227261412377451
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 75,
+      "end_sample_index": 83
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_088_frames_0630_0690.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 88,
+      "candidate_frame_id": 660,
+      "candidate_time_seconds": 22.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.02650595493717963,
+      "source_scores": {
+        "overhead_video": 0.024122255412581693,
+        "tri_view_video": 0.028847579656862743,
+        "pixel_cv_prior": 0.0289317292666924
+      },
+      "top_views": [
+        {
+          "view": "hand_left_color",
+          "score": 0.03187057036356209
+        },
+        {
+          "view": "hand_right_color",
+          "score": 0.030549913194444438
+        },
+        {
+          "view": "head_color",
+          "score": 0.024122255412581693
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 84,
+      "end_sample_index": 92
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_097_frames_0698_0758.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 97,
+      "candidate_frame_id": 728,
+      "candidate_time_seconds": 24.266666666666666,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.019136124580486438,
+      "source_scores": {
+        "overhead_video": 0.010692401960784307,
+        "tri_view_video": 0.02743080661083877,
+        "pixel_cv_prior": 0.02772888778953837
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.04251349315767972
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.029086524714052278
+        },
+        {
+          "view": "head_color",
+          "score": 0.010692401960784307
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 93,
+      "end_sample_index": 101
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_103_frames_0742_0802.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 103,
+      "candidate_frame_id": 772,
+      "candidate_time_seconds": 25.733333333333334,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "fused_score": null,
+      "source_scores": null,
+      "top_views": [],
+      "trajectory_event_type": "gripper_command_open",
+      "trajectory_score": 3.0,
+      "trajectory_evidence": [
+        "gripper_command_open from 1.000 to 0.000 over trajectory frames 769..771"
+      ],
+      "start_sample_index": 99,
+      "end_sample_index": 107
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_108_frames_0780_0840.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 108,
+      "candidate_frame_id": 810,
+      "candidate_time_seconds": 27.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.028405210206630095,
+      "source_scores": {
+        "overhead_video": 0.009976032730800645,
+        "tri_view_video": 0.04650909330746187,
+        "pixel_cv_prior": 0.04715968205745721
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.0744435444750817
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.05510770271650327
+        },
+        {
+          "view": "head_color",
+          "score": 0.009976032730800645
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 104,
+      "end_sample_index": 112
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_120_frames_0870_0930.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 120,
+      "candidate_frame_id": 900,
+      "candidate_time_seconds": 30.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.025260046470875017,
+      "source_scores": {
+        "overhead_video": 0.011161432802287572,
+        "tri_view_video": 0.039109804772603486,
+        "pixel_cv_prior": 0.03960751550632144
+      },
+      "top_views": [
+        {
+          "view": "hand_left_color",
+          "score": 0.055581622753267966
+        },
+        {
+          "view": "hand_right_color",
+          "score": 0.05058635876225492
+        },
+        {
+          "view": "head_color",
+          "score": 0.011161432802287572
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 116,
+      "end_sample_index": 124
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_124_frames_0900_0960.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 124,
+      "candidate_frame_id": 930,
+      "candidate_time_seconds": 31.0,
+      "candidate_sources": [
+        "trajectory"
+      ],
+      "fused_score": null,
+      "source_scores": null,
+      "top_views": [],
+      "trajectory_event_type": "trajectory_motion_peak",
+      "trajectory_score": 1.7077379710557752,
+      "trajectory_evidence": [
+        "active end/joint motion has a local high score at trajectory frame 933"
+      ],
+      "start_sample_index": 120,
+      "end_sample_index": 128
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_125_frames_0908_0968.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 125,
+      "candidate_frame_id": 938,
+      "candidate_time_seconds": 31.266666666666666,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.043768247552079836,
+      "source_scores": {
+        "overhead_video": 0.013265133527369282,
+        "tri_view_video": 0.0737329495166122,
+        "pixel_cv_prior": 0.07480977363696857
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.12118070874183007
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.08675300628063726
+        },
+        {
+          "view": "head_color",
+          "score": 0.013265133527369282
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 121,
+      "end_sample_index": 129
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_132_frames_0960_1020.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 132,
+      "candidate_frame_id": 990,
+      "candidate_time_seconds": 33.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.03356427499786658,
+      "source_scores": {
+        "overhead_video": 0.015279379850898687,
+        "tri_view_video": 0.05152642250476578,
+        "pixel_cv_prior": 0.05217191778490315
+      },
+      "top_views": [
+        {
+          "view": "hand_left_color",
+          "score": 0.07113860166462417
+        },
+        {
+          "view": "hand_right_color",
+          "score": 0.06816128599877451
+        },
+        {
+          "view": "head_color",
+          "score": 0.015279379850898687
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 128,
+      "end_sample_index": 136
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_139_frames_1012_1072.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 139,
+      "candidate_frame_id": 1042,
+      "candidate_time_seconds": 34.733333333333334,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.03714970149223716,
+      "source_scores": {
+        "overhead_video": 0.018795662275326804,
+        "tri_view_video": 0.05517977260348583,
+        "pixel_cv_prior": 0.05582770881480921
+      },
+      "top_views": [
+        {
+          "view": "hand_left_color",
+          "score": 0.08513158062704247
+        },
+        {
+          "view": "hand_right_color",
+          "score": 0.06161207490808823
+        },
+        {
+          "view": "head_color",
+          "score": 0.018795662275326804
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 135,
+      "end_sample_index": 143
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_144_frames_1050_1110.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 144,
+      "candidate_frame_id": 1080,
+      "candidate_time_seconds": 36.0,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.05491277969391774,
+      "source_scores": {
+        "overhead_video": 0.044704210069444444,
+        "tri_view_video": 0.06494115732230392,
+        "pixel_cv_prior": 0.06530154131447813
+      },
+      "top_views": [
+        {
+          "view": "hand_left_color",
+          "score": 0.08495995455473855
+        },
+        {
+          "view": "hand_right_color",
+          "score": 0.06515930734272875
+        },
+        {
+          "view": "head_color",
+          "score": 0.044704210069444444
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 140,
+      "end_sample_index": 148
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_159_frames_1162_1222.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 159,
+      "candidate_frame_id": 1192,
+      "candidate_time_seconds": 39.733333333333334,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.030767058727787993,
+      "source_scores": {
+        "overhead_video": 0.026069680606617653,
+        "tri_view_video": 0.03538152318218954,
+        "pixel_cv_prior": 0.03554735051572712
+      },
+      "top_views": [
+        {
+          "view": "hand_left_color",
+          "score": 0.05750947840073528
+        },
+        {
+          "view": "head_color",
+          "score": 0.026069680606617653
+        },
+        {
+          "view": "hand_right_color",
+          "score": 0.022565410539215687
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 155,
+      "end_sample_index": 163
+    },
+    {
+      "path": "contact_sheets/multiview_local_candidate_sample_221_frames_1628_1688.jpg",
+      "layout": "enlarged_tri_view_frame_rows",
+      "columns": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "row_axis": "sampled_frames",
+      "view_thumb_size": [
+        360,
+        270
+      ],
+      "candidate_sample_index": 221,
+      "candidate_frame_id": 1658,
+      "candidate_time_seconds": 55.266666666666666,
+      "candidate_sources": [
+        "visual_prior"
+      ],
+      "fused_score": 0.01938639129247946,
+      "source_scores": {
+        "overhead_video": 0.021128114787581694,
+        "tri_view_video": 0.0176754110498366,
+        "pixel_cv_prior": 0.01761392454491785
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.026703910079656862
+        },
+        {
+          "view": "head_color",
+          "score": 0.021128114787581694
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.005194208282271235
+        }
+      ],
+      "trajectory_event_type": null,
+      "trajectory_score": null,
+      "trajectory_evidence": [],
+      "start_sample_index": 217,
+      "end_sample_index": 225
+    }
+  ]
+}

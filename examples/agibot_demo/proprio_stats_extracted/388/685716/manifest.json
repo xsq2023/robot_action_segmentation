@@ -1,0 +1,376 @@
+{
+  "source_h5": "dataset/AgiBotWorld-Alpha/proprio_stats/388/685716/proprio_stats.h5",
+  "task_id": "388",
+  "episode_id": "685716",
+  "datasets": [
+    {
+      "path": "action/effector/force",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/effector/force.npy"
+    },
+    {
+      "path": "action/effector/index",
+      "shape": [
+        1899
+      ],
+      "dtype": "int64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/effector/index.npy"
+    },
+    {
+      "path": "action/effector/position",
+      "shape": [
+        1899,
+        2
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/effector/position.npy"
+    },
+    {
+      "path": "action/end/index",
+      "shape": [
+        1805
+      ],
+      "dtype": "int64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/end/index.npy"
+    },
+    {
+      "path": "action/end/orientation",
+      "shape": [
+        1899,
+        2,
+        4
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/end/orientation.npy"
+    },
+    {
+      "path": "action/end/position",
+      "shape": [
+        1899,
+        2,
+        3
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/end/position.npy"
+    },
+    {
+      "path": "action/head/index",
+      "shape": [
+        1899
+      ],
+      "dtype": "int64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/head/index.npy"
+    },
+    {
+      "path": "action/head/position",
+      "shape": [
+        1899,
+        2
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/head/position.npy"
+    },
+    {
+      "path": "action/joint/effort",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/joint/effort.npy"
+    },
+    {
+      "path": "action/joint/index",
+      "shape": [
+        1805
+      ],
+      "dtype": "int64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/joint/index.npy"
+    },
+    {
+      "path": "action/joint/position",
+      "shape": [
+        1899,
+        14
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/joint/position.npy"
+    },
+    {
+      "path": "action/joint/velocity",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/joint/velocity.npy"
+    },
+    {
+      "path": "action/robot/angular",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/robot/angular.npy"
+    },
+    {
+      "path": "action/robot/index",
+      "shape": [
+        1899
+      ],
+      "dtype": "int64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/robot/index.npy"
+    },
+    {
+      "path": "action/robot/orientation",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/robot/orientation.npy"
+    },
+    {
+      "path": "action/robot/position",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/robot/position.npy"
+    },
+    {
+      "path": "action/robot/velocity",
+      "shape": [
+        1899,
+        2
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/robot/velocity.npy"
+    },
+    {
+      "path": "action/waist/index",
+      "shape": [
+        1899
+      ],
+      "dtype": "int64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/waist/index.npy"
+    },
+    {
+      "path": "action/waist/position",
+      "shape": [
+        1899,
+        2
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/action/waist/position.npy"
+    },
+    {
+      "path": "state/effector/force",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/effector/force.npy"
+    },
+    {
+      "path": "state/effector/position",
+      "shape": [
+        1899,
+        2
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/effector/position.npy"
+    },
+    {
+      "path": "state/end/angular",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/end/angular.npy"
+    },
+    {
+      "path": "state/end/orientation",
+      "shape": [
+        1899,
+        2,
+        4
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/end/orientation.npy"
+    },
+    {
+      "path": "state/end/position",
+      "shape": [
+        1899,
+        2,
+        3
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/end/position.npy"
+    },
+    {
+      "path": "state/end/velocity",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/end/velocity.npy"
+    },
+    {
+      "path": "state/end/wrench",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/end/wrench.npy"
+    },
+    {
+      "path": "state/head/effort",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/head/effort.npy"
+    },
+    {
+      "path": "state/head/position",
+      "shape": [
+        1899,
+        2
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/head/position.npy"
+    },
+    {
+      "path": "state/head/velocity",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/head/velocity.npy"
+    },
+    {
+      "path": "state/joint/current_value",
+      "shape": [
+        1899,
+        14
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/joint/current_value.npy"
+    },
+    {
+      "path": "state/joint/effort",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/joint/effort.npy"
+    },
+    {
+      "path": "state/joint/position",
+      "shape": [
+        1899,
+        14
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/joint/position.npy"
+    },
+    {
+      "path": "state/joint/velocity",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/joint/velocity.npy"
+    },
+    {
+      "path": "state/robot/orientation",
+      "shape": [
+        1899,
+        4
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/robot/orientation.npy"
+    },
+    {
+      "path": "state/robot/orientation_drift",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/robot/orientation_drift.npy"
+    },
+    {
+      "path": "state/robot/position",
+      "shape": [
+        1899,
+        3
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/robot/position.npy"
+    },
+    {
+      "path": "state/robot/position_drift",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/robot/position_drift.npy"
+    },
+    {
+      "path": "state/waist/effort",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/waist/effort.npy"
+    },
+    {
+      "path": "state/waist/position",
+      "shape": [
+        1899,
+        2
+      ],
+      "dtype": "float64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/waist/position.npy"
+    },
+    {
+      "path": "state/waist/velocity",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/state/waist/velocity.npy"
+    },
+    {
+      "path": "timestamp",
+      "shape": [
+        1899
+      ],
+      "dtype": "int64",
+      "npy": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/arrays/timestamp.npy"
+    }
+  ],
+  "empty_datasets": [
+    "action/effector/force",
+    "action/joint/effort",
+    "action/joint/velocity",
+    "action/robot/angular",
+    "action/robot/orientation",
+    "action/robot/position",
+    "state/effector/force",
+    "state/end/angular",
+    "state/end/velocity",
+    "state/end/wrench",
+    "state/head/effort",
+    "state/head/velocity",
+    "state/joint/effort",
+    "state/joint/velocity",
+    "state/robot/orientation_drift",
+    "state/robot/position_drift",
+    "state/waist/effort",
+    "state/waist/velocity"
+  ],
+  "timeseries_csv": "dataset/AgiBotWorld-Alpha/proprio_stats_extracted/388/685716/timeseries.csv"
+}

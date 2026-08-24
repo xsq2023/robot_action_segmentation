@@ -1,0 +1,679 @@
+{
+  "video": {
+    "path": "/mnt/f/ai/video grounding/dataset/AgiBotWorld-Alpha/observations/388/685716/videos/head_color.mp4",
+    "fps": 30.0,
+    "total_frames": 1899,
+    "duration_seconds": 63.3,
+    "width": 640,
+    "height": 480,
+    "sample_fps": 4.0,
+    "timestamp_source": "original_frame_id/native_fps",
+    "sampling_note": "Used OpenCV metadata for frame count."
+  },
+  "segments": [
+    {
+      "segment_id": 0,
+      "start_sample_index": 0,
+      "end_sample_index": 49,
+      "start_frame_id": 0,
+      "end_frame_id": 368,
+      "start_time": 0.0,
+      "end_time": 12.266666666666667,
+      "action_label": "reach_for",
+      "description": "Right gripper reaches toward a red transparent packaged grocery bag inside the metal shopping cart.",
+      "primary_object": "red transparent packaged grocery bag",
+      "secondary_objects": [
+        "metal shopping cart"
+      ],
+      "actor_motion": "approach",
+      "contact_state": "no_contact",
+      "object_motion": "stationary",
+      "goal": "Right gripper reaches toward a red transparent packaged grocery bag inside the metal shopping cart",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "approaching",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": []
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 0 0-368."
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak at sample 7/frame 52: active end/joint motion has a local high score at trajectory frame 54",
+        "trajectory trajectory_motion_peak at sample 43/frame 322: active end/joint motion has a local high score at trajectory frame 326"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 1,
+      "start_sample_index": 49,
+      "end_sample_index": 59,
+      "start_frame_id": 368,
+      "end_frame_id": 442,
+      "start_time": 12.266666666666667,
+      "end_time": 14.733333333333333,
+      "action_label": "grasp",
+      "description": "Right gripper closes on the red transparent packaged grocery bag.",
+      "primary_object": "red transparent packaged grocery bag",
+      "secondary_objects": [],
+      "actor_motion": "grasp",
+      "contact_state": "grasped",
+      "object_motion": "stationary_to_moving",
+      "goal": "Right gripper closes on the red transparent packaged grocery bag",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "grasping",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "red transparent packaged grocery bag"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 1 368-442."
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close at sample 53/frame 398: gripper_command_close from 0.000 to 0.960 over trajectory frames 399..401"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 2,
+      "start_sample_index": 59,
+      "end_sample_index": 84,
+      "start_frame_id": 442,
+      "end_frame_id": 630,
+      "start_time": 14.733333333333333,
+      "end_time": 21.0,
+      "action_label": "carry",
+      "description": "Right gripper carries the red transparent packaged grocery bag away from the cart area.",
+      "primary_object": "red transparent packaged grocery bag",
+      "secondary_objects": [
+        "metal shopping cart"
+      ],
+      "actor_motion": "transport",
+      "contact_state": "grasped",
+      "object_motion": "moving_with_right_gripper",
+      "goal": "Right gripper carries the red transparent packaged grocery bag away from the cart area",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "carrying",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "red transparent packaged grocery bag"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 2 442-630."
+      ],
+      "trajectory_evidence": [],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 3,
+      "start_sample_index": 84,
+      "end_sample_index": 96,
+      "start_frame_id": 630,
+      "end_frame_id": 720,
+      "start_time": 21.0,
+      "end_time": 24.0,
+      "action_label": "release",
+      "description": "Right gripper sets down and releases the red transparent packaged grocery bag with the other groceries.",
+      "primary_object": "red transparent packaged grocery bag",
+      "secondary_objects": [],
+      "actor_motion": "release",
+      "contact_state": "released",
+      "object_motion": "placed",
+      "goal": "Right gripper sets down and releases the red transparent packaged grocery bag with the other groceries",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "releasing",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "red transparent packaged grocery bag"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 3 630-720."
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_open at sample 90/frame 675: gripper_command_open from 1.000 to 0.000 over trajectory frames 672..673"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 4,
+      "start_sample_index": 96,
+      "end_sample_index": 117,
+      "start_frame_id": 720,
+      "end_frame_id": 878,
+      "start_time": 24.0,
+      "end_time": 29.266666666666666,
+      "action_label": "reach_for",
+      "description": "Right gripper reaches back toward a blue long packaged grocery item in the cart.",
+      "primary_object": "blue long packaged grocery item",
+      "secondary_objects": [
+        "red transparent packaged grocery bag",
+        "metal shopping cart"
+      ],
+      "actor_motion": "approach",
+      "contact_state": "no_contact",
+      "object_motion": "stationary",
+      "goal": "Right gripper reaches back toward a blue long packaged grocery item in the cart",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "approaching",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": []
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 4 720-878."
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_state_opening at sample 99/frame 742: gripper_state_opening from 119.467 to 35.600 over trajectory frames 703..740"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 5,
+      "start_sample_index": 117,
+      "end_sample_index": 127,
+      "start_frame_id": 878,
+      "end_frame_id": 952,
+      "start_time": 29.266666666666666,
+      "end_time": 31.733333333333334,
+      "action_label": "grasp",
+      "description": "Right gripper closes on the blue long packaged grocery item.",
+      "primary_object": "blue long packaged grocery item",
+      "secondary_objects": [],
+      "actor_motion": "grasp",
+      "contact_state": "grasped",
+      "object_motion": "stationary_to_moving",
+      "goal": "Right gripper closes on the blue long packaged grocery item",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "grasping",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "blue long packaged grocery item"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 5 878-952."
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close at sample 121/frame 908: gripper_command_close from 0.000 to 0.970 over trajectory frames 909..912"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 6,
+      "start_sample_index": 127,
+      "end_sample_index": 149,
+      "start_frame_id": 952,
+      "end_frame_id": 1118,
+      "start_time": 31.733333333333334,
+      "end_time": 37.266666666666666,
+      "action_label": "carry",
+      "description": "Right gripper carries the blue long packaged grocery item away from the cart.",
+      "primary_object": "blue long packaged grocery item",
+      "secondary_objects": [
+        "metal shopping cart"
+      ],
+      "actor_motion": "transport",
+      "contact_state": "grasped",
+      "object_motion": "moving_with_right_gripper",
+      "goal": "Right gripper carries the blue long packaged grocery item away from the cart",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "carrying",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "blue long packaged grocery item"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 6 952-1118."
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak at sample 149/frame 1118: active end/joint motion has a local high score at trajectory frame 1120"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 7,
+      "start_sample_index": 149,
+      "end_sample_index": 161,
+      "start_frame_id": 1118,
+      "end_frame_id": 1208,
+      "start_time": 37.266666666666666,
+      "end_time": 40.266666666666666,
+      "action_label": "release",
+      "description": "Right gripper releases the blue long packaged grocery item beside the other groceries.",
+      "primary_object": "blue long packaged grocery item",
+      "secondary_objects": [
+        "red transparent packaged grocery bag"
+      ],
+      "actor_motion": "release",
+      "contact_state": "released",
+      "object_motion": "placed",
+      "goal": "Right gripper releases the blue long packaged grocery item beside the other groceries",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "free",
+      "right_hand_state": "releasing",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": [
+          "blue long packaged grocery item"
+        ]
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 7 1118-1208."
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak at sample 149/frame 1118: active end/joint motion has a local high score at trajectory frame 1120",
+        "trajectory gripper_command_open at sample 155/frame 1162: gripper_command_open from 1.000 to 0.000 over trajectory frames 1159..1162"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "segment_id": 8,
+      "start_sample_index": 161,
+      "end_sample_index": 253,
+      "start_frame_id": 1208,
+      "end_frame_id": 1898,
+      "start_time": 40.266666666666666,
+      "end_time": 63.266666666666666,
+      "action_label": "retract",
+      "description": "Both grippers retract from the shopping cart after the red and blue packaged groceries are left in place.",
+      "primary_object": "shopping cart",
+      "secondary_objects": [
+        "red transparent packaged grocery bag",
+        "blue long packaged grocery item"
+      ],
+      "actor_motion": "retract",
+      "contact_state": "no_contact",
+      "object_motion": "placed",
+      "goal": "Both grippers retract from the shopping cart after the red and blue packaged groceries are left in place",
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "left_hand_state": "retracting",
+      "right_hand_state": "retracting",
+      "held_objects_by_hand": {
+        "left": [],
+        "right": []
+      },
+      "visual_evidence": [
+        "Checked head_color plus hand views for segment 8 1208-1898."
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_state_opening at sample 163/frame 1222: gripper_state_opening from 119.467 to 35.911 over trajectory frames 1189..1226",
+        "trajectory trajectory_motion_peak at sample 183/frame 1372: active end/joint motion has a local high score at trajectory frame 1371"
+      ],
+      "confidence": 0.82
+    }
+  ],
+  "boundaries": [
+    {
+      "boundary_sample_index": 49,
+      "boundary_frame_id": 368,
+      "boundary_time": 12.266666666666667,
+      "before_action": "reach_for",
+      "after_action": "grasp",
+      "transition_type": "reach_for_to_grasp",
+      "visual_evidence": [
+        "Before: Right gripper reaches toward a red transparent packaged grocery bag inside the metal shopping cart.",
+        "After: Right gripper closes on the red transparent packaged grocery bag."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 368"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and red transparent packaged grocery bag state around the boundary"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak near sample 43/frame 322: active end/joint motion has a local high score at trajectory frame 326",
+        "trajectory gripper_command_close near sample 53/frame 398: gripper_command_close from 0.000 to 0.960 over trajectory frames 399..401"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_visual_review_from_visual_candidate_398"
+      ]
+    },
+    {
+      "boundary_sample_index": 59,
+      "boundary_frame_id": 442,
+      "boundary_time": 14.733333333333333,
+      "before_action": "grasp",
+      "after_action": "carry",
+      "transition_type": "grasp_to_carry",
+      "visual_evidence": [
+        "Before: Right gripper closes on the red transparent packaged grocery bag.",
+        "After: Right gripper carries the red transparent packaged grocery bag away from the cart area."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 442"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and red transparent packaged grocery bag state around the boundary"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close near sample 53/frame 398: gripper_command_close from 0.000 to 0.960 over trajectory frames 399..401"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_visual_review_from_visual_candidate_398"
+      ]
+    },
+    {
+      "boundary_sample_index": 84,
+      "boundary_frame_id": 630,
+      "boundary_time": 21.0,
+      "before_action": "carry",
+      "after_action": "release",
+      "transition_type": "carry_to_release",
+      "visual_evidence": [
+        "Before: Right gripper carries the red transparent packaged grocery bag away from the cart area.",
+        "After: Right gripper sets down and releases the red transparent packaged grocery bag with the other groceries."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 630"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and red transparent packaged grocery bag state around the boundary"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_open near sample 90/frame 675: gripper_command_open from 1.000 to 0.000 over trajectory frames 672..673"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_visual_review_from_visual_candidate_675"
+      ]
+    },
+    {
+      "boundary_sample_index": 96,
+      "boundary_frame_id": 720,
+      "boundary_time": 24.0,
+      "before_action": "release",
+      "after_action": "reach_for",
+      "transition_type": "release_to_reach_for",
+      "visual_evidence": [
+        "Before: Right gripper sets down and releases the red transparent packaged grocery bag with the other groceries.",
+        "After: Right gripper reaches back toward a blue long packaged grocery item in the cart."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 720"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and blue long packaged grocery item state around the boundary"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_open near sample 90/frame 675: gripper_command_open from 1.000 to 0.000 over trajectory frames 672..673",
+        "trajectory gripper_state_opening near sample 99/frame 742: gripper_state_opening from 119.467 to 35.600 over trajectory frames 703..740"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_visual_review_from_visual_candidate_742"
+      ]
+    },
+    {
+      "boundary_sample_index": 117,
+      "boundary_frame_id": 878,
+      "boundary_time": 29.266666666666666,
+      "before_action": "reach_for",
+      "after_action": "grasp",
+      "transition_type": "reach_for_to_grasp",
+      "visual_evidence": [
+        "Before: Right gripper reaches back toward a blue long packaged grocery item in the cart.",
+        "After: Right gripper closes on the blue long packaged grocery item."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 878"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and blue long packaged grocery item state around the boundary"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close near sample 121/frame 908: gripper_command_close from 0.000 to 0.970 over trajectory frames 909..912"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_visual_review_from_visual_candidate_870"
+      ]
+    },
+    {
+      "boundary_sample_index": 127,
+      "boundary_frame_id": 952,
+      "boundary_time": 31.733333333333334,
+      "before_action": "grasp",
+      "after_action": "carry",
+      "transition_type": "grasp_to_carry",
+      "visual_evidence": [
+        "Before: Right gripper closes on the blue long packaged grocery item.",
+        "After: Right gripper carries the blue long packaged grocery item away from the cart."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 952"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and blue long packaged grocery item state around the boundary"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_close near sample 121/frame 908: gripper_command_close from 0.000 to 0.970 over trajectory frames 909..912"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_visual_review_from_visual_candidate_982"
+      ]
+    },
+    {
+      "boundary_sample_index": 149,
+      "boundary_frame_id": 1118,
+      "boundary_time": 37.266666666666666,
+      "before_action": "carry",
+      "after_action": "release",
+      "transition_type": "carry_to_release",
+      "visual_evidence": [
+        "Before: Right gripper carries the blue long packaged grocery item away from the cart.",
+        "After: Right gripper releases the blue long packaged grocery item beside the other groceries."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 1118"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and blue long packaged grocery item state around the boundary"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory trajectory_motion_peak near sample 149/frame 1118: active end/joint motion has a local high score at trajectory frame 1120",
+        "trajectory gripper_command_open near sample 155/frame 1162: gripper_command_open from 1.000 to 0.000 over trajectory frames 1159..1162"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_visual_review_from_visual_candidate_1118"
+      ]
+    },
+    {
+      "boundary_sample_index": 161,
+      "boundary_frame_id": 1208,
+      "boundary_time": 40.266666666666666,
+      "before_action": "release",
+      "after_action": "retract",
+      "transition_type": "release_to_retract",
+      "visual_evidence": [
+        "Before: Right gripper releases the blue long packaged grocery item beside the other groceries.",
+        "After: Both grippers retract from the shopping cart after the red and blue packaged groceries are left in place."
+      ],
+      "selected_views": [
+        "head_color",
+        "hand_left_color",
+        "hand_right_color"
+      ],
+      "view_evidence": [
+        {
+          "view": "head_color",
+          "evidence": "confirms workspace object/destination change around frame 1208"
+        },
+        {
+          "view": "hand_left_color",
+          "evidence": "checked left gripper state for contact, carry, or idle behavior"
+        },
+        {
+          "view": "hand_right_color",
+          "evidence": "checked right gripper contact and shopping cart state around the boundary"
+        }
+      ],
+      "trajectory_evidence": [
+        "trajectory gripper_command_open near sample 155/frame 1162: gripper_command_open from 1.000 to 0.000 over trajectory frames 1159..1162",
+        "trajectory gripper_state_opening near sample 163/frame 1222: gripper_state_opening from 119.467 to 35.911 over trajectory frames 1189..1226"
+      ],
+      "supporting_windows": [],
+      "confidence": 0.82,
+      "source_proposal_ids": [
+        "codex_vlm_codex_visual_review_from_visual_candidate_1222"
+      ]
+    }
+  ],
+  "prompt_versions": {
+    "codex_vlm_decision": "codex_vlm_decision_v2",
+    "action_set": "reach_for,grasp,pick,lift,carry,transport,move,place,lower,release,pull,push,open,close,rotate,press,insert,remove,retract,hold,wait"
+  }
+}

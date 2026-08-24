@@ -1,0 +1,2214 @@
+# Pipeline Runbook：No-GT Caption + Multi-View + Trajectory + Codex/VLM Visual Review
+
+## 0. 目标与系统边界
+
+本 pipeline 面向 **No-GT robot ego-video temporal action segmentation (TAS)**。
+
+输入是机器人操作 episode，包括多视角 observation video 和可选 proprio/trajectory。
+
+最终目标是：
+
+1. 在没有 GT temporal annotation 的情况下发现动作语义边界；
+2. 将完整视频划分为连续的 semantic action segments；
+3. 为每个 segment 生成可以直接作为视频字幕的具体 description；
+4. 明确左右手、接触状态、物体身份、carry/release 状态；
+5. 所有时间边界必须来自实际提供的 sampled frames；
+6. trajectory、CV score 和 base-head proposal 只能作为候选证据，不能直接决定最终语义。
+
+---
+
+# 1. Pipeline 两层结构
+
+整个系统分为两层。
+
+## 1.1 自动处理层
+
+自动处理层负责：
+
+* 下载/解压 observation；
+* 下载/解压 proprio；
+* episode discovery；
+* 多视角同步采样；
+* base head pipeline；
+* global multi-view contact sheets；
+* local candidate sheets；
+* visual boundary candidates；
+* trajectory candidates；
+* candidate fusion；
+* VLM semantic decision；
+* final segment conversion；
+* timeline/video rendering。
+
+自动流程的核心原则是：
+
+> 自动系统负责组织证据、召回候选、提出语义判断，但最终语义必须由视觉证据支持。
+
+---
+
+## 1.2 视觉审查层
+
+视觉审查层使用：
+
+```text
+prompts/codex_vlm_decision_v2.txt
+```
+
+中的通用规则检查 multi-view review sheets。
+
+需要检查：
+
+* 具体物体身份；
+* 左夹爪状态；
+* 右夹爪状态；
+* grasp 是否真实成立；
+* carry 是否连续；
+* release 是否遗漏；
+* 多物体是否被错误合并；
+* 单手 carry 时另一只手是否执行新动作；
+* 是否发生 over-segmentation；
+* 是否发生 under-segmentation；
+* 是否偷懒将整个视频压成一个 caption。
+
+当前批次最终有效输出必须来自：
+
+```text
+codex_vlm_decision:
+codex_vlm_decision_v2
+```
+
+或等价的 Codex/VLM visual review decision JSON。
+
+不再保留任何外部覆盖层；最终语义以 VLM review decision 为准。
+
+每个 VLM decision 必须包含：
+
+```text
+inspection_audit.reviewed_visual_sources
+inspection_audit.semantic_change_observations
+inspection_audit.trajectory_change_observations
+inspection_audit.undersegmentation_checks
+```
+
+其中必须明确写出：
+
+* 实际检查过的三视角 contact sheet 或 sampled frame 路径；
+* 哪些 sampled frame 有明显动作语义变化；
+* trajectory 中哪些 event_type / metric 出现大变化；
+* 每个 final segment 为什么不应继续细分，或在哪些帧被拆分。
+
+该结果属于：
+
+```text
+VLM-reviewed pipeline output
+```
+
+而不是 deterministic bootstrap output。
+
+这一点在实验报告、benchmark 和论文中必须严格区分。
+
+---
+
+# 2. Prompt 文件职责
+
+真正供 VLM / Codex 使用的通用规则：
+
+```text
+prompts/codex_vlm_decision_v2.txt
+```
+
+批次中的具体案例、物体名称、task-specific observations 不能作为通用 prompt 或最终结果的先验。
+
+每个 episode 的最终语义只能来自当前 episode 的 multi-view evidence、trajectory reference 和对应 Codex/VLM decision JSON。
+
+## 通用 Prompt 中禁止出现
+
+例如：
+
+```text
+this task contains mushroom
+pick the corn
+place on white table
+task 327 usually does ...
+```
+
+因为这些信息会形成 task prior，导致模型在新视频中产生 hallucination。
+
+通用 prompt 只能包含类似：
+
+```text
+identify concrete objects when visually supported
+```
+
+而不能包含当前 batch 中的具体答案。
+
+---
+
+# 3. 环境与目录
+
+工作目录：
+
+```bash
+cd /mnt/f/ai/video\ grounding/api
+```
+
+Python：
+
+```bash
+.venv/bin/python
+```
+
+数据根目录：
+
+```text
+dataset/AgiBotWorld-Alpha
+```
+
+Observation：
+
+```text
+dataset/AgiBotWorld-Alpha/observations/<task>/<episode>/videos/
+```
+
+或：
+
+```text
+dataset/AgiBotWorld-Alpha/observations/<task>/<episode_range>/<episode>/videos/
+```
+
+Proprio CSV：
+
+```text
+dataset/AgiBotWorld-Alpha/proprio_stats_extracted/<task>/<episode>/timeseries.csv
+```
+
+当前输出目录：
+
+```text
+outputs/codex_vlm_fresh_multiview_20260820_143004
+```
+
+Flat 视频目录：
+
+```text
+outputs/codex_vlm_fresh_multiview_20260820_143004/annotated_videos
+```
+
+---
+
+# 4. Observation 的定义
+
+Observation 不能被理解成简单的：
+
+```text
+list of video paths
+```
+
+Observation 进入 pipeline 后，必须被转换为严格组织的：
+
+```text
+synchronized multi-view evidence package
+```
+
+每个 episode 至少需要：
+
+```text
+videos/head_color.mp4
+videos/hand_left_color.mp4
+videos/hand_right_color.mp4
+```
+
+---
+
+# 5. 三路视角职责
+
+## head_color
+
+主要承担：
+
+* 主时间参考；
+* workspace 全局状态；
+* 目标区域；
+* 大范围物体移动；
+* source / destination；
+* placement result；
+* 最终 annotated video 底图。
+
+---
+
+## hand_left_color
+
+主要承担：
+
+* 左夹爪接近；
+* contact；
+* grasp；
+* carry；
+* release；
+* 左手是否 idle；
+* 左手是否仍然持有旧物体。
+
+---
+
+## hand_right_color
+
+主要承担：
+
+* 右夹爪接近；
+* contact；
+* grasp；
+* carry；
+* release；
+* 右手是否 idle；
+* 右手是否仍然持有旧物体。
+
+---
+
+# 6. 多视角核心原则
+
+不能把 `head_color` 当唯一语义证据。
+
+所有视角必须尽可能使用同一组：
+
+```text
+sample_index
+original_frame_id
+timestamp
+```
+
+进行同步比较。
+
+基本证据优先级：
+
+```text
+contact / grasp / release
+    → hand view 优先
+
+workspace / object identity / target location / placement result
+    → head/global view 优先
+```
+
+但这并不意味着某一路视角可以单独决定状态。
+
+最终状态应由多个证据综合支持。
+
+---
+
+# 7. 多视角冲突规则
+
+不同视角出现冲突时，不允许简单选择“更显眼”的画面。
+
+必须遵循以下规则。
+
+## 7.1 Gripper closure 不等于 grasp
+
+以下情况：
+
+```text
+gripper closes
+```
+
+只能说明：
+
+```text
+gripper closing / closed
+```
+
+不能自动判断：
+
+```text
+object grasped
+```
+
+---
+
+## 7.2 Contact 不等于 successful grasp
+
+看到夹爪碰到物体只能说明：
+
+```text
+contact
+```
+
+只有出现进一步视觉证据，例如：
+
+* object 被夹爪稳定约束；
+* object 与夹爪同步运动；
+* object 离开原支撑面；
+* object position consistently follows hand motion；
+
+才能判断：
+
+```text
+grasp / secure
+```
+
+---
+
+## 7.3 Release 判定
+
+`gripper opening` 也不自动等于 release。
+
+Release 应尽量满足：
+
+* object 不再跟随 gripper；
+* object 留在目标表面/容器；
+* hand 撤回但 object 保持静止；
+* hand-object constraint 消失。
+
+---
+
+## 7.4 证据冲突
+
+例如：
+
+```text
+hand_right:
+gripper closes
+
+head:
+object remains stationary on table
+```
+
+则不应该标记：
+
+```text
+grasp object
+```
+
+应该保守标记为：
+
+```text
+right gripper closes near / contacts object
+```
+
+直到后续视觉证据确认 grasp。
+
+---
+
+# 8. Observation Episode 发现
+
+主 batch 脚本：
+
+```text
+tools/run_no_gt_vision_traj_subset.py
+```
+
+episode discovery：
+
+```text
+robot_tas.cli.evaluate_agibot_task.find_episode_dirs
+```
+
+代码位置：
+
+```text
+robot_tas/cli/evaluate_agibot_task.py
+```
+
+函数：
+
+```python
+find_episode_dirs(observations_dir)
+```
+
+---
+
+## 8.1 Episode discovery 规则
+
+输入：
+
+```text
+dataset/AgiBotWorld-Alpha/observations/<task>
+```
+
+支持：
+
+```text
+<task>/<episode>/videos/
+```
+
+以及：
+
+```text
+<task>/<range>/<episode>/videos/
+```
+
+只有真正包含：
+
+```text
+videos/
+```
+
+的目录才被认为是 episode。
+
+---
+
+# 9. Batch selection
+
+逻辑：
+
+```text
+tools/run_no_gt_vision_traj_subset.py
+selected_episode_dirs(observations_root, task_id, limit)
+```
+
+行为：
+
+1. 遍历：
+
+```text
+observations_root/<task_id>
+```
+
+2. 调用：
+
+```text
+find_episode_dirs
+```
+
+3. 丢弃没有：
+
+```text
+videos/head_color.mp4
+```
+
+的 episode。
+
+4. 每个 task 选择前 N 个 episode。
+
+当前：
+
+```text
+episodes-per-task = 2
+```
+
+410 本地只有 1 个 episode。
+
+---
+
+# 10. 当前 Batch 命令
+
+```bash
+.venv/bin/python tools/run_no_gt_vision_traj_subset.py \
+  --observations-root dataset/AgiBotWorld-Alpha/observations \
+  --proprio-root dataset/AgiBotWorld-Alpha/proprio_stats_extracted \
+  --output-root outputs/codex_vlm_fresh_multiview_20260820_143004 \
+  --reuse-output-root "" \
+  --episodes-per-task 2 \
+  --task-ids 327,356,359,372,374,378,388,410,446 \
+  --views head_color,hand_left_color,hand_right_color \
+  --sample-fps 4 \
+  --candidate-count 16 \
+  --trajectory-candidate-count 12
+```
+
+该命令默认要求已有：
+
+```text
+task_<task>/episodes/<episode>/decision/codex_vlm_decision.json
+```
+
+如果缺少 VLM decision，pipeline 必须停止，不能用 deterministic bootstrap 顶替最终审查。
+
+输出 summary：
+
+```text
+outputs/codex_vlm_fresh_multiview_20260820_143004/no_gt_run_summary.json
+```
+
+---
+
+# 11. Multi-view Evidence Pack
+
+单 episode 脚本：
+
+```text
+scripts/prepare_multiview_codex_pack.py
+```
+
+实际实现：
+
+```text
+robot_tas/cli/prepare_multiview_codex_pack.py
+```
+
+---
+
+# 12. Multi-view Pack 处理流程
+
+## Step 1：检查 requested views
+
+必须检查：
+
+```text
+episode_dir/videos/<view>.mp4
+```
+
+是否存在。
+
+---
+
+## Step 2：读取 metadata
+
+每一路记录：
+
+```text
+fps
+total_frames
+duration
+width
+height
+```
+
+推荐额外记录：
+
+```text
+start_pts
+time_base
+first_decoded_timestamp
+```
+
+如果 decoder 可以获得。
+
+---
+
+# 13. 同步定义
+
+当前实现首先要求：
+
+```text
+all views have identical FPS
+```
+
+FPS 不一致时直接失败。
+
+但：
+
+> 相同 FPS 并不能从理论上保证视频严格同步。
+
+如果 AgiBotWorld 数据生成流程保证多个 camera stream 的：
+
+```text
+frame index
+```
+
+来自同一采集时间轴，应在系统文档中明确记录：
+
+> Dataset frame-index synchronization is assumed to be guaranteed by the data source.
+
+因此：
+
+```text
+same original_frame_id
+```
+
+才可以解释为同一 acquisition moment。
+
+如果未来数据源不提供这一保证，则必须额外校验：
+
+```text
+start timestamp
+PTS
+frame timing
+duration drift
+```
+
+不能仅依赖 FPS。
+
+---
+
+# 14. 共同有效帧范围
+
+计算：
+
+```text
+min_total_frames = min(total_frames across requested views)
+```
+
+所有同步采样限制在：
+
+```text
+[0, min_total_frames)
+```
+
+避免某一路视频提前结束导致 sample 缺失。
+
+---
+
+# 15. 同步采样
+
+当前：
+
+```python
+compute_sample_frame_ids(
+    total_frames=min_total_frames,
+    native_fps=fps,
+    sample_fps=4
+)
+```
+
+对所有 view 使用完全相同的：
+
+```text
+original_frame_id
+```
+
+抽帧。
+
+默认 decoder：
+
+```text
+ffmpeg
+```
+
+避免 OpenCV AV1 warning。
+
+---
+
+# 16. Sampled Frame 时间含义
+
+当前：
+
+```text
+sample_fps = 4
+```
+
+因此采样时间分辨率约为：
+
+[
+\Delta t = 0.25s
+]
+
+所以 pipeline 当前输出的 boundary 应定义为：
+
+> the first supplied sampled frame in which the new semantic state is visibly established.
+
+而不能声称：
+
+> exact first native video frame.
+
+这是一个重要区别。
+
+---
+
+# 17. 推荐的未来 coarse-to-fine boundary refinement
+
+当前可以保持 4 FPS。
+
+未来如果 benchmark 对 boundary accuracy 要求高，可以采用：
+
+```text
+4 FPS global semantic scan
+        ↓
+coarse boundary candidate
+        ↓
+candidate ±0.5–1.0 s
+        ↓
+native FPS / higher FPS local sampling
+        ↓
+fine boundary refinement
+```
+
+这样可以减少 VLM 输入成本，同时提高 boundary precision。
+
+---
+
+# 18. Multi-view Pack 输出
+
+每一路：
+
+```text
+multiview_pack/views/<view>/metadata.json
+multiview_pack/views/<view>/sampled_frames/*.jpg
+```
+
+---
+
+# 19. Global Contact Sheets
+
+输出：
+
+```text
+multiview_pack/contact_sheets/multiview_global_000_011.jpg
+```
+
+Global sheet 必须是放大三视图 frame-row 表格，不再使用小 thumbnail grid：
+
+```text
+columns = head_color | hand_left_color | hand_right_color
+rows    = chronological sampled frames
+layout  = enlarged_tri_view_frame_rows
+```
+
+每一行必须能追溯：
+
+```text
+sample_index
+original_frame_id
+time
+```
+
+---
+
+# 20. Visual Candidate Generation
+
+对相邻 sample 计算：
+
+```text
+pixel change
+motion change
+luma change
+```
+
+当前三类来源：
+
+```text
+overhead_video
+tri_view_video
+pixel_cv_prior
+```
+
+权重：
+
+```text
+overhead_video = 0.50
+tri_view_video = 0.25
+pixel_cv_prior = 0.25
+```
+
+---
+
+# 21. CV Candidate 的语义地位
+
+CV score 只能作为：
+
+```text
+candidate proposal / attention prior
+```
+
+不能视为：
+
+```text
+semantic boundary confidence
+```
+
+高 CV score 可能来自：
+
+* camera movement；
+* illumination；
+* fast arm motion；
+* occlusion；
+* motion blur；
+* background change。
+
+因此：
+
+> High CV score without semantic interaction change must be rejected.
+
+---
+
+# 22. Local Candidate Sheets
+
+参数：
+
+```text
+candidate_count = 16
+candidate_min_gap = 5
+```
+
+输出：
+
+```text
+multiview_pack/contact_sheets/
+multiview_local_candidate_sample_*.jpg
+```
+
+Local sheet 也必须使用同一种放大三视图 frame-row 表格，用于检查候选附近的：
+
+```text
+before
+candidate
+after
+```
+
+状态变化。
+
+---
+
+# 23. Trajectory / Proprio
+
+Repo 当前假设 proprio 已经被离线转换为 CSV。
+
+原始 H5 若存在，应在 repo 外部完成转换：
+
+```text
+dataset/AgiBotWorld-Alpha/proprio_stats/<task>/<episode>/proprio_stats.h5
+```
+
+Repo 内部最终 pipeline 读取：
+
+```text
+dataset/AgiBotWorld-Alpha/proprio_stats_extracted/<task>/<episode>/manifest.json
+dataset/AgiBotWorld-Alpha/proprio_stats_extracted/<task>/<episode>/timeseries.csv
+```
+
+---
+
+# 24. Trajectory 的角色
+
+H5 中可能包含：
+
+```text
+gripper command
+gripper state
+end-effector state
+joint state
+joint velocity
+```
+
+转换为统一：
+
+```text
+timeseries.csv
+```
+
+trajectory 用来召回：
+
+* gripper open/close；
+* end-effector motion peak；
+* joint change；
+* stationary → moving；
+* moving → stationary。
+
+但 trajectory 的职责只有：
+
+```text
+candidate recall
+temporal reference
+cross-check
+```
+
+不能直接生成最终 semantic caption。
+
+---
+
+# 25. Trajectory 禁止规则
+
+以下推理禁止：
+
+```text
+gripper close signal
+→ therefore grasp object
+```
+
+以及：
+
+```text
+gripper open signal
+→ therefore release object
+```
+
+如果画面没有 supporting evidence：
+
+```text
+trajectory candidate must be rejected or marked unsupported
+```
+
+---
+
+# 26. Fused Candidate Reference
+
+输出：
+
+```text
+multiview_pack/trajectory_reference.json
+multiview_pack/fused_cv_reference.json
+multiview_pack/candidate_reference.json
+multiview_pack/manifest.json
+```
+
+这些文件代表：
+
+```text
+where should the semantic reviewer look?
+```
+
+而不是：
+
+```text
+what definitely happened?
+```
+
+---
+
+# 27. Base Head Pipeline
+
+入口：
+
+```text
+robot_tas.cli.run_tas
+```
+
+Batch 调用：
+
+```text
+robot_tas.cli.evaluate_multiview_codex_task.run_base_head_pipeline
+```
+
+命令：
+
+```bash
+.venv/bin/python -m robot_tas.cli.run_tas \
+  --video dataset/AgiBotWorld-Alpha/observations/<task>/<episode>/videos/head_color.mp4 \
+  --output-dir outputs/codex_vlm_fresh_multiview_20260820_143004/task_<task>/episodes/<episode>/base_head_pipeline \
+  --model codex-local \
+  --sample-fps 4 \
+  --window-size 16 \
+  --window-stride 8
+```
+
+作用：
+
+* sampled frames；
+* rough local proposals；
+* rough boundaries；
+* base `final_segments.json`。
+
+但：
+
+> Base head pipeline is only a coarse temporal proposal system.
+
+它不是最终 caption 来源。
+
+最终判断必须返回：
+
+```text
+multi-view visual evidence
+```
+
+---
+
+# 28. Semantic Segment 的正式定义
+
+这是整个 pipeline 最重要的 ontology。
+
+一个 segment 表示：
+
+> A continuous temporal interval during which the observable robot-object interaction state remains semantically stable.
+
+也就是说：
+
+```text
+segment != arbitrary motion chunk
+segment != CV peak interval
+segment != trajectory event
+```
+
+而是：
+
+```text
+semantic interaction state
+```
+
+---
+
+# 29. 推荐的 Interaction State 类型
+
+实际 action label 可以更丰富，但从语义上通常属于：
+
+```text
+reach / approach
+contact
+grasp / secure
+carry / transport
+position / align
+lower / place
+release
+retract
+idle / transition
+```
+
+注意这些不是强制动作模板。
+
+模型禁止假设所有任务一定具有：
+
+```text
+reach
+→ grasp
+→ carry
+→ place
+→ release
+```
+
+实际视频可能：
+
+* 开头已经 carry；
+* 有多个连续 grasp；
+* 两只手并行；
+* object handoff；
+* reposition；
+* unsuccessful grasp；
+* re-grasp；
+* object manipulation without transport。
+
+---
+
+# 30. Boundary 的正式定义
+
+Boundary 是：
+
+> the first supplied sampled frame in which a new semantic interaction state becomes visibly established.
+
+例如：
+
+```text
+sample 20:
+hand approaching object
+
+sample 21:
+first visible contact
+
+sample 22:
+gripper closes
+
+sample 23:
+object begins following gripper
+```
+
+则可能形成：
+
+```text
+reach:
+... → sample 20
+
+contact:
+sample 21 → sample 22
+
+grasp/carry:
+sample 23 → ...
+```
+
+实际是否将 `contact` 单独作为 segment，需要由可见状态持续时间和语义显著性决定。
+
+---
+
+# 31. Grasp / Release 的强制表达原则
+
+原来的：
+
+```text
+gripper夹住/释放一定要有一个segment
+```
+
+应正式定义为：
+
+> Whenever a grasp or release transition is visibly supported, it must be represented explicitly and must not be absorbed into an overly generic manipulation or carry segment.
+
+同时：
+
+> Never invent a grasp or release merely to satisfy the segmentation schema.
+
+例如视频开头已经抓着物体：
+
+```text
+carry tomato
+```
+
+即可。
+
+不需要虚构：
+
+```text
+grasp tomato
+```
+
+---
+
+# 32. 什么时候应该切 Segment
+
+只有出现真正 semantic state change 才应产生 boundary。
+
+常见有效变化：
+
+* arm begins a new object-directed reach；
+* first meaningful object contact；
+* object becomes securely grasped；
+* object begins moving with the hand；
+* object starts being positioned；
+* object reaches placement surface；
+* release becomes visible；
+* hand retracts after release；
+* active hand changes；
+* second hand begins a new independent action；
+* another object becomes active；
+* handoff occurs；
+* failed grasp transitions into re-grasp。
+
+---
+
+# 33. 什么时候不应该切
+
+以下情况本身不能形成 boundary：
+
+* camera motion；
+* lighting change；
+* motion blur；
+* temporary occlusion；
+* minor trajectory spike；
+* continuous same-state arm movement；
+* small correction while carrying；
+* continuous translation of the same object；
+* speed change；
+* direction change；
+* brief view loss with no semantic evidence of state change。
+
+例如：
+
+```text
+right hand carries tomato
+```
+
+过程中机械臂先向上、再向右、再下降，如果 interaction state 一直是：
+
+```text
+carry tomato
+```
+
+则不应该为了 motion peak 切成多个 segment。
+
+---
+
+# 34. Under-segmentation 防护
+
+禁止把多个明显 semantic transitions 合并成：
+
+```text
+manipulate object
+```
+
+例如真实过程：
+
+```text
+reach tomato
+grasp tomato
+carry tomato
+release tomato
+retract
+```
+
+不能偷懒写成：
+
+```text
+robot manipulates tomato
+```
+
+---
+
+# 35. Over-segmentation 防护
+
+也不能因为每个微小视觉变化产生 segment。
+
+例如：
+
+```text
+carry tomato leftward
+carry tomato upward
+carry tomato forward
+```
+
+如果本质上都是同一个持续的 object transport，则应该合并成：
+
+```text
+carry tomato toward destination
+```
+
+---
+
+# 36. 左右手状态强制检查
+
+每个 segment 都必须显式判断：
+
+```text
+left hand state
+right hand state
+```
+
+而不能只描述主要动作手。
+
+推荐 segment 内部保持：
+
+```json
+{
+  "left_hand_state": "...",
+  "right_hand_state": "..."
+}
+```
+
+允许状态包括：
+
+```text
+idle
+approaching
+contacting
+grasping
+carrying
+positioning
+releasing
+retracting
+occluded
+uncertain
+```
+
+---
+
+# 37. 单手 Carry 时另一只手规则
+
+如果：
+
+```text
+left hand continuously carries object A
+```
+
+而：
+
+```text
+right hand reaches / grasps / releases object B
+```
+
+segment 必须继续按照右手新的 semantic change 切分。
+
+不能因为左手 carry 状态持续不变，就把整个区间压缩成：
+
+```text
+left hand carries object A
+```
+
+---
+
+# 38. 多物体规则
+
+如果同时持有多个物体，必须显式记录。
+
+例如：
+
+```text
+left hand carries tomato while right hand carries mushroom
+```
+
+不能写：
+
+```text
+robot carries objects
+```
+
+除非具体身份视觉上确实无法识别。
+
+---
+
+# 39. Object Identity Continuity
+
+一旦物体身份被可靠确认，应在相邻 segment 中保持 identity continuity。
+
+例如：
+
+```text
+segment 4:
+left hand grasps tomato
+
+segment 5:
+left hand carries tomato
+```
+
+不能无证据突然变成：
+
+```text
+left hand carries mushroom
+```
+
+除非出现：
+
+* release；
+* handoff；
+* reacquisition；
+* object swap；
+* earlier identity correction supported by clearer visual evidence。
+
+---
+
+# 40. Object Identity 不确定性
+
+原则不是：
+
+```text
+必须猜出具体物体
+```
+
+而是：
+
+> Be concrete when visually supported, and conservative when identity is uncertain.
+
+禁止使用过度空泛：
+
+```text
+visible item
+target object
+item
+thing
+```
+
+但允许视觉可观察层面的 fallback：
+
+```text
+unidentified small food item
+unidentified bottle
+unidentified container
+unidentified rectangular package
+```
+
+如果可以确认类别而不能确认实例，应写类别。
+
+如果可以确认具体物体，则写：
+
+```text
+tomato
+mushroom
+corn cob
+pink bottle
+blue carton
+```
+
+具体名称必须来自当前视觉证据，而不是 task prior。
+
+---
+
+# 41. Description 的正式要求
+
+每个 description 必须可以直接作为视频字幕。
+
+推荐结构：
+
+```text
+active hand(s)
++
+concrete object(s)
++
+observable interaction/state change
+```
+
+例如：
+
+```text
+The right gripper grasps the tomato while the left gripper remains idle.
+```
+
+或：
+
+```text
+The left gripper continues carrying the bottle while the right gripper reaches toward the carton.
+```
+
+Description 不应该写：
+
+```text
+something happens
+robot manipulates object
+active gripper moves item
+```
+
+---
+
+# 42. Semantic Evidence Requirement
+
+每个最终 segment / boundary 都应该能够回答：
+
+```text
+What changed?
+Which hand changed?
+Which object is involved?
+Which view supports this?
+What visible evidence establishes the new state?
+```
+
+VLM decision 应包含 evidence attribution。
+
+例如：
+
+```json
+{
+  "views_used": [
+    "hand_right_color",
+    "head_color"
+  ],
+  "evidence": [
+    "right gripper closes around the object",
+    "object begins moving consistently with the right hand"
+  ]
+}
+```
+
+---
+
+# 43. Candidate Rejection
+
+VLM 必须不仅输出接受的 boundary，还应记录重要 rejected candidates。
+
+Rejected candidate 应说明：
+
+```text
+candidate sample
+candidate source
+reason rejected
+```
+
+例如：
+
+```text
+high motion score but no semantic state change
+```
+
+或者：
+
+```text
+gripper command changed but visual evidence does not show release
+```
+
+这对后续 debug 很重要。
+
+---
+
+# 44. Segment 数量限制
+
+当前：
+
+```text
+max_action_segments = 20
+```
+
+这只是：
+
+```text
+hard safety cap
+```
+
+不是优化目标。
+
+正式规则：
+
+> Do not merge visually distinct semantic states merely to reduce the segment count.
+
+同时：
+
+> Do not create unnecessary micro-segments merely to approach the limit.
+
+---
+
+# 45. Timeline Partition Invariant
+
+最终 segments 必须形成合法的 temporal partition。
+
+必须满足：
+
+```text
+monotonically increasing
+no overlaps
+no unexplained gaps
+all boundaries from supplied samples
+first segment begins at first covered sample
+final segment reaches final covered sample
+```
+
+形式上：
+
+```text
+segment[i].start <= segment[i].end
+segment[i+1].start > segment[i].start
+```
+
+并且相邻 segment 必须按照统一的 inclusive/exclusive convention 连续覆盖 timeline。
+
+例如如果采用：
+
+```text
+[start_sample, end_sample]
+```
+
+则需要明确：
+
+```text
+segment[i+1].start_sample =
+next supplied sample after segment[i].end_sample
+```
+
+或者统一改用：
+
+```text
+[start_sample, end_sample)
+```
+
+建议整个代码库只保留一种 convention。
+
+---
+
+# 46. Boundary Provenance Invariant
+
+所有最终 boundary：
+
+```text
+sample_index
+original_frame_id
+time
+```
+
+必须来自 supplied evidence manifest。
+
+禁止：
+
+* 插值一个不存在的 frame id；
+* 根据描述猜一个时间；
+* 根据 VLM natural language 输出重新生成 timestamp。
+
+即：
+
+```text
+VLM chooses boundary
+```
+
+只能执行：
+
+```text
+select from supplied candidate/sample universe
+```
+
+而不是：
+
+```text
+generate arbitrary time
+```
+
+---
+
+# 47. 通用 VLM Prompt 核心规则
+
+文件：
+
+```text
+prompts/codex_vlm_decision_v2.txt
+```
+
+至少必须覆盖：
+
+1. 不允许编时间和 frame；
+2. boundary = new state first visible supplied sample；
+3. 必须使用 multi-view；
+4. contact/grasp/release 优先参考 hand view；
+5. destination/result 优先参考 head/global；
+6. CV score 只是 proposal；
+7. trajectory 只是 proposal；
+8. 不假设固定 action pattern；
+9. semantic state change 才切 segment；
+10. same-state continuous movement 不切；
+11. grasp/release 可见时不能吞掉；
+12. 不可强行创造 grasp/release；
+13. object identity continuity；
+14. 左右手都必须检查；
+15. 单手 carry 时必须继续检查另一只手；
+16. multi-object 要明确；
+17. specific object when supported；
+18. uncertain object 要保守，不 hallucinate；
+19. max 20 segments 是 cap，不是目标；
+20. 输出固定 JSON；
+21. rejected candidates 必须有理由；
+22. 每个 decision 必须带 visual evidence。
+
+---
+
+# 48. 标准 VLM Decision
+
+标准 decision：
+
+```text
+outputs/.../task_<task>/episodes/<episode>/decision/codex_vlm_decision.json
+```
+
+转换脚本：
+
+```text
+scripts/apply_codex_vlm_decision.py
+```
+
+实现：
+
+```text
+robot_tas/cli/apply_codex_vlm_decision.py
+```
+
+---
+
+# 49. Decision Apply 命令
+
+```bash
+.venv/bin/python scripts/apply_codex_vlm_decision.py \
+  --pipeline-output-dir outputs/.../task_<task>/episodes/<episode>/base_head_pipeline \
+  --decision outputs/.../task_<task>/episodes/<episode>/decision/codex_vlm_decision.json \
+  --output-dir outputs/.../task_<task>/episodes/<episode>/final
+```
+
+---
+
+# 50. Final 输出
+
+```text
+final/final_segments.json
+final/timeline.html
+final/annotated_actions.mp4
+```
+
+---
+
+# 51. Decision Conversion 校验
+
+必须检查：
+
+* `action_label` 在允许 action set 中；
+* segment 包含 start/end sample；
+* segment 包含 start/end frame；
+* segment 包含 start/end time；
+* boundary 来自 supplied samples；
+* segment 顺序单调；
+* 无 overlap；
+* 无非法 gap；
+* object identity 字段合法；
+* description 非空；
+* left/right hand state 已判断。
+
+---
+
+# 52. Codex/VLM Visual Review
+
+deterministic bootstrap 没有真正完成视觉语义审查，容易产生：
+
+```text
+visible item
+target object
+```
+
+泛化，以及：
+
+* 单手 carry 时忽略另一手；
+* 多物体没有展开；
+* 一个 episode 一段到底；
+* both grippers 状态遗漏。
+
+因此最终有效输出必须采用：
+
+```text
+codex_vlm_decision:
+codex_vlm_decision_v2
+```
+
+Codex/VLM review 必须直接检查 multi-view contact sheets、local candidate sheets、tri-view frames 和 trajectory reference。
+
+Codex/VLM review 还必须输出 `inspection_audit`：
+
+```text
+reviewed_visual_sources:
+  实际打开过的 global/local 三视角图或 sampled frame
+
+semantic_change_observations:
+  每个明显 hand/object/contact state change 的 sample_index/frame_id/time
+
+trajectory_change_observations:
+  gripper_command_close/open
+  gripper_state_closing/opening
+  trajectory_motion_peak
+  以及 end_position_delta / end_orientation_delta / joint_delta / gripper 相关数值
+
+undersegmentation_checks:
+  每个 final segment 的 start/mid/end 或更多检查帧，以及为什么不继续拆
+  对 high-risk segment，还必须列出 internal_event_frames_reviewed、reviewed_local_sheets、split_decision
+```
+
+`validate_decision` 会强制检查该 audit。缺 audit、boundary 没有对应 semantic observation、segment 没有 under-segmentation check，都不能进入 final。
+
+此外 pipeline 必须运行 under-segmentation risk audit：
+
+```bash
+.venv/bin/python tools/audit_vlm_undersegmentation_risk.py \
+  --output-root outputs/codex_vlm_fresh_multiview_20260820_143004
+```
+
+该报告中的 high-risk segment 不一定自动错误，但必须二次看 local/global 三视角图。若段内有 gripper open/close、多个 trajectory candidates、长 `carry/move/place/retract/reach_for` 或密集 visual candidates，VLM 必须在 `undersegmentation_checks` 中明确记录这些内部事件帧：
+
+```text
+internal_event_frames_reviewed
+reviewed_local_sheets
+split_decision = keep_single_segment | split_inserted | already_split
+```
+
+如果缺少这些字段，`validate_decision` 必须拒绝输出，不能进入 final。
+
+---
+
+# 53. Segment Review Sheets
+
+生成：
+
+```bash
+.venv/bin/python tools/build_segment_review_sheets.py \
+  --output-root outputs/codex_vlm_fresh_multiview_20260820_143004
+```
+
+位置：
+
+```text
+outputs/codex_vlm_fresh_multiview_20260820_143004/segment_review_sheets/
+```
+
+---
+
+# 54. Review Sheet 内容
+
+Segment review sheet 也必须是放大三视图 frame-row 表格。
+
+每个 final segment 抽取：
+
+```text
+start
+mid
+end
+```
+
+三个时间点，每个时间点作为一行；三列固定展示：
+
+```text
+head_color
+hand_left_color
+hand_right_color
+```
+
+重点检查：
+
+* object identity；
+* left hand state；
+* right hand state；
+* contact；
+* grasp；
+* carry；
+* release；
+* handoff；
+* multi-object；
+* under-segmentation；
+* over-segmentation；
+* identity drift；
+* unsupported caption。
+
+---
+
+# 55. Codex/VLM Decision Apply
+
+```bash
+.venv/bin/python scripts/apply_codex_vlm_decision.py \
+  --pipeline-output-dir outputs/.../task_<task>/episodes/<episode>/base_head_pipeline \
+  --decision outputs/.../task_<task>/episodes/<episode>/decision/codex_vlm_decision.json \
+  --output-dir outputs/.../task_<task>/episodes/<episode>/final
+```
+
+作用：
+
+* 读取 `decision/codex_vlm_decision.json`；
+* 校验 `inspection_audit` 是否覆盖实际三视角、semantic change 和 trajectory change；
+* 校验 high-risk segment 是否显式审查内部 trajectory/visual candidate event；
+* 校验 segment label、object identity、hand state、contact state；
+* 按 decision JSON 生成 `final/final_segments.json`；
+* 重渲染 `final/timeline.html`；
+* 重渲染 `final/annotated_actions.mp4`；
+* 更新 flat annotated videos 和 review sheets。
+
+输出标记：
+
+```text
+codex_vlm_decision:
+codex_vlm_decision_v2
+```
+
+---
+
+# 56. 实验口径：VLM Pipeline Only
+
+后续 benchmark 必须严格区分：
+
+## Deterministic Bootstrap
+
+```text
+visual/CV/trajectory proposals
++
+deterministic decision placeholder
+```
+
+不能作为最终语义结果。
+
+---
+
+## VLM-reviewed Pipeline
+
+```text
+automatic proposals
++
+multi-view evidence
++
+Codex/VLM visual semantic review
++
+decision JSON
++
+final conversion
+```
+
+只有这一层可以作为最终输出口径。
+
+```text
+fully automatic VLM performance
+```
+
+只有在所有 final segments 都来自 Codex/VLM review decision JSON 时才允许声称。
+
+---
+
+# 57. 当前输出位置
+
+每个 episode：
+
+```text
+outputs/codex_vlm_fresh_multiview_20260820_143004/task_<task>/episodes/<episode>/final/final_segments.json
+```
+
+```text
+outputs/codex_vlm_fresh_multiview_20260820_143004/task_<task>/episodes/<episode>/final/timeline.html
+```
+
+```text
+outputs/codex_vlm_fresh_multiview_20260820_143004/task_<task>/episodes/<episode>/final/annotated_actions.mp4
+```
+
+Flat 汇总：
+
+```text
+outputs/codex_vlm_fresh_multiview_20260820_143004/annotated_videos/task_<task>_episode_<episode>_annotated_actions.mp4
+```
+
+```text
+outputs/codex_vlm_fresh_multiview_20260820_143004/annotated_videos/task_<task>_episode_<episode>_timeline.html
+```
+
+VLM review summary：
+
+```text
+outputs/codex_vlm_fresh_multiview_20260820_143004/codex_vlm_visual_review_summary.json
+```
+
+Batch summary：
+
+```text
+outputs/codex_vlm_fresh_multiview_20260820_143004/no_gt_run_summary.json
+```
+
+---
+
+# 58. VLM Review Source of Truth
+
+最终语义只能来自每个 episode 当前生成的证据：
+
+```text
+multiview_pack/
+decision/codex_vlm_decision.json
+final/final_segments.json
+trajectory_reference
+```
+
+禁止把批次笔记、旧输出或任务先验作为最终 caption 来源。
+
+```text
+generic prior != visual evidence
+```
+
+---
+
+# 59. 测试
+
+```bash
+.venv/bin/python -m pytest -s \
+  tests/test_apply_codex_vlm_decision.py \
+  tests/test_vlm_pack.py
+```
+
+当前：
+
+```text
+3 passed
+```
+
+---
+
+# 60. 禁止项扫描
+
+```bash
+rg -n "visible item|target object|active gripper|deterministic_bootstrap_no_vlm|max10|max 10" \
+  outputs/codex_vlm_fresh_multiview_20260820_143004/task_*/episodes/*/final/final_segments.json \
+  outputs/codex_vlm_fresh_multiview_20260820_143004/annotated_videos/*.html \
+  outputs/codex_vlm_fresh_multiview_20260820_143004/segment_review_sheets -S
+```
+
+当前结果：
+
+```text
+no matches
+```
+
+---
+
+# 61. 当前 Batch 状态
+
+```text
+no_gt_run_summary:
+completed = 17
+vision_plus_trajectory_completed = 17
+vision_only_completed = 0
+```
+
+Codex/VLM visual review：
+
+```text
+episode_count = 17
+max_segments_per_episode = 12
+decision_version = codex_vlm_decision_v2
+```
+
+---
+
+# 62. Final Semantic Invariants
+
+最终输出必须满足以下 invariant。
+
+## Evidence invariant
+
+每个 semantic claim 都必须能从当前 episode 的 visual evidence 中支持。
+
+---
+
+## Temporal invariant
+
+所有边界必须来自 supplied sampled frames。
+
+---
+
+## State invariant
+
+只有 interaction state 改变才产生 semantic boundary。
+
+---
+
+## View invariant
+
+关键 grasp/contact/release 不能只依据 head view 判断。
+
+---
+
+## Object invariant
+
+具体 object identity 只能来自当前视觉证据。
+
+---
+
+## Hand invariant
+
+每个 segment 都必须检查左右手。
+
+---
+
+## Persistence invariant
+
+hand-object identity 在没有视觉变化证据时必须保持连续。
+
+---
+
+## Grasp invariant
+
+```text
+gripper closure != grasp
+contact != successful grasp
+```
+
+---
+
+## Release invariant
+
+```text
+gripper opening != confirmed release
+```
+
+---
+
+## CV invariant
+
+```text
+high CV score != semantic boundary
+```
+
+---
+
+## Trajectory invariant
+
+```text
+trajectory event != semantic action
+```
+
+---
+
+## Partition invariant
+
+最终 segments 必须连续、单调、无 overlap、无非法 gap。
+
+---
+
+## Caption invariant
+
+description 必须：
+
+```text
+active hand(s)
++
+observable concrete object(s)
++
+observable interaction/state
+```
+
+并能够直接作为视频字幕。
+
+---
+
+# 63. 整体 Pipeline
+
+最终系统应被理解为：
+
+```text
+Raw Observation
+        │
+        ▼
+Episode Discovery
+        │
+        ▼
+Multi-view Validation
+        │
+        ▼
+Synchronized Frame Sampling
+        │
+        ▼
+Multi-view Evidence Pack
+        │
+        ├──────────────┐
+        │              │
+        ▼              ▼
+Visual/CV         Trajectory
+Candidates         Candidates
+        │              │
+        └──────┬───────┘
+               ▼
+        Candidate Fusion
+               │
+               ▼
+      Base Temporal Proposal
+               │
+               ▼
+   Codex/VLM Semantic Decision
+               │
+               ▼
+ Semantic-State Segmentation
+               │
+               ▼
+ Hand/Object/Contact Consistency
+               │
+               ▼
+           Final Output
+               │
+        ┌──────┴──────┐
+        ▼             ▼
+ timeline.html   annotated_actions.mp4
+```
+
+---
+
+# 64. 最核心的原则
+
+这个 pipeline 的本质不是：
+
+```text
+CV segmentation
+```
+
+也不是：
+
+```text
+trajectory segmentation
+```
+
+更不是：
+
+```text
+head-video captioning
+```
+
+而是：
+
+> Multi-view visual semantic state segmentation with CV/trajectory-assisted candidate recall.
+
+Observation 进入系统后必须被转换成同步多视角证据：
+
+```text
+synchronized frame IDs
+sampled frames for every view
+global contact sheets
+local candidate sheets
+fused visual candidates
+optional trajectory candidates
+```
+
+最终 caption 必须来自：
+
+```text
+multi-view visual semantic evidence
+```
+
+并满足：
+
+```text
+concrete object
+explicit left/right hand state
+explicit carry/release
+multi-object awareness
+no invented frames
+no unsupported object identity
+no shortcut segmentation
+no fixed action-pattern assumption
+no trajectory-template caption
+```
+
+CV 和 trajectory 的职责是：
+
+```text
+tell the semantic reasoner where to look
+```
+
+而不是：
+
+```text
+tell the semantic reasoner what happened
+```
+
+最终 semantic decision 必须回答：
+
+```text
+what changed,
+when it first became visible,
+which hand changed,
+which object was involved,
+and what visual evidence proves it.
+```

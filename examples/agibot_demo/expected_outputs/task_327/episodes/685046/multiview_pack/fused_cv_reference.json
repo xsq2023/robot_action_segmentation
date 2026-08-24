@@ -1,0 +1,1175 @@
+{
+  "description": "Visual adjacent-frame changes across synchronized camera views. Scores are non-binding recall hints; semantic visual evidence is still required.",
+  "vision_source_weights": {
+    "overhead_video": 0.5,
+    "tri_view_video": 0.25,
+    "pixel_cv_prior": 0.25
+  },
+  "overhead_view": "head_color",
+  "tri_view_views": [
+    "head_color",
+    "hand_left_color",
+    "hand_right_color"
+  ],
+  "pixel_prior_view_weights": {
+    "head_color": 1.15,
+    "hand_left_color": 1.25,
+    "hand_right_color": 1.25
+  },
+  "top_records": [
+    {
+      "sample_index": 7,
+      "original_frame_id": 52,
+      "time_seconds": 1.7333333333333334,
+      "fused_score": 0.044389407302456156,
+      "source_scores": {
+        "overhead_video": 0.03451650582107843,
+        "tri_view_video": 0.05408804168368736,
+        "pixel_cv_prior": 0.054436575883980404
+      },
+      "weighted_mean_score": 0.05462424814567665,
+      "top3_mean_score": 0.05408804168368736,
+      "per_view_scores": {
+        "head_color": 0.03451650582107843,
+        "hand_left_color": 0.031682917177287585,
+        "hand_right_color": 0.09606470205269607
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.09606470205269607
+        },
+        {
+          "view": "head_color",
+          "score": 0.03451650582107843
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.031682917177287585
+        }
+      ]
+    },
+    {
+      "sample_index": 44,
+      "original_frame_id": 330,
+      "time_seconds": 11.0,
+      "fused_score": 0.04433314358826257,
+      "source_scores": {
+        "overhead_video": 0.033830524918300645,
+        "tri_view_video": 0.05465037998706426,
+        "pixel_cv_prior": 0.05502114452938471
+      },
+      "weighted_mean_score": 0.05522078697524957,
+      "top3_mean_score": 0.054650379987064256,
+      "per_view_scores": {
+        "head_color": 0.033830524918300645,
+        "hand_left_color": 0.03755439389297384,
+        "hand_right_color": 0.0925662211499183
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.0925662211499183
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.03755439389297384
+        },
+        {
+          "view": "head_color",
+          "score": 0.033830524918300645
+        }
+      ]
+    },
+    {
+      "sample_index": 160,
+      "original_frame_id": 1200,
+      "time_seconds": 40.0,
+      "fused_score": 0.043646761472095626,
+      "source_scores": {
+        "overhead_video": 0.02760131357230393,
+        "tri_view_video": 0.059408990332244026,
+        "pixel_cv_prior": 0.05997542841153062
+      },
+      "weighted_mean_score": 0.06028043353114649,
+      "top3_mean_score": 0.05940899033224401,
+      "per_view_scores": {
+        "head_color": 0.02760131357230393,
+        "hand_left_color": 0.02369953788807191,
+        "hand_right_color": 0.1269261195363562
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.1269261195363562
+        },
+        {
+          "view": "head_color",
+          "score": 0.02760131357230393
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.02369953788807191
+        }
+      ]
+    },
+    {
+      "sample_index": 158,
+      "original_frame_id": 1185,
+      "time_seconds": 39.5,
+      "fused_score": 0.04333114565059401,
+      "source_scores": {
+        "overhead_video": 0.0282408215890523,
+        "tri_view_video": 0.05815510961328976,
+        "pixel_cv_prior": 0.05868782981098167
+      },
+      "weighted_mean_score": 0.05897467914820038,
+      "top3_mean_score": 0.05815510961328976,
+      "per_view_scores": {
+        "head_color": 0.0282408215890523,
+        "hand_left_color": 0.022931883169934626,
+        "hand_right_color": 0.12329262408088236
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.12329262408088236
+        },
+        {
+          "view": "head_color",
+          "score": 0.0282408215890523
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.022931883169934626
+        }
+      ]
+    },
+    {
+      "sample_index": 102,
+      "original_frame_id": 765,
+      "time_seconds": 25.5,
+      "fused_score": 0.04262566313831112,
+      "source_scores": {
+        "overhead_video": 0.038294398488562094,
+        "tri_view_video": 0.04688047640931373,
+        "pixel_cv_prior": 0.04703337916680657
+      },
+      "weighted_mean_score": 0.04711571142084117,
+      "top3_mean_score": 0.046880476409313726,
+      "per_view_scores": {
+        "head_color": 0.038294398488562094,
+        "hand_left_color": 0.025162530637254914,
+        "hand_right_color": 0.07718450010212419
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.07718450010212419
+        },
+        {
+          "view": "head_color",
+          "score": 0.038294398488562094
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.025162530637254914
+        }
+      ]
+    },
+    {
+      "sample_index": 159,
+      "original_frame_id": 1192,
+      "time_seconds": 39.733333333333334,
+      "fused_score": 0.04234937653317426,
+      "source_scores": {
+        "overhead_video": 0.02875145526960783,
+        "tri_view_video": 0.05570728017769607,
+        "pixel_cv_prior": 0.05618731541578531
+      },
+      "weighted_mean_score": 0.0564457959286026,
+      "top3_mean_score": 0.05570728017769607,
+      "per_view_scores": {
+        "head_color": 0.02875145526960783,
+        "hand_left_color": 0.02240101613562091,
+        "hand_right_color": 0.11596936912785948
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.11596936912785948
+        },
+        {
+          "view": "head_color",
+          "score": 0.02875145526960783
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.02240101613562091
+        }
+      ]
+    },
+    {
+      "sample_index": 34,
+      "original_frame_id": 255,
+      "time_seconds": 8.5,
+      "fused_score": 0.04202656079938754,
+      "source_scores": {
+        "overhead_video": 0.034993285334967324,
+        "tri_view_video": 0.048935691550925926,
+        "pixel_cv_prior": 0.04918398097668958
+      },
+      "weighted_mean_score": 0.049317675282870004,
+      "top3_mean_score": 0.048935691550925926,
+      "per_view_scores": {
+        "head_color": 0.034993285334967324,
+        "hand_left_color": 0.03016302849264705,
+        "hand_right_color": 0.08165076082516341
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.08165076082516341
+        },
+        {
+          "view": "head_color",
+          "score": 0.034993285334967324
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.03016302849264705
+        }
+      ]
+    },
+    {
+      "sample_index": 5,
+      "original_frame_id": 38,
+      "time_seconds": 1.2666666666666666,
+      "fused_score": 0.042026434178078685,
+      "source_scores": {
+        "overhead_video": 0.02275273182189541,
+        "tri_view_video": 0.060959935406454245,
+        "pixel_cv_prior": 0.061640337662069666
+      },
+      "weighted_mean_score": 0.062006708107401054,
+      "top3_mean_score": 0.060959935406454245,
+      "per_view_scores": {
+        "head_color": 0.02275273182189541,
+        "hand_left_color": 0.033920285692401964,
+        "hand_right_color": 0.12620678870506535
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.12620678870506535
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.033920285692401964
+        },
+        {
+          "view": "head_color",
+          "score": 0.02275273182189541
+        }
+      ]
+    },
+    {
+      "sample_index": 157,
+      "original_frame_id": 1178,
+      "time_seconds": 39.266666666666666,
+      "fused_score": 0.04135397871182934,
+      "source_scores": {
+        "overhead_video": 0.028474066840277777,
+        "tri_view_video": 0.05400654658564815,
+        "pixel_cv_prior": 0.05446123458111365
+      },
+      "weighted_mean_score": 0.054706066578672,
+      "top3_mean_score": 0.05400654658564815,
+      "per_view_scores": {
+        "head_color": 0.028474066840277777,
+        "hand_left_color": 0.020840533088235306,
+        "hand_right_color": 0.11270503982843137
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.11270503982843137
+        },
+        {
+          "view": "head_color",
+          "score": 0.028474066840277777
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.020840533088235306
+        }
+      ]
+    },
+    {
+      "sample_index": 32,
+      "original_frame_id": 240,
+      "time_seconds": 8.0,
+      "fused_score": 0.04131342934536651,
+      "source_scores": {
+        "overhead_video": 0.0387247242647059,
+        "tri_view_video": 0.04385644105732572,
+        "pixel_cv_prior": 0.04394782779472854
+      },
+      "weighted_mean_score": 0.04399703603794544,
+      "top3_mean_score": 0.043856441057325724,
+      "per_view_scores": {
+        "head_color": 0.0387247242647059,
+        "hand_left_color": 0.03545679508782681,
+        "hand_right_color": 0.05738780381944445
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.05738780381944445
+        },
+        {
+          "view": "head_color",
+          "score": 0.0387247242647059
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.03545679508782681
+        }
+      ]
+    },
+    {
+      "sample_index": 114,
+      "original_frame_id": 855,
+      "time_seconds": 28.5,
+      "fused_score": 0.04069550509982639,
+      "source_scores": {
+        "overhead_video": 0.028583078022875817,
+        "tri_view_video": 0.052594135093273424,
+        "pixel_cv_prior": 0.053021729260280495
+      },
+      "weighted_mean_score": 0.05325197227328431,
+      "top3_mean_score": 0.052594135093273424,
+      "per_view_scores": {
+        "head_color": 0.028583078022875817,
+        "hand_left_color": 0.023241561989379083,
+        "hand_right_color": 0.10595776526756537
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.10595776526756537
+        },
+        {
+          "view": "head_color",
+          "score": 0.028583078022875817
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.023241561989379083
+        }
+      ]
+    },
+    {
+      "sample_index": 35,
+      "original_frame_id": 262,
+      "time_seconds": 8.733333333333333,
+      "fused_score": 0.04058783556712497,
+      "source_scores": {
+        "overhead_video": 0.0338119957618464,
+        "tri_view_video": 0.047244074669798485,
+        "pixel_cv_prior": 0.04748327607500858
+      },
+      "weighted_mean_score": 0.04761207683166018,
+      "top3_mean_score": 0.04724407466979847,
+      "per_view_scores": {
+        "head_color": 0.0338119957618464,
+        "hand_left_color": 0.02803213082107844,
+        "hand_right_color": 0.07988809742647059
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.07988809742647059
+        },
+        {
+          "view": "head_color",
+          "score": 0.0338119957618464
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.02803213082107844
+        }
+      ]
+    },
+    {
+      "sample_index": 113,
+      "original_frame_id": 848,
+      "time_seconds": 28.266666666666666,
+      "fused_score": 0.04048517889787372,
+      "source_scores": {
+        "overhead_video": 0.025559123519199357,
+        "tri_view_video": 0.05514777369281046,
+        "pixel_cv_prior": 0.05567469486028573
+      },
+      "weighted_mean_score": 0.05595842164277241,
+      "top3_mean_score": 0.05514777369281046,
+      "per_view_scores": {
+        "head_color": 0.025559123519199357,
+        "hand_left_color": 0.025231643178104585,
+        "hand_right_color": 0.11465255438112744
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.11465255438112744
+        },
+        {
+          "view": "head_color",
+          "score": 0.025559123519199357
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.025231643178104585
+        }
+      ]
+    },
+    {
+      "sample_index": 6,
+      "original_frame_id": 45,
+      "time_seconds": 1.5,
+      "fused_score": 0.03981275939804789,
+      "source_scores": {
+        "overhead_video": 0.027375874438316992,
+        "tri_view_video": 0.0520301202512255,
+        "pixel_cv_prior": 0.05246916846433209
+      },
+      "weighted_mean_score": 0.05270557904062025,
+      "top3_mean_score": 0.0520301202512255,
+      "per_view_scores": {
+        "head_color": 0.027375874438316992,
+        "hand_left_color": 0.02580423432393792,
+        "hand_right_color": 0.10291025199142158
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.10291025199142158
+        },
+        {
+          "view": "head_color",
+          "score": 0.027375874438316992
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.02580423432393792
+        }
+      ]
+    },
+    {
+      "sample_index": 59,
+      "original_frame_id": 442,
+      "time_seconds": 14.733333333333333,
+      "fused_score": 0.03962853957347066,
+      "source_scores": {
+        "overhead_video": 0.027612630208333336,
+        "tri_view_video": 0.051432355494281046,
+        "pixel_cv_prior": 0.05185654238293492
+      },
+      "weighted_mean_score": 0.052084950707594696,
+      "top3_mean_score": 0.051432355494281046,
+      "per_view_scores": {
+        "head_color": 0.027612630208333336,
+        "hand_left_color": 0.024004608353758172,
+        "hand_right_color": 0.10267982792075164
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.10267982792075164
+        },
+        {
+          "view": "head_color",
+          "score": 0.027612630208333336
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.024004608353758172
+        }
+      ]
+    },
+    {
+      "sample_index": 33,
+      "original_frame_id": 248,
+      "time_seconds": 8.266666666666667,
+      "fused_score": 0.039497521512529096,
+      "source_scores": {
+        "overhead_video": 0.033401999080882344,
+        "tri_view_video": 0.045485451559095856,
+        "pixel_cv_prior": 0.04570063632925582
+      },
+      "weighted_mean_score": 0.04581650505164965,
+      "top3_mean_score": 0.045485451559095856,
+      "per_view_scores": {
+        "head_color": 0.033401999080882344,
+        "hand_left_color": 0.033157207414215684,
+        "hand_right_color": 0.06989714818218955
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.06989714818218955
+        },
+        {
+          "view": "head_color",
+          "score": 0.033401999080882344
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.033157207414215684
+        }
+      ]
+    },
+    {
+      "sample_index": 147,
+      "original_frame_id": 1102,
+      "time_seconds": 36.733333333333334,
+      "fused_score": 0.03932712905314095,
+      "source_scores": {
+        "overhead_video": 0.0309356809129902,
+        "tri_view_video": 0.04757045930351308,
+        "pixel_cv_prior": 0.04786669508307033
+      },
+      "weighted_mean_score": 0.04802620665667808,
+      "top3_mean_score": 0.04757045930351308,
+      "per_view_scores": {
+        "head_color": 0.0309356809129902,
+        "hand_left_color": 0.031148226868872537,
+        "hand_right_color": 0.08062747012867648
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.08062747012867648
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.031148226868872537
+        },
+        {
+          "view": "head_color",
+          "score": 0.0309356809129902
+        }
+      ]
+    },
+    {
+      "sample_index": 103,
+      "original_frame_id": 772,
+      "time_seconds": 25.733333333333334,
+      "fused_score": 0.039270703240851496,
+      "source_scores": {
+        "overhead_video": 0.032153690512663397,
+        "tri_view_video": 0.04626209320533769,
+        "pixel_cv_prior": 0.04651333873274148
+      },
+      "weighted_mean_score": 0.0466486247859589,
+      "top3_mean_score": 0.04626209320533769,
+      "per_view_scores": {
+        "head_color": 0.032153690512663397,
+        "hand_left_color": 0.02285096890318627,
+        "hand_right_color": 0.08378162020016339
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.08378162020016339
+        },
+        {
+          "view": "head_color",
+          "score": 0.032153690512663397
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.02285096890318627
+        }
+      ]
+    },
+    {
+      "sample_index": 60,
+      "original_frame_id": 450,
+      "time_seconds": 15.0,
+      "fused_score": 0.03904335531145428,
+      "source_scores": {
+        "overhead_video": 0.028101051879084973,
+        "tri_view_video": 0.049792515573937914,
+        "pixel_cv_prior": 0.05017880191370927
+      },
+      "weighted_mean_score": 0.05038680225050923,
+      "top3_mean_score": 0.049792515573937914,
+      "per_view_scores": {
+        "head_color": 0.028101051879084973,
+        "hand_left_color": 0.024354447508169938,
+        "hand_right_color": 0.09692204733455884
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.09692204733455884
+        },
+        {
+          "view": "head_color",
+          "score": 0.028101051879084973
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.024354447508169938
+        }
+      ]
+    },
+    {
+      "sample_index": 45,
+      "original_frame_id": 338,
+      "time_seconds": 11.266666666666667,
+      "fused_score": 0.03899219115697257,
+      "source_scores": {
+        "overhead_video": 0.027749987234477125,
+        "tri_view_video": 0.050035958350354036,
+        "pixel_cv_prior": 0.05043283180858198
+      },
+      "weighted_mean_score": 0.050646532901473945,
+      "top3_mean_score": 0.050035958350354036,
+      "per_view_scores": {
+        "head_color": 0.027749987234477125,
+        "hand_left_color": 0.03450356796364378,
+        "hand_right_color": 0.08785431985294118
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.08785431985294118
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.03450356796364378
+        },
+        {
+          "view": "head_color",
+          "score": 0.027749987234477125
+        }
+      ]
+    }
+  ],
+  "selected_candidates": [
+    {
+      "sample_index": 7,
+      "original_frame_id": 52,
+      "time_seconds": 1.7333333333333334,
+      "fused_score": 0.044389407302456156,
+      "source_scores": {
+        "overhead_video": 0.03451650582107843,
+        "tri_view_video": 0.05408804168368736,
+        "pixel_cv_prior": 0.054436575883980404
+      },
+      "weighted_mean_score": 0.05462424814567665,
+      "top3_mean_score": 0.05408804168368736,
+      "per_view_scores": {
+        "head_color": 0.03451650582107843,
+        "hand_left_color": 0.031682917177287585,
+        "hand_right_color": 0.09606470205269607
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.09606470205269607
+        },
+        {
+          "view": "head_color",
+          "score": 0.03451650582107843
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.031682917177287585
+        }
+      ]
+    },
+    {
+      "sample_index": 12,
+      "original_frame_id": 90,
+      "time_seconds": 3.0,
+      "fused_score": 0.0384793017757367,
+      "source_scores": {
+        "overhead_video": 0.02901589945874183,
+        "tri_view_video": 0.047775665083741835,
+        "pixel_cv_prior": 0.04810974310172129
+      },
+      "weighted_mean_score": 0.04828963126524869,
+      "top3_mean_score": 0.047775665083741835,
+      "per_view_scores": {
+        "head_color": 0.02901589945874183,
+        "hand_left_color": 0.027949716605392166,
+        "hand_right_color": 0.08636137918709151
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.08636137918709151
+        },
+        {
+          "view": "head_color",
+          "score": 0.02901589945874183
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.027949716605392166
+        }
+      ]
+    },
+    {
+      "sample_index": 17,
+      "original_frame_id": 128,
+      "time_seconds": 4.266666666666667,
+      "fused_score": 0.03580876459816233,
+      "source_scores": {
+        "overhead_video": 0.02667158139297386,
+        "tri_view_video": 0.04478466690495644,
+        "pixel_cv_prior": 0.04510722870174516
+      },
+      "weighted_mean_score": 0.04528091582309294,
+      "top3_mean_score": 0.04478466690495644,
+      "per_view_scores": {
+        "head_color": 0.02667158139297386,
+        "hand_left_color": 0.028577384599673204,
+        "hand_right_color": 0.07910503472222223
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.07910503472222223
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.028577384599673204
+        },
+        {
+          "view": "head_color",
+          "score": 0.02667158139297386
+        }
+      ]
+    },
+    {
+      "sample_index": 34,
+      "original_frame_id": 255,
+      "time_seconds": 8.5,
+      "fused_score": 0.04202656079938754,
+      "source_scores": {
+        "overhead_video": 0.034993285334967324,
+        "tri_view_video": 0.048935691550925926,
+        "pixel_cv_prior": 0.04918398097668958
+      },
+      "weighted_mean_score": 0.049317675282870004,
+      "top3_mean_score": 0.048935691550925926,
+      "per_view_scores": {
+        "head_color": 0.034993285334967324,
+        "hand_left_color": 0.03016302849264705,
+        "hand_right_color": 0.08165076082516341
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.08165076082516341
+        },
+        {
+          "view": "head_color",
+          "score": 0.034993285334967324
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.03016302849264705
+        }
+      ]
+    },
+    {
+      "sample_index": 44,
+      "original_frame_id": 330,
+      "time_seconds": 11.0,
+      "fused_score": 0.04433314358826257,
+      "source_scores": {
+        "overhead_video": 0.033830524918300645,
+        "tri_view_video": 0.05465037998706426,
+        "pixel_cv_prior": 0.05502114452938471
+      },
+      "weighted_mean_score": 0.05522078697524957,
+      "top3_mean_score": 0.054650379987064256,
+      "per_view_scores": {
+        "head_color": 0.033830524918300645,
+        "hand_left_color": 0.03755439389297384,
+        "hand_right_color": 0.0925662211499183
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.0925662211499183
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.03755439389297384
+        },
+        {
+          "view": "head_color",
+          "score": 0.033830524918300645
+        }
+      ]
+    },
+    {
+      "sample_index": 49,
+      "original_frame_id": 368,
+      "time_seconds": 12.266666666666667,
+      "fused_score": 0.03385421160174436,
+      "source_scores": {
+        "overhead_video": 0.023216037326388883,
+        "tri_view_video": 0.04430461090686274,
+        "pixel_cv_prior": 0.04468016084733693
+      },
+      "weighted_mean_score": 0.044882380046053806,
+      "top3_mean_score": 0.04430461090686274,
+      "per_view_scores": {
+        "head_color": 0.023216037326388883,
+        "hand_left_color": 0.020099468954248367,
+        "hand_right_color": 0.08959832643995097
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.08959832643995097
+        },
+        {
+          "view": "head_color",
+          "score": 0.023216037326388883
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.020099468954248367
+        }
+      ]
+    },
+    {
+      "sample_index": 59,
+      "original_frame_id": 442,
+      "time_seconds": 14.733333333333333,
+      "fused_score": 0.03962853957347066,
+      "source_scores": {
+        "overhead_video": 0.027612630208333336,
+        "tri_view_video": 0.051432355494281046,
+        "pixel_cv_prior": 0.05185654238293492
+      },
+      "weighted_mean_score": 0.052084950707594696,
+      "top3_mean_score": 0.051432355494281046,
+      "per_view_scores": {
+        "head_color": 0.027612630208333336,
+        "hand_left_color": 0.024004608353758172,
+        "hand_right_color": 0.10267982792075164
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.10267982792075164
+        },
+        {
+          "view": "head_color",
+          "score": 0.027612630208333336
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.024004608353758172
+        }
+      ]
+    },
+    {
+      "sample_index": 68,
+      "original_frame_id": 510,
+      "time_seconds": 17.0,
+      "fused_score": 0.03385918031921852,
+      "source_scores": {
+        "overhead_video": 0.02271032475490197,
+        "tri_view_video": 0.04481124685117103,
+        "pixel_cv_prior": 0.04520482491589911
+      },
+      "weighted_mean_score": 0.04541675156613731,
+      "top3_mean_score": 0.04481124685117103,
+      "per_view_scores": {
+        "head_color": 0.02271032475490197,
+        "hand_left_color": 0.03925404667075164,
+        "hand_right_color": 0.07246936912785948
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.07246936912785948
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.03925404667075164
+        },
+        {
+          "view": "head_color",
+          "score": 0.02271032475490197
+        }
+      ]
+    },
+    {
+      "sample_index": 89,
+      "original_frame_id": 668,
+      "time_seconds": 22.266666666666666,
+      "fused_score": 0.03694935302406494,
+      "source_scores": {
+        "overhead_video": 0.03354153262867648,
+        "tri_view_video": 0.04029702180351308,
+        "pixel_cv_prior": 0.040417325035393734
+      },
+      "weighted_mean_score": 0.040482103698714085,
+      "top3_mean_score": 0.040297021803513085,
+      "per_view_scores": {
+        "head_color": 0.03354153262867648,
+        "hand_left_color": 0.03662315538194445,
+        "hand_right_color": 0.05072637739991832
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.05072637739991832
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.03662315538194445
+        },
+        {
+          "view": "head_color",
+          "score": 0.03354153262867648
+        }
+      ]
+    },
+    {
+      "sample_index": 95,
+      "original_frame_id": 712,
+      "time_seconds": 23.733333333333334,
+      "fused_score": 0.03405297128037146,
+      "source_scores": {
+        "overhead_video": 0.02740677338643791,
+        "tri_view_video": 0.04058185678785404,
+        "pixel_cv_prior": 0.040816481560755964
+      },
+      "weighted_mean_score": 0.04094281797693393,
+      "top3_mean_score": 0.04058185678785403,
+      "per_view_scores": {
+        "head_color": 0.02740677338643791,
+        "hand_left_color": 0.025319080627042488,
+        "hand_right_color": 0.06901971635008171
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.06901971635008171
+        },
+        {
+          "view": "head_color",
+          "score": 0.02740677338643791
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.025319080627042488
+        }
+      ]
+    },
+    {
+      "sample_index": 102,
+      "original_frame_id": 765,
+      "time_seconds": 25.5,
+      "fused_score": 0.04262566313831112,
+      "source_scores": {
+        "overhead_video": 0.038294398488562094,
+        "tri_view_video": 0.04688047640931373,
+        "pixel_cv_prior": 0.04703337916680657
+      },
+      "weighted_mean_score": 0.04711571142084117,
+      "top3_mean_score": 0.046880476409313726,
+      "per_view_scores": {
+        "head_color": 0.038294398488562094,
+        "hand_left_color": 0.025162530637254914,
+        "hand_right_color": 0.07718450010212419
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.07718450010212419
+        },
+        {
+          "view": "head_color",
+          "score": 0.038294398488562094
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.025162530637254914
+        }
+      ]
+    },
+    {
+      "sample_index": 114,
+      "original_frame_id": 855,
+      "time_seconds": 28.5,
+      "fused_score": 0.04069550509982639,
+      "source_scores": {
+        "overhead_video": 0.028583078022875817,
+        "tri_view_video": 0.052594135093273424,
+        "pixel_cv_prior": 0.053021729260280495
+      },
+      "weighted_mean_score": 0.05325197227328431,
+      "top3_mean_score": 0.052594135093273424,
+      "per_view_scores": {
+        "head_color": 0.028583078022875817,
+        "hand_left_color": 0.023241561989379083,
+        "hand_right_color": 0.10595776526756537
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.10595776526756537
+        },
+        {
+          "view": "head_color",
+          "score": 0.028583078022875817
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.023241561989379083
+        }
+      ]
+    },
+    {
+      "sample_index": 135,
+      "original_frame_id": 1012,
+      "time_seconds": 33.733333333333334,
+      "fused_score": 0.03185783529214162,
+      "source_scores": {
+        "overhead_video": 0.02670448452818627,
+        "tri_view_video": 0.03692022399237473,
+        "pixel_cv_prior": 0.037102148119819184
+      },
+      "weighted_mean_score": 0.0372001072653662,
+      "top3_mean_score": 0.03692022399237473,
+      "per_view_scores": {
+        "head_color": 0.02670448452818627,
+        "hand_left_color": 0.027391876021241837,
+        "hand_right_color": 0.05666431142769608
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.05666431142769608
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.027391876021241837
+        },
+        {
+          "view": "head_color",
+          "score": 0.02670448452818627
+        }
+      ]
+    },
+    {
+      "sample_index": 140,
+      "original_frame_id": 1050,
+      "time_seconds": 35.0,
+      "fused_score": 0.03637386283235825,
+      "source_scores": {
+        "overhead_video": 0.022368661917892146,
+        "tri_view_video": 0.050131857213371454,
+        "pixel_cv_prior": 0.05062627028027726
+      },
+      "weighted_mean_score": 0.05089249270091884,
+      "top3_mean_score": 0.050131857213371454,
+      "per_view_scores": {
+        "head_color": 0.022368661917892146,
+        "hand_left_color": 0.033562097886029416,
+        "hand_right_color": 0.0944648118361928
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.0944648118361928
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.033562097886029416
+        },
+        {
+          "view": "head_color",
+          "score": 0.022368661917892146
+        }
+      ]
+    },
+    {
+      "sample_index": 147,
+      "original_frame_id": 1102,
+      "time_seconds": 36.733333333333334,
+      "fused_score": 0.03932712905314095,
+      "source_scores": {
+        "overhead_video": 0.0309356809129902,
+        "tri_view_video": 0.04757045930351308,
+        "pixel_cv_prior": 0.04786669508307033
+      },
+      "weighted_mean_score": 0.04802620665667808,
+      "top3_mean_score": 0.04757045930351308,
+      "per_view_scores": {
+        "head_color": 0.0309356809129902,
+        "hand_left_color": 0.031148226868872537,
+        "hand_right_color": 0.08062747012867648
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.08062747012867648
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.031148226868872537
+        },
+        {
+          "view": "head_color",
+          "score": 0.0309356809129902
+        }
+      ]
+    },
+    {
+      "sample_index": 160,
+      "original_frame_id": 1200,
+      "time_seconds": 40.0,
+      "fused_score": 0.043646761472095626,
+      "source_scores": {
+        "overhead_video": 0.02760131357230393,
+        "tri_view_video": 0.059408990332244026,
+        "pixel_cv_prior": 0.05997542841153062
+      },
+      "weighted_mean_score": 0.06028043353114649,
+      "top3_mean_score": 0.05940899033224401,
+      "per_view_scores": {
+        "head_color": 0.02760131357230393,
+        "hand_left_color": 0.02369953788807191,
+        "hand_right_color": 0.1269261195363562
+      },
+      "top_views": [
+        {
+          "view": "hand_right_color",
+          "score": 0.1269261195363562
+        },
+        {
+          "view": "head_color",
+          "score": 0.02760131357230393
+        },
+        {
+          "view": "hand_left_color",
+          "score": 0.02369953788807191
+        }
+      ]
+    }
+  ]
+}

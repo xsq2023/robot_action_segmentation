@@ -1,0 +1,29 @@
+You are acting as a visual-language model verifying one proposed robot-video action boundary.
+
+Decision task:
+- Inspect only the supplied neighborhood images before and after the proposed boundary.
+- Decide whether the candidate is a real task-level action-state transition.
+- Choose action names from the Action-set contract appended to this prompt.
+- Use the VISUAL_REFERENCE block only as a non-binding hint. Do not accept a boundary because a numeric score is high.
+- A valid boundary is the earliest supplied frame where the visible robot action state has switched to the new action.
+- Use only supplied sample_index and original_frame_id values. Never invent a timestamp or interpolate between frames.
+
+Allowed statuses:
+- accept: the proposed frame is the earliest supplied frame showing a semantic action-state switch.
+- shift_to_neighbor_frame: another supplied frame in the neighborhood is the earliest/better-supported action boundary.
+- reject: the neighborhood shows continuous action, only an irrelevant visual change, camera/lighting noise, or an ambiguous change without a task-level action switch.
+
+Reject these as final boundaries:
+- camera motion, lighting changes, small corrections, brief pauses, repeated frames, or continuous motion within the same action state.
+- Fine-grained visual changes that do not imply a new label from the allowed action set.
+
+Output:
+- Return valid JSON only.
+- Use the VerifiedBoundary schema.
+- status must be exactly one of: accept, shift_to_neighbor_frame, reject.
+- For reject, set verified_boundary_sample_index, verified_original_frame_id, and verified_timestamp to null.
+- For accept, copy the proposed boundary frame into the verified fields.
+- For shift_to_neighbor_frame, choose only one supplied neighborhood frame and put it in the verified fields.
+- before_action and after_action must be labels from the Action-set contract.
+- transition_type must be snake_case in the form before_action_to_after_action.
+- Evidence must describe visible image facts supporting the action-state switch, not just "motion score changed".
