@@ -8,6 +8,9 @@ from typing import Any
 from pydantic import BaseModel
 
 
+CACHE_SCHEMA_VERSION = 1
+
+
 def ensure_dir(path: Path) -> Path:
     path.mkdir(parents=True, exist_ok=True)
     return path
@@ -39,6 +42,39 @@ def deterministic_key(payload: Any) -> str:
     return sha256_bytes(canonical.encode("utf-8"))
 
 
+def cache_metadata_path(artifact_path: Path) -> Path:
+    return artifact_path.with_name(f"{artifact_path.name}.cache.json")
+
+
+def build_cache_metadata(fingerprint_payload: Any) -> dict[str, Any]:
+    return {
+        "cache_schema_version": CACHE_SCHEMA_VERSION,
+        "fingerprint": deterministic_key(fingerprint_payload),
+        "fingerprint_payload": fingerprint_payload,
+    }
+
+
+def cache_matches(artifact_path: Path, fingerprint_payload: Any) -> bool:
+    if not artifact_path.exists():
+        return False
+    metadata_path = cache_metadata_path(artifact_path)
+    if not metadata_path.exists():
+        return False
+    try:
+        metadata = read_json(metadata_path)
+    except (OSError, json.JSONDecodeError):
+        return False
+    expected = build_cache_metadata(fingerprint_payload)
+    return (
+        metadata.get("cache_schema_version") == CACHE_SCHEMA_VERSION
+        and metadata.get("fingerprint") == expected["fingerprint"]
+    )
+
+
+def write_cache_metadata(artifact_path: Path, fingerprint_payload: Any) -> None:
+    write_json(cache_metadata_path(artifact_path), build_cache_metadata(fingerprint_payload))
+
+
 class JsonArtifactCache:
     """Simple file-backed JSON cache keyed by deterministic hashes."""
 
@@ -58,4 +94,3 @@ class JsonArtifactCache:
         path = self.path_for(namespace, key)
         write_json(path, data)
         return path
-

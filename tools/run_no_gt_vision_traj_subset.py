@@ -24,7 +24,6 @@ from robot_tas.cli.evaluate_multiview_codex_task import (
     run_apply_decision,
     run_base_head_pipeline,
     run_multiview_pack,
-    validate_decision,
     validate_final_output,
 )
 from robot_tas.cache import write_json
@@ -291,8 +290,13 @@ def run_episode(
                     existing_views=existing_views,
                     require_existing=not args.allow_bootstrap_decisions,
                 )
-                validate_decision(decision_path=decision_path, pipeline_output_dir=base_dir)
-                run_apply_decision(api_dir=api_dir, pipeline_output_dir=base_dir, decision_path=decision_path, output_dir=final_dir)
+                run_apply_decision(
+                    api_dir=api_dir,
+                    pipeline_output_dir=base_dir,
+                    decision_path=decision_path,
+                    output_dir=final_dir,
+                    allow_unreviewed_decision=decision_mode != "existing_codex_vlm_decision",
+                )
                 validate_final_output(final_dir=final_dir, pipeline_output_dir=base_dir)
             except Exception as exc:
                 status.reason = str(exc)

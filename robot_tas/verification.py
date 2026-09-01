@@ -2,9 +2,10 @@ from __future__ import annotations
 
 import logging
 from pathlib import Path
+from typing import Any
 
 from robot_tas.api.base import MultimodalClient
-from robot_tas.cache import ensure_dir, read_json, write_json
+from robot_tas.cache import cache_matches, ensure_dir, read_json, write_cache_metadata, write_json
 from robot_tas.schemas import LocalBoundaryProposal, SampledFrame, VerifiedBoundary
 from robot_tas.windows import boundary_neighborhood
 
@@ -21,13 +22,20 @@ def run_boundary_verification(
     output_dir: Path,
     verification_radius: int,
     force: bool = False,
+    cache_fingerprint: dict[str, Any] | None = None,
 ) -> list[VerifiedBoundary]:
     """Verify each proposed boundary independently."""
 
     stage_path = output_dir / "verified_boundaries.json"
-    if stage_path.exists() and not force:
+    can_reuse_stage = (
+        stage_path.exists()
+        and not force
+        and (cache_fingerprint is None or cache_matches(stage_path, cache_fingerprint))
+    )
+    if can_reuse_stage:
         return [VerifiedBoundary.model_validate(item) for item in read_json(stage_path)]
 
+    can_reuse_items = not force and cache_fingerprint is None
     cache_dir = ensure_dir(output_dir / "cache" / "verified_boundaries")
     raw_dir = ensure_dir(output_dir / "raw_api" / "verified_boundaries")
     verified: list[VerifiedBoundary] = []
@@ -36,7 +44,7 @@ def run_boundary_verification(
         for boundary_index, candidate in enumerate(proposal.boundary_candidates):
             proposal_id = f"window_{proposal.window_id}_boundary_{boundary_index}"
             item_path = cache_dir / f"{proposal_id}.json"
-            if item_path.exists() and not force:
+            if item_path.exists() and can_reuse_items:
                 result = VerifiedBoundary.model_validate(read_json(item_path))
             else:
                 neighborhood = boundary_neighborhood(
@@ -61,5 +69,6 @@ def run_boundary_verification(
             verified.append(result)
 
     write_json(stage_path, [item.model_dump(mode="json") for item in verified])
+    if cache_fingerprint is not None:
+        write_cache_metadata(stage_path, cache_fingerprint)
     return verified
-

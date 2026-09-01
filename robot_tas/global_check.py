@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 from robot_tas.api.base import MultimodalClient
-from robot_tas.cache import ensure_dir, read_json, write_json
+from robot_tas.cache import cache_matches, ensure_dir, read_json, write_cache_metadata, write_json
 from robot_tas.schemas import GlobalCheckResult, GlobalIssue, LabeledSegment, MergedBoundary, SampledFrame, VideoMetadata
 from robot_tas.windows import boundary_neighborhood
 
@@ -98,11 +99,16 @@ def run_global_consistency_check(
     output_dir: Path,
     confidence_threshold: float,
     force: bool = False,
+    cache_fingerprint: dict[str, Any] | None = None,
 ) -> tuple[GlobalCheckResult, list[LabeledSegment], list[MergedBoundary]]:
     """Run a final constrained global consistency check."""
 
     stage_path = output_dir / "global_check.json"
-    if stage_path.exists() and not force:
+    if (
+        stage_path.exists()
+        and not force
+        and (cache_fingerprint is None or cache_matches(stage_path, cache_fingerprint))
+    ):
         cached = GlobalCheckResult.model_validate(read_json(stage_path))
         final_segments, final_boundaries, _ = apply_global_issues(
             segments=segments,
@@ -129,6 +135,8 @@ def run_global_consistency_check(
     )
     result = call.parsed.model_copy(update={"applied_issues": applied})
     write_json(stage_path, result.model_dump(mode="json"))
+    if cache_fingerprint is not None:
+        write_cache_metadata(stage_path, cache_fingerprint)
     raw_dir = ensure_dir(output_dir / "raw_api" / "global_check")
     write_json(
         raw_dir / "global_check.json",

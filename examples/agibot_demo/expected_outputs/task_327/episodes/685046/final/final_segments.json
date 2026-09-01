@@ -1,6 +1,6 @@
 {
   "video": {
-    "path": "/mnt/f/ai/video grounding/dataset/AgiBotWorld-Alpha/observations/327/685046-685393/685046/videos/head_color.mp4",
+    "path": "examples/agibot_demo/observations/327/685046/videos/head_color.mp4",
     "fps": 30.0,
     "total_frames": 1265,
     "duration_seconds": 42.166666666666664,

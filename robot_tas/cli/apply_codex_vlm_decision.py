@@ -7,10 +7,13 @@ from typing import Any
 
 from robot_tas.action_set import parse_action_set
 from robot_tas.cache import ensure_dir, read_json, write_json
+from robot_tas.cli.evaluate_multiview_codex_task import validate_decision
 from robot_tas.normalization import normalize_label, normalize_transition
 from robot_tas.schemas import FinalOutput, LabeledSegment, MergedBoundary, SampledFrame
 from robot_tas.visualization import write_annotated_action_video, write_timeline_html
 from robot_tas.vlm_pack import load_sampled_artifacts
+
+CODEX_VLM_DECISION_PROMPT_VERSION = "codex_vlm_decision_v2"
 
 
 def parse_args() -> argparse.Namespace:
@@ -29,6 +32,14 @@ def parse_args() -> argparse.Namespace:
         "--action-set",
         default=None,
         help="Comma-separated allowed action labels. Defaults to the broad robot manipulation action set.",
+    )
+    parser.add_argument(
+        "--allow-unreviewed-decision",
+        action="store_true",
+        help=(
+            "Allow deterministic/bootstrap decisions that are not prompt_version=codex_vlm_decision_v2. "
+            "Intended only for explicit no-VLM baseline/debug runs; reviewed Codex VLM decisions remain validated."
+        ),
     )
     return parser.parse_args()
 
@@ -74,6 +85,23 @@ def _dict_evidence(items: list[Any]) -> list[dict[str, str]]:
             continue
         evidence.append({str(key): str(value) for key, value in item.items()})
     return evidence
+
+
+def validate_apply_decision(
+    decision_path: Path,
+    pipeline_output_dir: Path,
+    *,
+    require_reviewed_codex_vlm_decision: bool = True,
+) -> None:
+    decision = read_json(decision_path)
+    prompt_version = str(decision.get("prompt_version", ""))
+    if require_reviewed_codex_vlm_decision and prompt_version != CODEX_VLM_DECISION_PROMPT_VERSION:
+        raise ValueError(
+            "Final apply requires a reviewed Codex VLM decision with "
+            f"prompt_version={CODEX_VLM_DECISION_PROMPT_VERSION!r}; got {prompt_version or '<missing>'!r}. "
+            "Use --allow-unreviewed-decision only for explicit bootstrap/no-VLM baseline runs."
+        )
+    validate_decision(decision_path=decision_path, pipeline_output_dir=pipeline_output_dir)
 
 
 def convert_codex_decision(
@@ -165,6 +193,11 @@ def main() -> None:
     output_dir = ensure_dir(Path(args.output_dir).resolve())
     action_set = parse_action_set(args.action_set)
 
+    validate_apply_decision(
+        decision_path=decision_path,
+        pipeline_output_dir=pipeline_output_dir,
+        require_reviewed_codex_vlm_decision=not args.allow_unreviewed_decision,
+    )
     final_output = convert_codex_decision(
         pipeline_output_dir=pipeline_output_dir,
         decision_path=decision_path,

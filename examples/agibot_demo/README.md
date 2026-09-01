@@ -9,6 +9,11 @@ This directory contains three compact cases:
 Inputs are under `observations/` and `proprio_stats_extracted/`. Expected
 VLM-reviewed outputs are under `expected_outputs/`.
 
+The expected outputs are demo artifacts with repo-relative paths. Reuse them
+with `--reuse-output-root` or as reviewed decision examples; deterministic
+bootstrap decisions are for baseline/debug inspection only and are not final
+semantic results.
+
 Install dependencies from the repo root before running the demo:
 
 ```bash

@@ -4,6 +4,7 @@ import argparse
 import logging
 import os
 from pathlib import Path
+from typing import Any
 
 from robot_tas.aggregation import merge_verified_boundaries
 from robot_tas.action_set import format_action_set_contract, merge_action_sets, parse_action_set
@@ -16,7 +17,7 @@ from robot_tas.action_priors import (
 )
 from robot_tas.api.base import MultimodalClient
 from robot_tas.api.codex_client import CodexMultimodalClient
-from robot_tas.cache import ensure_dir, read_json, write_json
+from robot_tas.cache import cache_matches, deterministic_key, ensure_dir, read_json, write_cache_metadata, write_json
 from robot_tas.config import PipelineConfig, apply_overrides, load_config
 from robot_tas.global_check import run_global_consistency_check
 from robot_tas.logging_utils import configure_logging
@@ -132,6 +133,43 @@ def build_client(config: PipelineConfig, output_dir: Path) -> MultimodalClient:
     raise ValueError(f"Unsupported provider: {config.provider}")
 
 
+def file_signature(path: Path) -> dict[str, Any]:
+    stat = path.stat()
+    return {
+        "path": str(path.resolve()),
+        "size": stat.st_size,
+        "mtime_ns": stat.st_mtime_ns,
+    }
+
+
+def sampled_frames_signature(sampled_frames: list[SampledFrame]) -> dict[str, Any]:
+    return {
+        "count": len(sampled_frames),
+        "frames": [
+            {
+                "sample_index": frame.sample_index,
+                "original_frame_id": frame.original_frame_id,
+                "timestamp_seconds": frame.timestamp_seconds,
+                "image_sha256": frame.image_sha256,
+                "motion_score": frame.motion_score,
+                "mean_luma": frame.mean_luma,
+            }
+            for frame in sampled_frames
+        ],
+    }
+
+
+def model_items_signature(items: list[Any]) -> str:
+    return deterministic_key([item.model_dump(mode="json") for item in items])
+
+
+def prompt_signature(prompt_version: str, prompt_text: str) -> dict[str, str]:
+    return {
+        "prompt_version": prompt_version,
+        "prompt_sha256": deterministic_key(prompt_text),
+    }
+
+
 def prepare_metadata_and_samples(
     video_path: Path,
     output_dir: Path,
@@ -139,7 +177,12 @@ def prepare_metadata_and_samples(
     force: bool,
 ) -> tuple[VideoMetadata, list[SampledFrame]]:
     metadata_path = output_dir / "metadata.json"
-    if metadata_path.exists() and not force:
+    cache_fingerprint = {
+        "stage": "metadata_and_samples",
+        "video": file_signature(video_path),
+        "sample_fps": sample_fps,
+    }
+    if metadata_path.exists() and not force and cache_matches(metadata_path, cache_fingerprint):
         cached = read_json(metadata_path)
         metadata = VideoMetadata.model_validate(cached["video"])
         sampled_frames = [SampledFrame.model_validate(item) for item in cached["sampled_frames"]]
@@ -154,6 +197,7 @@ def prepare_metadata_and_samples(
             "sampled_frames": [frame.model_dump(mode="json") for frame in sampled_frames],
         },
     )
+    write_cache_metadata(metadata_path, cache_fingerprint)
     return metadata, sampled_frames
 
 
@@ -165,7 +209,13 @@ def prepare_windows(
     force: bool,
 ) -> list[Window]:
     stage_path = output_dir / "windows.json"
-    if stage_path.exists() and not force:
+    cache_fingerprint = {
+        "stage": "windows",
+        "sampled_frames": sampled_frames_signature(sampled_frames),
+        "window_size": window_size,
+        "window_stride": window_stride,
+    }
+    if stage_path.exists() and not force and cache_matches(stage_path, cache_fingerprint):
         return [Window.model_validate(item) for item in read_json(stage_path)]
 
     windows = build_sliding_windows(
@@ -174,6 +224,7 @@ def prepare_windows(
         stride=window_stride,
     )
     write_json(stage_path, [window.model_dump(mode="json") for window in windows])
+    write_cache_metadata(stage_path, cache_fingerprint)
     return windows
 
 
@@ -183,6 +234,26 @@ def write_stage(path: Path, items: list[LocalBoundaryProposal] | list[MergedBoun
 
 def load_stage(path: Path, model_type: type[LocalBoundaryProposal] | type[MergedBoundary] | type[RawSegment] | type[LabeledSegment]) -> list[LocalBoundaryProposal] | list[MergedBoundary] | list[RawSegment] | list[LabeledSegment]:
     return [model_type.model_validate(item) for item in read_json(path)]
+
+
+def load_stage_if_current(
+    path: Path,
+    model_type: type[LocalBoundaryProposal] | type[MergedBoundary] | type[RawSegment] | type[LabeledSegment],
+    cache_fingerprint: dict[str, Any],
+    force: bool,
+) -> list[LocalBoundaryProposal] | list[MergedBoundary] | list[RawSegment] | list[LabeledSegment] | None:
+    if path.exists() and not force and cache_matches(path, cache_fingerprint):
+        return load_stage(path, model_type)
+    return None
+
+
+def write_stage_with_cache(
+    path: Path,
+    items: list[LocalBoundaryProposal] | list[MergedBoundary] | list[RawSegment] | list[LabeledSegment],
+    cache_fingerprint: dict[str, Any],
+) -> None:
+    write_stage(path, items)
+    write_cache_metadata(path, cache_fingerprint)
 
 
 def main() -> None:
@@ -254,6 +325,13 @@ def main() -> None:
     LOGGER.info("Prepared %s sliding windows", len(windows))
 
     client = build_client(config=config, output_dir=output_dir)
+    sampled_signature = sampled_frames_signature(sampled_frames)
+    windows_signature = model_items_signature(windows)
+    client_signature = {
+        "provider": config.provider,
+        "model": config.model,
+        "temperature": config.temperature,
+    }
 
     local_proposals = run_local_boundary_proposals(
         windows=windows,
@@ -262,6 +340,13 @@ def main() -> None:
         prompt_version=local_version,
         output_dir=output_dir,
         force=config.force,
+        cache_fingerprint={
+            "stage": "local_proposals",
+            "sampled_frames": sampled_signature,
+            "windows": windows_signature,
+            "client": client_signature,
+            "prompt": prompt_signature(local_version, local_prompt),
+        },
     )
 
     verified_boundaries = run_boundary_verification(
@@ -273,11 +358,33 @@ def main() -> None:
         output_dir=output_dir,
         verification_radius=config.verification_radius,
         force=config.force,
+        cache_fingerprint={
+            "stage": "verified_boundaries",
+            "sampled_frames": sampled_signature,
+            "proposals": model_items_signature(local_proposals),
+            "client": client_signature,
+            "prompt": prompt_signature(verify_version, verify_prompt),
+            "verification_radius": config.verification_radius,
+        },
     )
 
     merged_boundaries_path = output_dir / "merged_boundaries.json"
-    if merged_boundaries_path.exists() and not config.force:
-        merged_boundaries = load_stage(merged_boundaries_path, MergedBoundary)
+    merged_cache_fingerprint = {
+        "stage": "merged_boundaries",
+        "verified_boundaries": model_items_signature(verified_boundaries),
+        "boundary_tolerance": config.boundary_tolerance,
+        "min_boundary_confidence": config.min_boundary_confidence,
+        "min_segment_samples": config.min_segment_samples,
+        "total_sample_count": len(sampled_frames),
+    }
+    cached_merged = load_stage_if_current(
+        merged_boundaries_path,
+        MergedBoundary,
+        merged_cache_fingerprint,
+        config.force,
+    )
+    if cached_merged is not None:
+        merged_boundaries = cached_merged
     else:
         merged_boundaries = merge_verified_boundaries(
             verified_boundaries=verified_boundaries,
@@ -286,10 +393,11 @@ def main() -> None:
             min_segment_samples=config.min_segment_samples,
             total_sample_count=len(sampled_frames),
         )
-        write_stage(merged_boundaries_path, merged_boundaries)
+        write_stage_with_cache(merged_boundaries_path, merged_boundaries, merged_cache_fingerprint)
     LOGGER.info("Merged boundaries down to %s final candidates", len(merged_boundaries))
 
     if preset_actions and args.preset_boundary_mode == "align":
+        pre_align_boundaries_signature = model_items_signature(merged_boundaries)
         aligned_boundaries = align_boundaries_with_prior(
             boundaries=merged_boundaries,
             metadata=metadata,
@@ -299,7 +407,15 @@ def main() -> None:
         )
         if aligned_boundaries:
             merged_boundaries = aligned_boundaries
-            write_stage(merged_boundaries_path, merged_boundaries)
+            merged_cache_fingerprint = {
+                "stage": "merged_boundaries",
+                "mode": "aligned_with_prior",
+                "input_boundaries": pre_align_boundaries_signature,
+                "sampled_frames": sampled_signature,
+                "preset_actions": preset_actions,
+                "preset_boundary_ratios": preset_boundary_ratios,
+            }
+            write_stage_with_cache(merged_boundaries_path, merged_boundaries, merged_cache_fingerprint)
             LOGGER.info(
                 "Aligned boundaries to action prior: %s/%s transitions kept",
                 len(merged_boundaries),
@@ -321,10 +437,25 @@ def main() -> None:
             preset_actions=preset_actions,
             boundary_ratios=preset_boundary_ratios,
         )
-        write_stage(merged_boundaries_path, merged_boundaries)
-        write_stage(output_dir / "segments_raw.json", raw_segments)
+        prior_cache_fingerprint = {
+            "stage": "prior_segments",
+            "metadata": metadata.model_dump(mode="json"),
+            "sampled_frames": sampled_signature,
+            "preset_actions": preset_actions,
+            "preset_boundary_ratios": preset_boundary_ratios,
+        }
+        write_stage_with_cache(merged_boundaries_path, merged_boundaries, prior_cache_fingerprint)
+        write_stage_with_cache(output_dir / "segments_raw.json", raw_segments, prior_cache_fingerprint)
         labeled_segments = label_segments_with_prior(raw_segments=raw_segments, preset_actions=preset_actions)
-        write_stage(output_dir / "segments_labeled.json", labeled_segments)
+        write_stage_with_cache(
+            output_dir / "segments_labeled.json",
+            labeled_segments,
+            {
+                "stage": "prior_segment_labels",
+                "raw_segments": model_items_signature(raw_segments),
+                "preset_actions": preset_actions,
+            },
+        )
         LOGGER.info(
             "Applied preset action prior: %s segments, %s boundaries",
             len(labeled_segments),
@@ -332,19 +463,39 @@ def main() -> None:
         )
     else:
         raw_segments_path = output_dir / "segments_raw.json"
-        if raw_segments_path.exists() and not config.force:
-            raw_segments = load_stage(raw_segments_path, RawSegment)
+        raw_segments_cache_fingerprint = {
+            "stage": "raw_segments",
+            "metadata": metadata.model_dump(mode="json"),
+            "sampled_frames": sampled_signature,
+            "boundaries": model_items_signature(merged_boundaries),
+        }
+        cached_raw_segments = load_stage_if_current(
+            raw_segments_path,
+            RawSegment,
+            raw_segments_cache_fingerprint,
+            config.force,
+        )
+        if cached_raw_segments is not None:
+            raw_segments = cached_raw_segments
         else:
             raw_segments = construct_segments(
                 metadata=metadata,
                 sampled_frames=sampled_frames,
                 boundaries=merged_boundaries,
             )
-            write_stage(raw_segments_path, raw_segments)
+            write_stage_with_cache(raw_segments_path, raw_segments, raw_segments_cache_fingerprint)
 
         if preset_actions and len(raw_segments) == len(preset_actions):
             labeled_segments = label_segments_with_prior(raw_segments=raw_segments, preset_actions=preset_actions)
-            write_stage(output_dir / "segments_labeled.json", labeled_segments)
+            write_stage_with_cache(
+                output_dir / "segments_labeled.json",
+                labeled_segments,
+                {
+                    "stage": "prior_segment_labels",
+                    "raw_segments": model_items_signature(raw_segments),
+                    "preset_actions": preset_actions,
+                },
+            )
             LOGGER.info("Applied preset action labels to %s visual segments", len(labeled_segments))
         else:
             labeled_segments = run_segment_labeling(
@@ -355,6 +506,13 @@ def main() -> None:
                 prompt_version=label_version,
                 output_dir=output_dir,
                 force=config.force,
+                cache_fingerprint={
+                    "stage": "segments_labeled",
+                    "sampled_frames": sampled_signature,
+                    "raw_segments": model_items_signature(raw_segments),
+                    "client": client_signature,
+                    "prompt": prompt_signature(label_version, label_prompt),
+                },
             )
 
     if preset_actions and len(labeled_segments) == len(preset_actions):
@@ -379,6 +537,16 @@ def main() -> None:
             output_dir=output_dir,
             confidence_threshold=config.global_edit_confidence,
             force=config.force,
+            cache_fingerprint={
+                "stage": "global_check",
+                "metadata": metadata.model_dump(mode="json"),
+                "sampled_frames": sampled_signature,
+                "boundaries": model_items_signature(merged_boundaries),
+                "segments": model_items_signature(labeled_segments),
+                "client": client_signature,
+                "prompt": prompt_signature(global_version, global_prompt),
+                "confidence_threshold": config.global_edit_confidence,
+            },
         )
 
     final_output = FinalOutput(

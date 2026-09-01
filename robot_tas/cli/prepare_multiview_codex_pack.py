@@ -7,7 +7,7 @@ from typing import Any
 
 from PIL import Image, ImageDraw, ImageFont
 
-from robot_tas.cache import ensure_dir, read_json, write_json
+from robot_tas.cache import cache_matches, ensure_dir, read_json, write_cache_metadata, write_json
 from robot_tas.sampler import (
     _sample_video_frames_ffmpeg,
     _sample_video_frames_opencv,
@@ -112,8 +112,38 @@ def _video_path(episode_dir: Path, view: str) -> Path:
     return episode_dir / "videos" / f"{view}.mp4"
 
 
-def _load_cached_view(metadata_path: Path, frame_ids: list[int]) -> tuple[VideoMetadata, list[SampledFrame]] | None:
+def _file_signature(path: Path) -> dict[str, Any]:
+    stat = path.stat()
+    return {
+        "path": str(path.resolve()),
+        "size": stat.st_size,
+        "mtime_ns": stat.st_mtime_ns,
+    }
+
+
+def _view_cache_fingerprint(
+    video_path: Path,
+    sample_fps: float,
+    frame_ids: list[int],
+    decoder: str,
+) -> dict[str, Any]:
+    return {
+        "stage": "multiview_sampled_view",
+        "video": _file_signature(video_path),
+        "sample_fps": sample_fps,
+        "frame_ids": frame_ids,
+        "decoder": decoder,
+    }
+
+
+def _load_cached_view(
+    metadata_path: Path,
+    frame_ids: list[int],
+    cache_fingerprint: dict[str, Any],
+) -> tuple[VideoMetadata, list[SampledFrame]] | None:
     if not metadata_path.exists():
+        return None
+    if not cache_matches(metadata_path, cache_fingerprint):
         return None
     cached = read_json(metadata_path)
     sampled_frames = [SampledFrame.model_validate(item) for item in cached["sampled_frames"]]
@@ -129,14 +159,21 @@ def _sample_view(
     frame_ids: list[int],
     force: bool,
     decoder: str,
-) -> tuple[VideoMetadata, list[SampledFrame]]:
+) -> tuple[VideoMetadata, list[SampledFrame], bool]:
     metadata_path = view_dir / "metadata.json"
+    cache_fingerprint = _view_cache_fingerprint(
+        video_path=video_path,
+        sample_fps=sample_fps,
+        frame_ids=frame_ids,
+        decoder=decoder,
+    )
     if not force:
-        cached = _load_cached_view(metadata_path, frame_ids)
+        cached = _load_cached_view(metadata_path, frame_ids, cache_fingerprint)
         if cached is not None:
-            return cached
+            metadata, sampled_frames = cached
+            return metadata, sampled_frames, True
 
-    if force and (view_dir / "sampled_frames").exists():
+    if (view_dir / "sampled_frames").exists():
         shutil.rmtree(view_dir / "sampled_frames")
 
     metadata = read_video_metadata(video_path=video_path, sample_fps=sample_fps)
@@ -171,7 +208,8 @@ def _sample_view(
             "sampled_frames": [frame.model_dump(mode="json") for frame in sampled_frames],
         },
     )
-    return metadata, sampled_frames
+    write_cache_metadata(metadata_path, cache_fingerprint)
+    return metadata, sampled_frames, False
 
 
 def _resolve_frame_path(view_dir: Path, frame: SampledFrame) -> Path:
@@ -460,10 +498,11 @@ def main() -> None:
 
     frames_by_view: dict[str, list[SampledFrame]] = {}
     view_dirs: dict[str, Path] = {}
+    reused_all_views = True
     for view in view_names:
         view_dir = ensure_dir(views_dir / view)
         view_dirs[view] = view_dir
-        _, frames_by_view[view] = _sample_view(
+        _, frames_by_view[view], reused_view = _sample_view(
             video_path=video_paths[view],
             view_dir=view_dir,
             sample_fps=args.sample_fps,
@@ -471,6 +510,7 @@ def main() -> None:
             force=args.force,
             decoder=args.decoder,
         )
+        reused_all_views = reused_all_views and reused_view
 
     sheet_view_names = _sheet_view_columns(frames_by_view)
     sheet_thumb_size = (args.view_thumb_width, args.view_thumb_height)
@@ -482,7 +522,7 @@ def main() -> None:
         first = frames_by_view[view_names[0]][positions[0]]
         last = frames_by_view[view_names[0]][positions[-1]]
         output_path = contact_dir / f"multiview_global_{first.sample_index:03d}_{last.sample_index:03d}.jpg"
-        if args.force or _needs_contact_sheet_rewrite(
+        if args.force or not reused_all_views or _needs_contact_sheet_rewrite(
             output_path=output_path,
             sample_count=len(positions),
             view_count=len(sheet_view_names),
@@ -547,7 +587,7 @@ def main() -> None:
         end = min(sample_count - 1, center + args.local_radius)
         positions = list(range(start, end + 1))
         output_path = contact_dir / f"multiview_local_candidate_sample_{center:03d}_frames_{frame_ids[start]:04d}_{frame_ids[end]:04d}.jpg"
-        if args.force or _needs_contact_sheet_rewrite(
+        if args.force or not reused_all_views or _needs_contact_sheet_rewrite(
             output_path=output_path,
             sample_count=len(positions),
             view_count=len(sheet_view_names),

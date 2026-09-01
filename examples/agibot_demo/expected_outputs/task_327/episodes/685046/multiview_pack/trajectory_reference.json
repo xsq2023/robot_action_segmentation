@@ -1,6 +1,6 @@
 {
   "description": "Trajectory-derived non-visual hints for candidate recall, local timing refinement, and joint evidence. Visual semantics remain primary.",
-  "timeseries_csv": "/mnt/f/ai/video grounding/dataset/AgiBotWorld-Alpha/proprio_stats_extracted/327/685046/timeseries.csv",
+  "timeseries_csv": "examples/agibot_demo/proprio_stats_extracted/327/685046/timeseries.csv",
   "row_count": 1265,
   "active_signals": {
     "effector_index": 1,

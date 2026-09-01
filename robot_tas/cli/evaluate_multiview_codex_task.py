@@ -76,7 +76,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--require-existing-decisions",
         action="store_true",
-        help="Fail an episode if decision/codex_vlm_decision.json is missing instead of creating a deterministic bootstrap decision.",
+        help="Deprecated compatibility flag; reviewed decisions are required unless --allow-bootstrap-decisions is set.",
+    )
+    parser.add_argument(
+        "--allow-bootstrap-decisions",
+        action="store_true",
+        help=(
+            "Allow deterministic placeholder decisions when decision/codex_vlm_decision.json is missing. "
+            "This is for baseline/debug runs only and is not a final semantic result."
+        ),
     )
     return parser.parse_args()
 
@@ -234,7 +242,14 @@ def _trajectory_csv_for_episode(proprio_root: Path | None, episode_dir: Path) ->
     return candidate if candidate.is_file() else None
 
 
-def run_apply_decision(api_dir: Path, pipeline_output_dir: Path, decision_path: Path, output_dir: Path) -> None:
+def run_apply_decision(
+    api_dir: Path,
+    pipeline_output_dir: Path,
+    decision_path: Path,
+    output_dir: Path,
+    *,
+    allow_unreviewed_decision: bool = False,
+) -> None:
     command = [
         sys.executable,
         "-m",
@@ -246,6 +261,8 @@ def run_apply_decision(api_dir: Path, pipeline_output_dir: Path, decision_path: 
         "--output-dir",
         str(output_dir),
     ]
+    if allow_unreviewed_decision:
+        command.append("--allow-unreviewed-decision")
     _run_command(command=command, cwd=api_dir, label=f"apply decision {decision_path}")
 
 
@@ -428,8 +445,100 @@ def _resolve_episode_artifact_path(episode_dir: Path, raw_path: str) -> Path | N
     return None
 
 
+def _resolve_manifest_artifact_path(manifest_path: Path, raw_path: str) -> Path | None:
+    path = Path(raw_path)
+    if path.is_absolute():
+        return path.resolve() if path.exists() else None
+    candidate = manifest_path.parent / path
+    return candidate.resolve() if candidate.exists() else None
+
+
+def _artifact_label(path: Path, base_dir: Path) -> str:
+    try:
+        return str(path.relative_to(base_dir))
+    except ValueError:
+        return str(path)
+
+
 def _has_fixed_tri_view(views: list[str]) -> bool:
     return set(TRI_VIEW_EVIDENCE_VIEWS).issubset(set(views))
+
+
+def _validate_reviewed_sheet_coverage(
+    *,
+    decision: dict[str, Any],
+    episode_dir: Path,
+    reviewed_source_paths: set[Path],
+) -> None:
+    manifest_path = episode_dir / "multiview_pack" / "manifest.json"
+    if not manifest_path.is_file():
+        return
+
+    manifest = _read_json(manifest_path)
+    global_sheet_paths: list[Path] = []
+    for index, sheet in enumerate(manifest.get("global_sheets", []) or []):
+        if not isinstance(sheet, dict):
+            raise ValueError(f"multiview manifest global_sheets[{index}] must be an object.")
+        raw_path = _string_field(sheet, "path", f"multiview manifest global_sheets[{index}]")
+        resolved = _resolve_manifest_artifact_path(manifest_path, raw_path)
+        if resolved is None:
+            raise ValueError(f"multiview manifest global_sheets[{index}] path does not exist: {raw_path}")
+        global_sheet_paths.append(resolved)
+
+    missing_global = sorted(set(global_sheet_paths) - reviewed_source_paths, key=str)
+    if missing_global:
+        labels = [_artifact_label(path, episode_dir) for path in missing_global]
+        raise ValueError(
+            "inspection_audit.reviewed_visual_sources missing global contact sheets from manifest: "
+            f"{labels}"
+        )
+
+    boundary_frame_ids = {
+        int(boundary["boundary_frame_id"])
+        for boundary in decision.get("accepted_or_corrected_boundaries", []) or []
+    }
+    boundary_candidate_frame_ids = {
+        int(boundary["source_candidate_frame_id"])
+        for boundary in decision.get("accepted_or_corrected_boundaries", []) or []
+        if boundary.get("source_candidate_frame_id") is not None
+    }
+    boundary_sample_ids = {
+        int(boundary["boundary_sample_index"])
+        for boundary in decision.get("accepted_or_corrected_boundaries", []) or []
+    }
+    referenced_local_paths: set[Path] = set()
+    for index, sheet in enumerate(manifest.get("local_candidate_sheets", []) or []):
+        if not isinstance(sheet, dict):
+            raise ValueError(f"multiview manifest local_candidate_sheets[{index}] must be an object.")
+        raw_path = _string_field(sheet, "path", f"multiview manifest local_candidate_sheets[{index}]")
+        resolved = _resolve_manifest_artifact_path(manifest_path, raw_path)
+        if resolved is None:
+            raise ValueError(f"multiview manifest local_candidate_sheets[{index}] path does not exist: {raw_path}")
+
+        candidate_frame = sheet.get("candidate_frame_id")
+        candidate_sample = sheet.get("candidate_sample_index")
+        if candidate_frame is not None and int(candidate_frame) in boundary_frame_ids | boundary_candidate_frame_ids:
+            referenced_local_paths.add(resolved)
+        if candidate_sample is not None and int(candidate_sample) in boundary_sample_ids:
+            referenced_local_paths.add(resolved)
+
+    audit = decision.get("inspection_audit")
+    if isinstance(audit, dict):
+        for check in audit.get("undersegmentation_checks", []) or []:
+            if not isinstance(check, dict):
+                continue
+            for raw_sheet in check.get("reviewed_local_sheets", []) or []:
+                resolved = _resolve_episode_artifact_path(episode_dir, str(raw_sheet))
+                if resolved is not None:
+                    referenced_local_paths.add(resolved.resolve())
+
+    missing_local = sorted(referenced_local_paths - reviewed_source_paths, key=str)
+    if missing_local:
+        labels = [_artifact_label(path, episode_dir) for path in missing_local]
+        raise ValueError(
+            "inspection_audit.reviewed_visual_sources missing referenced local candidate sheets: "
+            f"{labels}"
+        )
 
 
 def _validate_inspection_audit(
@@ -446,14 +555,17 @@ def _validate_inspection_audit(
 
     reviewed_sources = _list_field(audit, "reviewed_visual_sources", "inspection_audit")
     reviewed_views: set[str] = set()
+    reviewed_source_paths: set[Path] = set()
     for index, source in enumerate(reviewed_sources):
         if not isinstance(source, dict):
             raise ValueError(f"inspection_audit.reviewed_visual_sources[{index}] must be an object.")
         source_path = _string_field(source, "path", f"inspection_audit.reviewed_visual_sources[{index}]")
-        if _resolve_episode_artifact_path(episode_dir, source_path) is None:
+        resolved_source_path = _resolve_episode_artifact_path(episode_dir, source_path)
+        if resolved_source_path is None:
             raise ValueError(
                 f"inspection_audit.reviewed_visual_sources[{index}] path does not exist: {source_path}"
             )
+        reviewed_source_paths.add(resolved_source_path.resolve())
         views = _views_from_record(source)
         if not _has_fixed_tri_view(views):
             raise ValueError(
@@ -463,6 +575,12 @@ def _validate_inspection_audit(
         reviewed_views.update(views)
     if not _has_fixed_tri_view(list(reviewed_views)):
         raise ValueError("inspection_audit does not document the fixed tri-view review.")
+
+    _validate_reviewed_sheet_coverage(
+        decision=decision,
+        episode_dir=episode_dir,
+        reviewed_source_paths=reviewed_source_paths,
+    )
 
     semantic_observations = _list_field(audit, "semantic_change_observations", "inspection_audit")
     observed_boundary_frames: set[int] = set()
@@ -771,10 +889,15 @@ def process_episode(
             multiview_pack_dir=pack_dir,
             decision_path=decision_path,
             existing_views=existing_views,
-            require_existing=args.require_existing_decisions,
+            require_existing=not args.allow_bootstrap_decisions,
         )
-        validate_decision(decision_path=decision_path, pipeline_output_dir=base_dir)
-        run_apply_decision(api_dir=api_dir, pipeline_output_dir=base_dir, decision_path=decision_path, output_dir=final_dir)
+        run_apply_decision(
+            api_dir=api_dir,
+            pipeline_output_dir=base_dir,
+            decision_path=decision_path,
+            output_dir=final_dir,
+            allow_unreviewed_decision=status.decision_mode != "existing_codex_vlm_decision",
+        )
         validate_final_output(final_dir=final_dir, pipeline_output_dir=base_dir)
         result = evaluate_episode(
             episode_id=episode_id,

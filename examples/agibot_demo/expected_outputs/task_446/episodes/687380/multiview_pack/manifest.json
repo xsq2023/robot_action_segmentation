@@ -1,6 +1,6 @@
 {
   "episode_id": "687380",
-  "episode_dir": "/mnt/f/ai/video grounding/dataset/AgiBotWorld-Alpha/observations/446/687380",
+  "episode_dir": "examples/agibot_demo/observations/446/687380",
   "sample_fps": 4.0,
   "fps": 30.0,
   "min_total_frames": 1759,

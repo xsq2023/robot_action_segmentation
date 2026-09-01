@@ -4,7 +4,7 @@ import pytest
 from PIL import Image
 
 from robot_tas.cache import write_json
-from robot_tas.cli.apply_codex_vlm_decision import convert_codex_decision
+from robot_tas.cli.apply_codex_vlm_decision import convert_codex_decision, validate_apply_decision
 
 
 def _write_frame(path: Path) -> None:
@@ -73,6 +73,60 @@ def test_convert_codex_decision_validates_action_set(tmp_path: Path) -> None:
             output_dir=tmp_path / "out",
             action_set=["pick", "place"],
         )
+
+
+def test_validate_apply_decision_requires_reviewed_prompt_version(tmp_path: Path) -> None:
+    pipeline_dir = tmp_path / "pipeline"
+    _write_pipeline_dir(pipeline_dir)
+    decision_path = tmp_path / "decision.json"
+    write_json(
+        decision_path,
+        {
+            "segments": [
+                {
+                    "start_sample_index": 0,
+                    "end_sample_index": 2,
+                    "start_frame_id": 0,
+                    "end_frame_id": 20,
+                    "action_label": "pick",
+                    "selected_views": ["head_color"],
+                }
+            ],
+            "accepted_or_corrected_boundaries": [],
+        },
+    )
+
+    with pytest.raises(ValueError, match="Final apply requires a reviewed Codex VLM decision"):
+        validate_apply_decision(decision_path=decision_path, pipeline_output_dir=pipeline_dir)
+
+
+def test_validate_apply_decision_uses_central_vlm_audit_validation(tmp_path: Path) -> None:
+    pipeline_dir = tmp_path / "pipeline"
+    _write_pipeline_dir(pipeline_dir)
+    decision_path = tmp_path / "decision.json"
+    write_json(
+        decision_path,
+        {
+            "prompt_version": "codex_vlm_decision_v2",
+            "segments": [
+                {
+                    "start_sample_index": 0,
+                    "end_sample_index": 2,
+                    "start_frame_id": 0,
+                    "end_frame_id": 20,
+                    "action_label": "pick",
+                    "selected_views": ["head_color"],
+                    "left_hand_state": "open",
+                    "right_hand_state": "holding",
+                    "held_objects_by_hand": {"left": [], "right": ["object"]},
+                }
+            ],
+            "accepted_or_corrected_boundaries": [],
+        },
+    )
+
+    with pytest.raises(ValueError, match="VLM decision missing inspection_audit"):
+        validate_apply_decision(decision_path=decision_path, pipeline_output_dir=pipeline_dir)
 
 
 def test_convert_codex_decision_writes_standard_output(tmp_path: Path) -> None:

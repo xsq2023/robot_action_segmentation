@@ -6,3 +6,21 @@ __pycache__/
 *.egg-info/
 key.txt
 =*
+
+# macOS/local editor noise
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*~
+
+# Generated media artifacts. Existing tracked demo media remains tracked; use
+# git add -f for intentional new fixtures.
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.jpg
+*.jpeg
+*.png

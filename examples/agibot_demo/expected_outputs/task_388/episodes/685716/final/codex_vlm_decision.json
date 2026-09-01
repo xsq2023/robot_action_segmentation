@@ -3,7 +3,7 @@
   "prompt_version": "codex_vlm_decision_v2",
   "decision_mode": "codex_visual_review_of_fresh_multiview_and_trajectory_pack",
   "video_summary": "Visual review produced 9 grounded segments using head, left-hand, and right-hand views.",
-  "multiview_manifest": "/mnt/f/ai/video grounding/api/outputs/codex_vlm_fresh_multiview_20260820_143004/task_388/episodes/685716/multiview_pack/manifest.json",
+  "multiview_manifest": "examples/agibot_demo/expected_outputs/task_388/episodes/685716/multiview_pack/manifest.json",
   "accepted_or_corrected_boundaries": [
     {
       "boundary_sample_index": 49,

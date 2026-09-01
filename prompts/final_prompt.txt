@@ -148,7 +148,7 @@ identify concrete objects when visually supported
 工作目录：
 
 ```bash
-cd /mnt/f/ai/video\ grounding/api
+cd /path/to/robot_action_segmentation
 ```
 
 Python：

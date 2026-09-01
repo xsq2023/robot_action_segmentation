@@ -167,6 +167,15 @@ For a fresh run without `--reuse-output-root`, place each reviewed
 before the apply step. Do not use `--allow-bootstrap-decisions` for final
 semantic results.
 
+`--allow-bootstrap-decisions` is only a deterministic baseline/debug mode for
+inspecting generated packs when no reviewed VLM decision is available. It is
+off by default, and outputs produced through that mode must not be treated as
+final semantic predictions.
+
+The bundled `examples/agibot_demo/expected_outputs/` files are checked-in demo
+artifacts. Their JSON paths are repo-relative so they can be reused or
+re-rendered from the repository root with the bundled videos.
+
 ## Repository Layout
 
 ```text

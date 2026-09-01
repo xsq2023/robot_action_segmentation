@@ -186,6 +186,132 @@ def test_validate_vlm_decision_requires_inspection_audit(tmp_path: Path) -> None
     validate_decision(decision_path=decision_path, pipeline_output_dir=pipeline_dir)
 
 
+def test_validate_vlm_decision_requires_all_manifest_global_sheets_reviewed(tmp_path: Path) -> None:
+    pipeline_dir = tmp_path / "pipeline"
+    _write_metadata(pipeline_dir)
+    first_sheet = tmp_path / "multiview_pack" / "contact_sheets" / "multiview_global_000_011.jpg"
+    second_sheet = tmp_path / "multiview_pack" / "contact_sheets" / "multiview_global_012_023.jpg"
+    _touch(first_sheet)
+    _touch(second_sheet)
+    _write_json(
+        tmp_path / "multiview_pack" / "manifest.json",
+        {
+            "global_sheets": [
+                {"path": "contact_sheets/multiview_global_000_011.jpg"},
+                {"path": "contact_sheets/multiview_global_012_023.jpg"},
+            ],
+            "local_candidate_sheets": [],
+        },
+    )
+    decision_path = tmp_path / "decision" / "codex_vlm_decision.json"
+    payload = {
+        "prompt_version": "codex_vlm_decision_v2",
+        "segments": [
+            {
+                "start_sample_index": 0,
+                "end_sample_index": 2,
+                "start_frame_id": 0,
+                "end_frame_id": 20,
+                "action_label": "move",
+                "selected_views": TRI_VIEW_EVIDENCE_VIEWS,
+                "left_hand_state": "free",
+                "right_hand_state": "carrying",
+                "held_objects_by_hand": {"left": [], "right": ["object"]},
+            }
+        ],
+        "accepted_or_corrected_boundaries": [
+            {
+                "boundary_sample_index": 1,
+                "boundary_frame_id": 10,
+                "boundary_time": 1.0,
+                "before_action": "pick",
+                "after_action": "place",
+                "selected_views": TRI_VIEW_EVIDENCE_VIEWS,
+            }
+        ],
+        "inspection_audit": _valid_inspection_audit(),
+    }
+    _write_json(decision_path, payload)
+
+    with pytest.raises(ValueError, match="missing global contact sheets"):
+        validate_decision(decision_path=decision_path, pipeline_output_dir=pipeline_dir)
+
+    payload["inspection_audit"]["reviewed_visual_sources"].append(
+        {
+            "path": "multiview_pack/contact_sheets/multiview_global_012_023.jpg",
+            "views": TRI_VIEW_EVIDENCE_VIEWS,
+            "purpose": "chronological tri-view review",
+        }
+    )
+    _write_json(decision_path, payload)
+    validate_decision(decision_path=decision_path, pipeline_output_dir=pipeline_dir)
+
+
+def test_validate_vlm_decision_requires_referenced_local_sheet_reviewed(tmp_path: Path) -> None:
+    pipeline_dir = tmp_path / "pipeline"
+    _write_metadata(pipeline_dir)
+    _touch(tmp_path / "multiview_pack" / "contact_sheets" / "multiview_global_000_011.jpg")
+    _touch(tmp_path / "multiview_pack" / "contact_sheets" / "local_boundary.jpg")
+    _write_json(
+        tmp_path / "multiview_pack" / "manifest.json",
+        {
+            "global_sheets": [
+                {"path": "contact_sheets/multiview_global_000_011.jpg"},
+            ],
+            "local_candidate_sheets": [
+                {
+                    "path": "contact_sheets/local_boundary.jpg",
+                    "candidate_sample_index": 1,
+                    "candidate_frame_id": 10,
+                }
+            ],
+        },
+    )
+    decision_path = tmp_path / "decision" / "codex_vlm_decision.json"
+    payload = {
+        "prompt_version": "codex_vlm_decision_v2",
+        "segments": [
+            {
+                "start_sample_index": 0,
+                "end_sample_index": 2,
+                "start_frame_id": 0,
+                "end_frame_id": 20,
+                "action_label": "move",
+                "selected_views": TRI_VIEW_EVIDENCE_VIEWS,
+                "left_hand_state": "free",
+                "right_hand_state": "carrying",
+                "held_objects_by_hand": {"left": [], "right": ["object"]},
+            }
+        ],
+        "accepted_or_corrected_boundaries": [
+            {
+                "boundary_sample_index": 1,
+                "boundary_frame_id": 10,
+                "boundary_time": 1.0,
+                "before_action": "pick",
+                "after_action": "place",
+                "selected_views": TRI_VIEW_EVIDENCE_VIEWS,
+                "source_candidate_frame_id": 10,
+            }
+        ],
+        "inspection_audit": _valid_inspection_audit(),
+    }
+    _write_json(decision_path, payload)
+
+    with pytest.raises(ValueError, match="missing referenced local candidate sheets"):
+        validate_decision(decision_path=decision_path, pipeline_output_dir=pipeline_dir)
+
+    payload["inspection_audit"]["reviewed_visual_sources"].append(
+        {
+            "path": "multiview_pack/contact_sheets/local_boundary.jpg",
+            "views": TRI_VIEW_EVIDENCE_VIEWS,
+            "purpose": "local boundary candidate review",
+        }
+    )
+    _write_json(decision_path, payload)
+    validate_decision(decision_path=decision_path, pipeline_output_dir=pipeline_dir)
+
+
 def test_validate_vlm_decision_requires_high_risk_internal_event_review(tmp_path: Path) -> None:
     pipeline_dir = tmp_path / "pipeline"
     _write_metadata(pipeline_dir)
@@ -285,6 +411,13 @@ def test_validate_vlm_decision_requires_high_risk_internal_event_review(tmp_path
             "internal_event_frames_reviewed": [10],
             "reviewed_local_sheets": ["multiview_pack/contact_sheets/local_open.jpg"],
             "split_decision": "keep_single_segment",
+        }
+    )
+    payload["inspection_audit"]["reviewed_visual_sources"].append(
+        {
+            "path": "multiview_pack/contact_sheets/local_open.jpg",
+            "views": TRI_VIEW_EVIDENCE_VIEWS,
+            "purpose": "high-risk local candidate review",
         }
     )
     _write_json(decision_path, payload)
